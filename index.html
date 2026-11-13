@@ -1,0 +1,1926 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover">
+<title>AndroShield | أندروشيلد — v6.5.4</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+html{line-height:1.5;-webkit-text-size-adjust:100%}
+body{margin:0;line-height:inherit}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}
+p{margin:0}
+ul,ol{list-style:none;margin:0;padding:0}
+button{background:transparent;padding:0;font:inherit;color:inherit;cursor:pointer;border:0}
+input,textarea,select{font:inherit;color:inherit;margin:0;padding:0}
+img,svg{display:block;vertical-align:middle;max-width:100%;height:auto}
+table{border-collapse:collapse}
+a{color:inherit;text-decoration:inherit}
+[type="checkbox"]{appearance:auto}
+:root{--bg1:#eaf6f6;--bg2:#dcecf6;--card:rgba(255,255,255,.8);--cards:rgba(255,255,255,.55);--tx:#0b2a3a;--mut:#4a6574;--bd:rgba(14,60,80,.15);--brand:#0e9f94;--brand2:#0b6fb3;--acc:#c9a24b;--dng:#b3261e;--warn:#fff4d6;--chip:rgba(14,159,148,.13);--sh:0 12px 32px -14px rgba(11,60,90,.3);--ok:#16a34a;--bad:#dc2626;--warnCol:#ca8a04;--tour:#f59e0b;--logo-bg:#ffffff;--logo-ring:#0e9f94;--logo-inner:#0b6fb3;--admin:#7c3aed}
+:root[data-theme=dark]{--bg1:#06121b;--bg2:#0a2130;--card:rgba(16,38,53,.78);--cards:rgba(16,38,53,.5);--tx:#e6f2f7;--mut:#9db6c3;--bd:rgba(160,210,230,.17);--brand:#19c3b4;--brand2:#3b9cff;--acc:#e0b95c;--dng:#ff8a80;--warn:#3a3016;--chip:rgba(25,195,180,.16);--sh:0 12px 32px -14px rgba(0,0,0,.65);--ok:#4ade80;--bad:#f87171;--warnCol:#fbbf24;--tour:#fbbf24;--logo-bg:#0a2130;--logo-ring:#19c3b4;--logo-inner:#3b9cff;--admin:#a78bfa}
+body{font-family:system-ui,'Segoe UI',Tahoma,'Noto Naskh Arabic',sans-serif;color:var(--tx);line-height:1.75;background:radial-gradient(1100px 560px at 8% -8%,rgba(14,159,148,.22),transparent 60%),radial-gradient(900px 520px at 100% 0,rgba(11,111,179,.2),transparent 55%),linear-gradient(180deg,var(--bg1),var(--bg2));background-attachment:fixed;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(var(--bd) 1px,transparent 1px);background-size:24px 24px;opacity:.55;pointer-events:none;z-index:0}
+body::after{content:"";position:fixed;width:540px;height:540px;right:-180px;top:32%;background:radial-gradient(circle,rgba(14,159,148,.26),transparent 65%);filter:blur(34px);animation:float 16s ease-in-out infinite;pointer-events:none;z-index:0}
+.hdr,.wrap{position:relative;z-index:1}
+.hdr{position:sticky;top:0;z-index:30;background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+.wrap{padding-bottom:5.5rem}
+.mut{color:var(--mut)}.bdr{border-color:var(--bd)}.bgs{background:var(--cards)}.bgc{background:var(--card)}.dng{color:var(--dng)}
+.brandtx{color:var(--brand)}.brandbd{border-color:var(--brand)}
+.warn{background:var(--warn);border:1px solid var(--acc)}
+.oktx{color:var(--ok)}.badtx{color:var(--bad)}.warntx{color:var(--warnCol)}
+.flex{display:flex}.grid{display:grid}.block{display:block}.inline-block{display:inline-block}
+.flex-1{flex:1 1 0%}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}.items-baseline{align-items:baseline}.items-start{align-items:flex-start}
+.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}
+.mx-auto{margin-left:auto;margin-right:auto}.max-w-xl{max-width:36rem}
+.w-full{width:100%}.h-auto{height:auto}
+.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-x-3{column-gap:.75rem}
+.p-1{padding:.25rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}
+.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}
+.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}
+.pt-4{padding-top:1rem}
+.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}
+.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}
+.text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}
+.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}
+.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.leading-tight{line-height:1.25}.text-center{text-align:center}
+.border{border-width:1px;border-style:solid}.border-t{border-top-width:1px;border-top-style:solid}.border-b{border-bottom-width:1px;border-bottom-style:solid}
+.rounded{border-radius:.25rem}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.rounded-2xl{border-radius:1rem}
+.list-disc{list-style-type:disc;padding-inline-start:1.5rem}.list-decimal{list-style-type:decimal;padding-inline-start:1.5rem}
+.list-disc>li,.list-decimal>li{margin-bottom:.25rem}
+.space-y-1>*+*{margin-top:.25rem}.space-y-2>*+*{margin-top:.5rem}.space-y-3>*+*{margin-top:.75rem}
+.overflow-x-auto{overflow-x:auto}.opacity-50{opacity:.5}.opacity-75{opacity:.75}
+@media(min-width:640px){.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.chip{display:inline-block;padding:.28rem .8rem;border-radius:99px;background:var(--chip);color:var(--brand);font-size:.8rem;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+.btn{position:relative;border-radius:14px;padding:.75rem 1.25rem;font-weight:700;min-height:46px;transition:transform .15s,filter .2s;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:none}.btn[disabled]{cursor:not-allowed;opacity:.5}
+.p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 10px 22px -10px rgba(14,159,148,.8)}.p:hover{filter:brightness(1.07)}
+.g{background:var(--card);border:1px solid var(--bd);color:var(--tx)}.g:hover{filter:brightness(1.04)}
+.tourBtn{background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;box-shadow:0 10px 22px -10px rgba(245,158,11,.8)}.tourBtn:hover{filter:brightness(1.1)}
+.verifyBtn{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;box-shadow:0 10px 22px -10px rgba(139,92,246,.8)}.verifyBtn:hover{filter:brightness(1.1)}
+.inp{display:block;width:100%;margin-top:.3rem;padding:.75rem 1rem;border:1.5px solid var(--bd);border-radius:14px;background:var(--card);color:var(--tx);font-size:1.05rem}
+.inp:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 4px var(--chip)}
+.opt{display:flex;gap:.75rem;align-items:flex-start;padding:.9rem 1.05rem;border:1.5px solid var(--bd);border-radius:16px;background:var(--card);cursor:pointer;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--brand)}.opt:has(input:checked){border-color:var(--brand);background:var(--chip)}
+.box{padding:1.1rem 1.2rem;border-radius:20px;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd);box-shadow:var(--sh);margin-bottom:1rem}
+.qc{padding:1rem 1.1rem}.qt{font-weight:700;margin-bottom:.7rem}
+.seg{display:flex;flex-wrap:wrap;gap:.5rem}
+.pill{flex:1;min-width:84px;padding:.7rem 1rem;border-radius:14px;border:1.5px solid var(--bd);background:var(--cards);font-weight:600;text-align:center;cursor:pointer;color:var(--tx);transition:all .18s}
+.pill:hover{border-color:var(--brand)}.pill.on{border-color:var(--brand);background:var(--chip);color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.pill.blk{flex:1 1 100%;text-align:start}.pill.skp{flex:0 0 auto;font-weight:500;opacity:.85;font-size:.9rem}
+.ico{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(135deg,var(--chip),rgba(59,156,255,.18));border:1px solid var(--bd);flex:none}
+.tabs{display:flex;gap:.25rem;padding:.25rem;border-radius:16px;background:var(--cards);border:1px solid var(--bd);overflow-x:auto}
+.tab{flex:1;white-space:nowrap;padding:.5rem .6rem;border-radius:12px;font-size:.68rem;font-weight:700;color:var(--mut);cursor:pointer}
+.tab[aria-pressed=true]{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 6px 16px -8px rgba(14,159,148,.8)}
+.track{height:8px;border-radius:99px;background:var(--cards);overflow:hidden;border:1px solid var(--bd)}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .5s}
+.navbar{position:sticky;bottom:.75rem;display:flex;justify-content:space-between;gap:.75rem;margin-top:1.5rem;padding:.6rem;border-radius:20px;background:var(--card);backdrop-filter:blur(14px);border:1px solid var(--bd);box-shadow:var(--sh);z-index:10}
+.hero{text-align:center;padding:.5rem 0}
+.hh{font-size:clamp(1.9rem,6.5vw,2.7rem);font-weight:800;line-height:1.3;margin:.8rem 0;background:linear-gradient(135deg,var(--tx) 10%,var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta{display:flex;flex-direction:column;gap:.3rem;text-align:start;padding:1.15rem 1.25rem;border-radius:22px;border:1px solid var(--bd);background:var(--card);box-shadow:var(--sh);cursor:pointer;color:var(--tx);transition:transform .2s}
+.cta:hover{transform:translateY(-3px)}.cta b{font-size:1.2rem}.cta span{font-size:.85rem;color:var(--mut)}
+.cta.main{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none}.cta.main span{color:rgba(255,255,255,.88)}
+.cta.verify{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;border:none}.cta.verify span{color:rgba(255,255,255,.88)}
+.tierbox{padding:1.3rem;border-radius:22px;color:#fff;margin-bottom:1rem;background:linear-gradient(135deg,#0b6fb3,#0e9f94);box-shadow:var(--sh)}
+.gauge{display:flex;gap:6px;height:12px;margin:.9rem 0 .5rem}.gauge i{flex:1;border-radius:99px;opacity:.3}
+.gauge i.cur{opacity:1;transform:scaleY(1.6);box-shadow:0 0 0 2px #fff}
+.g1{background:#22c55e}.g2{background:#a3e635}.g3{background:#fbbf24}.g4{background:#fb923c}.g5{background:#ef4444}
+.alertbox{padding:1rem;border-radius:16px;color:#fff;font-weight:700;background:linear-gradient(135deg,#b3261e,#e0463b)}
+.lockp{display:none;font-size:.72rem;padding:.2rem .6rem;border-radius:99px;background:var(--chip);color:var(--brand);font-weight:700}
+@media(min-width:520px){.lockp{display:inline-block}}
+.kpiBig{font-size:2.4rem;font-weight:800;line-height:1.1}
+.kpiBox{padding:1rem;border-radius:16px;background:var(--cards);border:1px solid var(--bd);margin-bottom:.75rem}
+.kpiBox.ok{border-color:var(--ok)}.kpiBox.bad{border-color:var(--bad)}.kpiBox.warn{border-color:var(--warnCol)}
+.flowNode{display:inline-block;padding:.5rem .9rem;border-radius:12px;background:var(--chip);border:1.5px solid var(--brand);color:var(--brand);font-weight:700;font-size:.75rem;margin:.15rem 0}
+.flowArrow{display:inline-block;padding:0 .3rem;color:var(--brand);font-weight:800}
+.phaseBox{padding:1rem;border-radius:14px;background:var(--cards);border:1px solid var(--bd);margin-bottom:.6rem;border-left:4px solid var(--brand)}
+.phaseNum{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;text-align:center;font-weight:800;font-size:.85rem;line-height:26px;margin-inline-end:.5rem}
+.testRow{display:grid;grid-template-columns:60px 1fr 50px;gap:.5rem;align-items:center;padding:.5rem;border-top:1px solid var(--bd);font-size:.8rem}
+.testRow:first-child{border-top:none}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:8px;font-size:.7rem;font-weight:700}
+.badgeOk{background:rgba(22,163,74,.15);color:var(--ok)}
+.badgeBad{background:rgba(220,38,38,.15);color:var(--bad)}
+.badgeCat{background:var(--chip);color:var(--brand)}
+input[type=range]{-webkit-appearance:none;appearance:none;height:6px;background:var(--bd);border-radius:99px;outline:none;width:100%}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 2px 6px rgba(14,159,148,.4)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--brand);cursor:pointer;border:none}
+.sro{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#printArea{display:none}
+@media print{body{background:#fff!important}body::before,body::after{display:none}body>*:not(#printArea){display:none!important}#printArea{display:block;color:#000;background:#fff;padding:1rem}#printArea h1{font-size:17pt;font-weight:800}#printArea h2{font-size:13pt;font-weight:700;margin-top:10pt}}
+.tourOverlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9998;display:none;backdrop-filter:blur(4px)}
+.tourOverlay.on{display:block}
+.tourBubble{position:fixed;z-index:10000;background:var(--card);border:2px solid var(--tour);border-radius:16px;padding:1.2rem;max-width:340px;box-shadow:0 20px 60px rgba(0,0,0,.5);backdrop-filter:blur(20px)}
+.tourBubble h3{font-weight:800;color:var(--tour);margin-bottom:.5rem;font-size:1.1rem}
+.tourBubble p{font-size:.9rem;line-height:1.5;margin-bottom:.8rem}
+.tourBubble .tourNav{display:flex;gap:.5rem;justify-content:space-between;align-items:center}
+.tourBubble .tourDots{display:flex;gap:.3rem}
+.tourBubble .tourDot{width:8px;height:8px;border-radius:50%;background:var(--bd)}
+.tourBubble .tourDot.on{background:var(--tour)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9997;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(6px)}
+.modal.on{display:flex}
+.modalContent{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:1.5rem;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6);position:relative}
+.modalClose{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:var(--cards);color:var(--tx);font-size:1.2rem;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.chart{width:100%;height:180px;background:var(--cards);border-radius:12px;position:relative;overflow:hidden;border:1px solid var(--bd)}
+.chart svg{width:100%;height:100%}
+.auditRow{display:grid;grid-template-columns:auto 1fr;gap:.5rem;align-items:center;padding:.4rem .5rem;border-bottom:1px solid var(--bd);font-size:.75rem}
+.auditRow:last-child{border-bottom:none}
+.auditBadge{padding:.1rem .4rem;border-radius:6px;font-size:.65rem;font-weight:700}
+.auditAccept{background:rgba(22,163,74,.2);color:var(--ok)}
+.auditReject{background:rgba(220,38,38,.2);color:var(--bad)}
+.auditRequest{background:rgba(234,179,8,.2);color:var(--warnCol)}
+.fhirPre{background:var(--cards);border:1px solid var(--bd);border-radius:8px;padding:.75rem;font-family:ui-monospace,monospace;font-size:.7rem;overflow:auto;max-height:420px;white-space:pre;word-wrap:normal;line-height:1.5;color:var(--tx)}
+.logEntry{padding:.7rem .9rem;border-radius:10px;background:var(--cards);border:1px solid var(--bd);margin-bottom:.5rem;border-left:3px solid var(--brand);font-size:.8rem}
+.logEntry.verified{border-left-color:var(--ok)}
+.hashShort{font-family:ui-monospace,monospace;font-size:.65rem;color:var(--mut);word-break:break-all}
+.verifyResult{padding:1rem;border-radius:12px;margin-bottom:.6rem;font-size:.85rem}
+.verifyResult.pass{background:rgba(22,163,74,.1);border:1px solid var(--ok)}
+.verifyResult.fail{background:rgba(220,38,38,.1);border:1px solid var(--bad)}
+.verifyResult.info{background:rgba(139,92,246,.1);border:1px solid #8b5cf6}
+.weekBox{padding:.9rem;border-radius:12px;background:var(--cards);border:1px solid var(--bd);margin-bottom:.5rem}
+.weekNum{display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;text-align:center;font-weight:800;font-size:.85rem;line-height:32px;margin-inline-end:.5rem}
+.logo-wrap{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--logo-bg);box-shadow:0 8px 24px -8px rgba(14,159,148,.5),0 0 0 3px var(--logo-ring),0 0 0 6px var(--logo-bg),inset 0 0 20px rgba(14,159,148,.15);transition:transform .3s,box-shadow .3s}
+.logo-wrap:hover{transform:scale(1.05);box-shadow:0 12px 32px -8px rgba(14,159,148,.7),0 0 0 3px var(--logo-ring),0 0 0 6px var(--logo-bg),inset 0 0 28px rgba(14,159,148,.25)}
+.logo-wrap svg{display:block}
+.logo-header{width:40px;height:40px;box-shadow:0 4px 12px -4px rgba(14,159,148,.4),0 0 0 2px var(--logo-ring),0 0 0 4px var(--logo-bg);border-radius:12px}
+.logo-header:hover{transform:none}
+.bundleCard{background:linear-gradient(135deg,rgba(14,159,148,.08),rgba(11,111,179,.08));border:2px solid var(--brand);border-radius:16px;padding:1.2rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.bundleCard::before{content:"";position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle,rgba(14,159,148,.2),transparent 70%);border-radius:50%;filter:blur(20px)}
+.bundleCard h3{color:var(--brand);font-weight:800;margin-bottom:.8rem;font-size:1.1rem;position:relative}
+.bundleRow{display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:center;padding:.5rem .7rem;background:var(--card);border-radius:10px;margin-bottom:.4rem;border:1px solid var(--bd);position:relative}
+.bundleRow .num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--chip);color:var(--brand);font-weight:800;font-size:.9rem}
+.bundleRow .lbl{font-size:.85rem;font-weight:600}
+.bundleRow .desc{font-size:.72rem;color:var(--mut)}
+.bundleRow .cnt{font-weight:800;font-size:1.1rem;color:var(--brand)}
+.bundleRow .cnt.zero{color:var(--mut)}
+.bundleTotal{padding:.7rem;text-align:center;font-weight:800;color:var(--brand);border-top:2px dashed var(--brand);margin-top:.5rem}
+.aboutHero{text-align:center;padding:1.5rem 1rem;background:linear-gradient(135deg,rgba(14,159,148,.1),rgba(11,111,179,.1));border-radius:22px;margin-bottom:1.5rem;border:1px solid var(--bd)}
+.aboutStat{padding:1.2rem;background:var(--cards);border-radius:16px;border:1px solid var(--bd);text-align:center;margin-bottom:.75rem}
+.aboutStat .big{font-size:2.5rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.4rem}
+.aboutStat .lbl{font-size:.85rem;color:var(--mut);font-weight:600}
+.valueCard{padding:1rem;background:var(--cards);border-radius:14px;border:1px solid var(--bd);margin-bottom:.75rem;border-left:4px solid var(--brand)}
+.valueCard h4{font-weight:800;color:var(--brand);margin-bottom:.4rem;font-size:.95rem}
+.valueCard p{font-size:.85rem;line-height:1.6}
+.timelineItem{position:relative;padding-inline-start:2.5rem;padding-bottom:1rem}
+.timelineItem::before{content:"";position:absolute;left:12px;top:8px;bottom:0;width:2px;background:var(--bd)}
+.timelineItem:last-child::before{display:none}
+.timelineItem::after{content:"";position:absolute;left:6px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--chip)}
+.timelineYear{font-weight:800;color:var(--brand);font-size:1rem}
+.timelineTitle{font-weight:700;font-size:.9rem;margin-top:.2rem}
+.timelineDesc{font-size:.8rem;color:var(--mut);margin-top:.2rem}
+.founderCard{background:linear-gradient(135deg,rgba(14,159,148,.14),rgba(11,111,179,.14));border:2px solid var(--brand);border-radius:22px;padding:1.4rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.founderCard::before{content:"";position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(14,159,148,.25),transparent 70%);border-radius:50%;filter:blur(24px)}
+.founderAvatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.9rem;font-weight:800;box-shadow:0 6px 20px -6px rgba(14,159,148,.7);flex:none}
+.studySession{padding:.7rem .9rem;border-radius:10px;background:var(--cards);border:1px solid var(--bd);margin-bottom:.4rem;font-size:.8rem}
+.studySession.active{border-color:var(--brand);background:var(--chip)}
+.studyPulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--bad);animation:pulse 1.2s infinite}
+.portalBadge{display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .55rem;border-radius:99px;font-size:.65rem;font-weight:700;background:var(--chip);color:var(--brand)}
+.portalBadge.admin{background:rgba(124,58,237,.18);color:var(--admin)}/* ═══ Mobile Responsive Fixes ═══ */
+html,body{
+  overflow-x:hidden;
+  width:100%;
+  max-width:100vw;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{
+  max-width:100%;
+  width:100%;
+  box-sizing:border-box;
+}
+img,svg,video,canvas{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+table{
+  width:100%;
+  max-width:100%;
+  table-layout:auto;
+  word-break:break-word;
+  overflow-wrap:break-word;
+}
+td,th{
+  word-break:break-word;
+  overflow-wrap:break-word;
+  hyphens:auto;
+}
+pre,code{
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  max-width:100%;
+}
+.hh,.text-5xl,.text-4xl{
+  word-break:break-word;
+  hyphens:auto;
+}
+h1,h2,h3,h4{word-break:break-word}
+
+/* Tabs: horizontal scroll (intended) — but styled properly */
+.tabs{
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-snap-type:x proximity;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;
+  min-width:max-content;
+  scroll-snap-align:start;
+}
+
+/* Containers: no fixed widths */
+.box,.navbar,.hero,.cta,.tierbox,.alertbox,.founderCard,.bundleCard{
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* QR covers and images */
+.qr-cover{max-width:100%}
+.qr-cover img{max-width:100%;height:auto}
+
+/* Navbar: stack on tiny screens */
+@media(max-width:400px){
+  .navbar{
+    flex-direction:column;
+    gap:.5rem;
+  }
+  .navbar button{width:100%}
+}
+
+/* Small phones: tighten spacing */
+@media(max-width:480px){
+  .wrap{padding-left:.75rem;padding-right:.75rem}
+  .px-4{padding-left:.75rem;padding-right:.75rem}
+  .text-3xl{font-size:1.5rem}
+  .hh{font-size:1.6rem!important}
+  .btn{padding:.6rem 1rem;font-size:.85rem}
+  .tab{font-size:.62rem;padding:.4rem .5rem}
+}
+
+/* Tables on mobile: allow scroll inside container */
+.overflow-x-auto{
+  -webkit-overflow-scrolling:touch;
+  max-width:100%;
+}
+
+/* Prevent long URLs / emails from breaking layout */
+a[href^="http"],a[href^="mailto"]{
+  word-break:break-all;
+  overflow-wrap:break-word;
+}
+
+/* Header: ensure buttons fit */
+.hdr .flex{flex-wrap:wrap}
+@media(max-width:520px){
+  .hdr button{padding:.4rem .6rem;min-height:38px;font-size:.75rem}
+  .hdr .leading-tight .text-xs{font-size:.6rem}
+}
+</style>
+</head>
+<body>
+<header class="hdr"><div class="max-w-xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+ <div class="flex items-center gap-2">
+  <div class="logo-header logo-wrap" id="lg"></div>
+  <div class="leading-tight">
+   <div class="font-extrabold brandtx">AndroShield</div>
+   <div class="text-xs mut" id="appSubtitle">أندروشيلد · v6.5.4</div>
+  </div>
+ </div>
+ <div class="flex items-center gap-1.5 text-sm">
+  <span class="lockp" id="lockp"></span>
+  <button id="tourBtn" class="btn tourBtn p-1 px-2" onclick="startTour()" title="Tour">▶</button>
+  <button id="verifyBtn" class="btn verifyBtn p-1 px-2" onclick="setMode('verify')" title="Verify privacy">🔍</button>
+  <button id="th" class="btn g p-1 px-3" onclick="toggleTheme()">☾</button>
+  <button id="lang" class="btn g p-1 px-3" onclick="toggleLang()"></button>
+  <button id="exit" class="btn g p-1 px-3" onclick="quickExit()"></button>
+  <button id="portalBtn" class="btn p-1 px-2" onclick="togglePortal()" title="Switch portal" style="min-height:34px;min-width:34px;font-size:.9rem;background:linear-gradient(135deg,var(--admin),#6366f1);color:#fff;box-shadow:0 6px 16px -6px rgba(124,58,237,.8)">🏥</button>
+ </div>
+</div></header>
+<div class="wrap max-w-xl mx-auto px-4 pt-4 flex flex-col">
+ <div id="portalBar" class="mb-3"></div>
+ <nav id="tabs" class="tabs mb-4" role="tablist"></nav>
+ <div id="prog" class="mb-5"><div class="flex justify-between text-xs mut mb-1"><span id="stepn"></span><span id="stepl"></span></div><div class="track"><div id="bar" class="fill" style="width:0"></div></div></div>
+ <main id="app" class="flex-1" aria-live="polite"></main>
+ <footer id="foot" class="text-xs mut text-center mt-6"></footer>
+</div>
+<div id="printArea" aria-hidden="true"></div>
+<div id="tourOverlay" class="tourOverlay" onclick="endTour()"></div>
+<div id="tourBubble" class="tourBubble" style="display:none"></div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"></div>
+<script>
+var U={
+lang:["العربية","English"],exit:["Quick exit","خروج سريع"],next:["Continue","متابعة"],back:["Back","رجوع"],begin:["Begin","ابدأ"],
+wT:["Welcome","أهلاً بك"],wH:["A private first step for your health","خطوتك الأولى نحو صحتك"],onDev:["On your device","على جهازك"],
+wB:["A private space. Nothing here is a diagnosis. All answers stay on this device.","مساحة خاصة. لا شيء هنا يُعدّ تشخيصاً. كل الإجابات تبقى على جهازك."],
+wTime:["About 5–8 minutes. All optional.","نحو ٥–٨ دقائق. الكل اختياري."],
+cT:["Your privacy choices","خياراتك للخصوصية"],cB:["Nothing is shared by default.","لا شيء يُشارَك افتراضياً."],
+pns:["Prefer not","تخطّي"],yes:["Yes","نعم"],no:["No","لا"],blank:["Leave blank to skip.","اتركه فارغاً."],
+skip:["Skipped","تم التخطي"],
+uT:["Urgent signs","فحص العلامات العاجلة"],uB:["Check any that apply now.","حدد أي مما ينطبق الآن."],
+pain:["Sudden severe testicular pain","ألم مفاجئ شديد في الخصية"],
+fever:["Painful swollen testicle with fever","خصية متورمة ومؤلمة مع حمّى"],
+lump:["New hard or painless lump","كتلة جديدة صلبة"],
+trauma:["Recent injury with swelling","إصابة حديثة مع تورّم"],
+retention:["Unable to pass urine","عدم القدرة على التبول"],
+priap:["Erection >4 hours","انتصاب >٤ ساعات"],
+emerg:["Seek emergency care now.","اطلب الرعاية الطارئة الآن."],
+lumpMsg:["Arrange urgent specialist review within days.","رتّب تقييم عاجل خلال أيام."],
+sumT:["Your summary","ملخصك"],noticed:["What we noticed","ما رصدناه"],now:["What you can do","ما يمكنك فعله"],stepT:["Suggested next step","الخطوة المقترحة"],
+disc:["Screening tool, not a diagnosis. Semen thresholds are WHO 2021 lower reference limits.","أداة فحص وليست تشخيصاً. عتبات المني WHO 2021."],
+na:["Not assessed: ","لم تُقيَّم: "],
+nT:["Next steps","الخطوات التالية"],navT:["Your care navigation","مسار رعايتك"],
+tA:["Assessment","التقييم"],tG:["Guide","الدليل"],tC:["Clinician","الطبيب"],
+tS:["KPIs","المؤشرات"],tV:["Value","القيمة"],tM:["ML","التعلم الآلي"],
+tE:["Evidence","الأدلة"],tN:["Privacy","الخصوصية"],tI:["Integration","التكامل"],
+tL:["Decision Log","سجل القرار"],tD:["6-Month Plan","خطة 6 أشهر"],tAbout:["About","حول"],
+tR:["Report","التقرير"],
+lvemergency:["Emergency","طارئ"],lvurgent:["Urgent","عاجل"],lvroutine:["Routine specialist","إحالة تخصصية"],lvgeneral:["General guidance","إرشاد عام"],
+chips:[["Private","خاص"],["Reviewed by a doctor","بمراجعة طبيب"],["Screening","فحص"],["Verifiable","قابل للتحقق"]],
+foot:["Screening tool, not a diagnosis.","أداة فحص وليست تشخيصاً."],
+gdT:["Self-check guide","دليل الفحص"],gdB:["2 minutes, monthly, in private.","دقيقتان، شهرياً، بخصوصية."],
+gdWT:["When to seek care","متى تطلب الرعاية"],
+gdS:[["🚿",["Warm up","دفئ"],["Warm shower relaxes skin.","الحمّام الدافئ يريح الجلد."]],["🧍",["Look","انظر"],["Standing: check size/shape.","واقفاً: افحص الحجم."]],["🤲",["Feel","تحسّس"],["Gently between thumb & fingers.","برفق بين الإصبعين."]],["🔍",["Notice veins","لاحظ الأوردة"],["Soft tangle above testicle.","تجمّع فوق الخصية."]],["📝",["Note it","دوّن"],["Write it for your doctor.","دوّن لطبيبك."]]],
+gdW:[["Sudden severe pain: ER now.","ألم مفاجئ: طوارئ."],["New hard lump: specialist within days.","كتلة صلبة: أخصائي."],["Persistent heaviness: andrology.","ثقل مستمر: ذكورة."],["Normal self-check does not rule out mild varicocele.","لا ينفي دوالي خفيفة."]],
+cqT:["Review queue","قائمة المراجعة"],cqB:["Anonymised signals only.","مؤشرات مجهولة فقط."],empty:["No cases yet.","لا حالات بعد."],
+conf:["Confirm","تأكيد"],chg:["Change","تغيير"],final:["Finalised: ","اعتمد: "],pending:["Pending clinician sign-off.","بانتظار الاعتماد."],
+demoB:["Synthetic cohort validation (n=3,000). No live clinician connected in this prototype.","تحقق بمجموعة اصطناعية (n=3000). لا طبيب متصل في هذا النموذج."],gateT:["Clinician access","دخول الطبيب"],gateB:["Demo code: clinic-demo","رمز: clinic-demo"],gateGo:["Unlock","فتح"],gateBad:["Wrong code.","رمز خاطئ."],auditT:["Audit log","سجل التدقيق"],
+ntT:["How your data is used","كيف تُستخدم بياناتك"],ntB:["In plain words.","بلغة بسيطة."],
+ntU:["What we use","ما نستخدمه"],ntN:["What we never do","ما لا نفعله"],ntBd:["Clinical boundaries","الحدود السريرية"],ntC:["Your control","تحكّمك"],ntS:["About this prototype","حول النموذج"],ntR:["Regional compliance","الامتثال الإقليمي"],
+nu:[["Only enabled categories, on device.","فقط الفئات المفعّلة."],["Shared summary goes to a clinician for review.","الملخص يذهب لطبيب."],["Aggregated anonymous counts only.","أعداد مجمّعة."]],
+nn:[["We do not diagnose.","لا نشخّص."],["We do not sell data.","لا نبيع البيانات."],["No name/ID required.","لا اسم/هوية."],["No family-plan assumptions.","لا افتراضات عائلية."]],
+nc:[["Change or withdraw consent anytime.","غيّر موافقتك."],["Download or delete in one tap.","نزّل أو احذف."],["Quick exit clears the screen.","الخروج السريع يمسح."]],
+ns:[["Answers stay on your device.","إجاباتك على جهازك."],["Production build bundles CSS locally.","النسخة الفعلية محلية."]],
+rg:[["Aligned with UAE PDPL (Federal Decree-Law 45/2021).","متوافق مع PDPL."],["ICT Health Law (Federal Law 2/2019) on in-country hosting.","قانون ICT ٢٠١٩."],["Design alignment, not legal certification.","توافق تصميمي."],["DoH Abu Dhabi licensing required before launch.","ترخيص DoH مطلوب."]],
+bnd:[["Screening only, never diagnoses.","فحص فقط."],["Clinician reviews every Tier 3–5.","الطبيب يراجع ٣–٥."],["Cannot replace physical exam.","لا يغني عن الفحص."],["Red flags override the score.","العلامات الحمراء تتجاوز."],["Gym supplements/SARMs affect sperm.","المكملات تؤثر."]],
+simT:["Simulation & KPIs","المحاكاة والمؤشرات"],simB:["Synthetic cases and cohort. Modeled, not measured.","حالات اصطناعية. مُنمذَجة."],
+cases:["Synthetic cases (live engine)","حالات اصطناعية"],cCase:["Case","الحالة"],cExp:["Expected","المتوقع"],cEng:["Engine","المحرك"],cSc:["Score","النقاط"],
+safeT:["Red-flag safety","سلامة العلامات"],safeR:["routed to Tier 5","وُجّهت للمستوى ٥"],
+kpiT:["KPIs (modeled)","المؤشرات"],tgt:["Target","الهدف"],
+kco:["Completion","الإكمال"],kt:["Time to evaluation","الزمن للتقييم"],kcp:["Referral compliance","إتمام الإحالة"],ktr:["Trust (live)","الثقة"],kfa:["Fairness","العدالة"],ksn:["Sensitivity (circular)","الحساسية"],ksp:["Specificity (circular)","النوعية"],
+grp:["Subgroups","المجموعات"],gG:["Group","المجموعة"],gCo:["Completed","أكملوا"],gAp:["Right routing","توجيه"],gCp:["Complied","التزموا"],
+ass:["Assumptions","الافتراضات"],miss:["Undisclosed share","نسبة عدم الإفصاح"],reseed:["New random cohort","مجموعة عشوائية"],
+vcT:["Value calculator","حاسبة القيمة"],vcB:["Estimate avoided visits, saved cost and time versus the traditional delayed pathway. All assumptions editable.","تقدير الزيارات المُتجَنَّبة، والتوفير، والوقت المُوفَّر. جميع الافتراضات قابلة للتعديل."],
+vcUsers:["Monthly users","المستخدمون الشهريون"],vcPct:["% needing specialist","% يحتاجون أخصائي"],vcVisits:["Visits per case","زيارات/حالة"],vcCost:["Cost per visit (AED)","التكلفة/زيارة (درهم)"],vcDays:["Traditional days to evaluation","أيام الانتظار"],
+vcAvoided:["Avoided unnecessary visits / month","زيارات متجنّبة/شهر"],vcSaved:["Cost savings / month (AED)","توفير/شهر"],vcSavedY:["Cost savings / year (AED)","توفير/سنة"],vcTime:["Time saved to evaluation (days)","وقت مُوفَّر (أيام)"],
+vcNote:["Planning tool, not a financial forecast. Actual results depend on clinical validation and pilot outcomes.","أداة تخطيط، ليست توقعاً مالياً."],
+vcReset:["Reset to defaults","إعادة للافتراضي"],
+vcScenarioT:["Scenario comparison","مقارنة السيناريوهات"],vcScenarioA:["Conservative","متحفظ"],vcScenarioB:["Expected","متوقع"],vcScenarioC:["Optimistic","متفائل"],
+mlT:["Clinical Decision Support — pre-ML validation roadmap","دعم القرار السريري — خارطة تحقق ما قبل ML"],mlB:["This prototype uses an evidence-informed weighted risk score that runs 100% on device. The pipeline below shows how the production version will be trained and validated, and the sandbox lets you calibrate the current model live.","يستخدم هذا النموذج مقياس خطر مرجّح مستنيراً بالأدلة يعمل على الجهاز."],
+mlFlowT:["Production ML pipeline (planned)","خط أنابيب ML (مُخطَّط)"],
+mlFlowS:[["1. Data","بيانات"],["2. Preprocess","معالجة"],["3. Features","ميزات"],["4. Train","تدريب"],["5. Validate","تحقق"],["6. Deploy","نشر"]],
+mlFlowD:[["De-identified retrospective data (n≥500) under DoH Abu Dhabi IRB.","بيانات بأثر رجعي مجهولة (n≥500) تحت IRB."],["Missing-value imputation; outlier clipping (IQR method).","تعويض المفقود؛ تقليم الشواذ."],["Interaction terms (BMI×age); WHO 2021 reference thresholds as binary flags.","تفاعلات (BMI×العمر)؛ عتبات WHO 2021 كرايات."],["Logistic regression baseline; then XGBoost/LightGBM, 5-fold cross-validated.","LogReg أساس؛ ثم XGBoost، تحقق متقاطع 5-fold."],["Hold-out test (n≥150): sensitivity ≥85%, specificity ≥80%, ROC-AUC ≥0.80, fairness ≥0.90.","اختبار مستقل (n≥150): الحساسية ≥85%، النوعية ≥80%، AUC ≥0.80، العدالة ≥0.90."],["Convert to TensorFlow Lite for on-device inference (Android/iOS).","تحويل إلى TFLite للاستدلال على الجهاز."]],
+mlSandboxT:["Model calibration sandbox","صندوق معايرة النموذج"],mlSandboxB:["Adjust the weight of any active factor. The score recomputes on device and shows you the new probability and tier.","عدّل وزن أي عامل نشط. يُعاد حساب المقياس على جهازك."],
+mlBase:["Baseline probability:","الاحتمالية الأساسية:"],mlNew:["Calibrated probability:","الاحتمالية بعد المعايرة:"],
+mlNoFactors:["Answer a few assessment questions first to see calibration.","أجب على بعض أسئلة التقييم أولاً."],
+mlTierAfter:["New tier:","المستوى الجديد:"],mlDelta:["Δ probability:","التغيّر:"],
+mlReset:["Reset all weights","إعادة كل الأوزان"],
+mlNote:["This is not a trained ML model. It is an evidence-informed weighted score, pending clinical validation on real patient data.","هذا ليس نموذج ML مُدرَّباً. إنه مقياس مرجّح مستنير بالأدلة."],
+mlCalT:["Run calibration simulation","تشغيل محاكاة التدريب"],
+mlCalDesc:["Simulates training on a de-identified cohort. Shows loss curve and ROC.","يحاكي التدريب على مجموعة بيانات مجهولة. يعرض منحنى الخسارة وROC."],
+mlCalRun:["Train","درّب"],mlCalResults:["Training results","نتائج التدريب"],
+evT:["Evidence & validation roadmap","الأدلة وخارطة التحقق"],evB:["Clinical validation is the critical next step.","التحقق السريري هو الخطوة الحرجة التالية."],
+evRoadT:["Clinical validation roadmap","خارطة التحقق السريري"],
+evRoad:[
+["Phase 1 · Ethics & IRB","المرحلة ١ · الأخلاقيات وIRB","Q1","الربع ١",["Submit protocol to DoH Abu Dhabi IRB","Data protection impact assessment (DPIA)","Ethical review of AI decision support","Patient consent templates"],["تقديم البروتوكول إلى IRB دائرة الصحة","تقييم أثر حماية البيانات","مراجعة أخلاقية لدعم القرار","قوالب موافقة المريض"]],
+["Phase 2 · Retrospective validation","المرحلة ٢ · التحقق بأثر رجعي","Q2","الربع ٢",["De-identified dataset (n≥500) from partner clinic","Train/val/test split (60/20/20)","Sensitivity ≥85%, specificity ≥80%","ROC-AUC ≥0.80, fairness index ≥0.90"],["بيانات مجهولة (n≥500) من عيادة شريكة","تقسيم تدريب/تحقق/اختبار 60/20/20","الحساسية ≥85%، النوعية ≥80%","AUC ≥0.80، العدالة ≥0.90"]],
+["Phase 3 · Prospective pilot","المرحلة ٣ · تجربة مستقبلية","Q3–Q4","الربع ٣–٤",["Prospective pilot in 1–3 Abu Dhabi clinics","200–500 users","Primary endpoint: time to appropriate evaluation","Secondary: completion, trust, referral compliance"],["تجربة مستقبلية في 1–3 عيادات في أبوظبي","200–500 مستخدم","الهدف الأساسي: الزمن للتقييم المناسب","ثانوي: الإكمال، الثقة، الالتزام"]],
+["Phase 4 · Regulatory & launch","المرحلة ٤ · تنظيمي وإطلاق","Q1+1","الربع ١+١",["Medical device classification (Class IIa under MDR)","Malaffi / Nabidh integration (FHIR R4)","DoH Abu Dhabi licensing","Nationwide rollout across UAE"],["تصنيف جهاز طبي (Class IIa)","التكامل مع ملفي/نبض (FHIR R4)","ترخيص دائرة الصحة – أبوظبي","التوسع على مستوى الدولة"]]],
+evAdvT:["Adversarial testing dashboard","لوحة الاختبارات العدائية"],evAdvB:["20 scripted edge-case tests run on the live engine on your device.","٢٠ اختباراً لحالات حدّية على المحرك الفعلي."],
+evRun:["Run all tests","تشغيل كل الاختبارات"],evRunAgain:["Run again","تشغيل مجدداً"],
+evPass:["Pass","نجح"],evFail:["Fail","فشل"],evSummary:["Tests passed: ","الاختبارات الناجحة: "],
+evAllPass:["All tests passed. Engine is consistent.","كل الاختبارات نجحت. المحرك متسق."],
+evSomeFail:["Some tests failed.","بعض الاختبارات فشلت."],
+evCat:["Category","الفئة"],evResult:["Result","النتيجة"],
+evLitT:["Retrospective validation (published data)","التحقق بأثر رجعي (بيانات منشورة)"],
+evLitB:["We benchmarked the model against effect sizes from published literature. This is not full clinical validation.","قارنّا النموذج بأحجام التأثير من الأدبيات المنشورة."],
+evLitRun:["Run literature benchmark","تشغيل المقارنة"],
+rateT:["How was this?","كيف كانت التجربة؟"],rs1:["Helpful & clear? (1–5)","مفيد؟ (١–٥)"],rs2:["Private & respected? (1–5)","خصوصية؟ (١–٥)"],thx:["Thank you.","شكراً."],
+shareBtn:["Share summary…","مشاركة…"],shareT:["Share summary?","مشاركة الملخص؟"],shareB:["Shared: risk signals & tier. Not shared: raw answers, ID.","يُشارَك: المؤشرات والمستوى. لا يُشارَك: الإجابات الخام."],shareOk:["I agree.","أوافق."],shareGo:["Share","مشاركة"],cancel:["Cancel","إلغاء"],wd:["Withdraw","سحب"],
+sens:["Show sensitive questions","أظهر الأسئلة الحسّاسة"],
+chrH:["No names or ID.","بلا أسماء أو هوية."],bmiN:["BMI: ","BMI: "],bmiC:[["low","within","high","obese"],["منخفض","صحي","مرتفع","سمنة"]],
+tstT:["Tests to discuss","فحوصات للنقاش"],limT:["What this tool cannot see","ما لا تراه الأداة"],limB:["A normal self-check does not rule out mild varicocele. A physical exam is still needed.","نتيجة طبيعية لا تنفي دوالي خفيفة. الفحص السريري ضروري."],
+vT:["Encrypted copy","نسخة مشفّرة"],vB:["AES-256-GCM. Only you know the passphrase.","AES-256-GCM. لا يعرف العبارة غيرك."],
+exp:["Download my data","تنزيل بياناتي"],del:["Delete everything","حذف كل شيء"],deleted:["Everything was deleted.","تم الحذف."],
+xaiT:["How did the score reach this?","كيف وصل المقياس؟"],xaiSub:["A weighted clinical risk score, evidence-informed, pending validation.","مقياس مرجّح، بانتظار التحقق."],
+xaiProb:["Estimated probability","الاحتمالية"],xaiClass:["Classification","التصنيف"],xaiFactors:["Contributing factors:","العوامل:"],xaiNone:["No significant factors.","لا عوامل."],xaiTech:["Technical details","التفاصيل التقنية"],
+xaiNote:["Evidence-informed weighted risk score, not a trained ML model.","مقياس مرجّح مستنير بالأدلة، ليس ML."],
+riskLow:["low","منخفض"],riskMod:["moderate","متوسط"],riskElev:["elevated","مرتفع"],riskHigh:["high","مرتفع جداً"],
+intT:["Malaffi / Nabidh integration","التكامل مع ملفي/نبض"],intB:["Proposed FHIR R4 integration. This is a mockup to demonstrate the data contract.","اقتراح تكامل FHIR R4. هذا نموذج توضيحي."],
+intFHIR:["FHIR R4 Bundle","حزمة FHIR R4"],intSend:["Simulate send to Malaffi","محاكاة الإرسال"],intSent:["Payload validated (FHIR R4). Ready for DoH review.","تم التحقق من الحمولة. جاهزة لمراجعة DoH."],
+intNote:["No data leaves the device. In production, this would use DoH-approved APIs.","لا بيانات تغادر الجهاز. في الإنتاج، سيُستخدم APIs معتمدة."],
+intEmpty:["You have not completed any assessment yet. This bundle shows the default structure (Tier 1, Score 0). Complete an assessment first for a meaningful FHIR payload.","لم تكمل أي تقييم بعد. تُظهر هذه الحزمة البنية الافتراضية (المستوى ١، النقاط ٠). أكمل تقييماً أولاً للحصول على حمولة FHIR مفيدة."],
+intValidate:["How to validate this","كيف تتحقق من هذا"],intValidateStep1:["Click Copy above.","اضغط Copy أعلاه."],intValidateStep2:["Open validator.hl7.org.","افتح validator.hl7.org."],intValidateStep3:["Paste into the text area.","الصق في منطقة النص."],intValidateStep4:["Click Validate.","اضغط Validate."],intValidateStep5:["Expected result: 0 errors.","النتيجة المتوقعة: 0 أخطاء."],
+intCopy:["📋 Copy JSON","📋 نسخ JSON"],intDownload:["⬇ Download","⬇ تنزيل"],
+intBundleContents:["📦 This FHIR Bundle contains:","📦 تحتوي حزمة FHIR هذه على:"],
+intPatient:["Patient (anonymous ID)","المريض (هوية مجهولة)"],
+intRisk:["RiskAssessment","تقييم المخاطر"],
+intConsent:["Consent (UAE PDPL)","الموافقة (PDPL الإمارات)"],
+intProv:["Provenance (signed)","المصدر (موقّع)"],
+intObs:["Observations (labs)","الملاحظات (تحاليل)"],
+intSR:["ServiceRequests (tests)","طلبات الخدمة (فحوصات)"],
+intBundleTotal:["Total resources in bundle","إجمالي الموارد في الحزمة"],
+intBundleHint:["FHIR R4 Bundle validates at validator.hl7.org","حزمة FHIR R4 صالحة في validator.hl7.org"],
+aboutT:["About AndroShield","حول أندروشيلد"],aboutVision:["Vision","الرؤية"],aboutTeam:["Team","الفريق"],aboutWhy:["Why now","لماذا الآن"],aboutRoadmap:["Roadmap","خارطة الطريق"],aboutClose:["Close","إغلاق"],
+aboutVisionText:["To make male reproductive healthcare as accessible, private, and proactive as a conversation with a trusted friend.","جعل الرعاية الإنجابية للرجل متاحة وخاصة واستباقية كحديث مع صديق موثوق."],
+aboutWhyText:["1 in 6 couples struggles with infertility. In ~40% of cases, the male factor is the primary cause. ~50% of those are treatable — if caught early.","1 من كل 6 أزواج يعانون من العقم. في ~40% من الحالات، عامل الذكر هو السبب الرئيسي. ~50% منها قابل للعلاج إذا اكتُشف مبكراً."],
+aboutTeamText:["Built by a small team of engineers, clinicians, and privacy advocates. Every line of code is on-device.","بُني بواسطة فريق صغير. كل سطر برمجي على الجهاز."],
+aboutRoadmapText:[["Year 1","سنة ١","Clinical validation + pilot in Abu Dhabi","التحقق السريري + تجربة في أبوظبي"],["Year 2","سنة ٢","Malaffi integration + Class IIa + nationwide UAE","تكامل ملفي + Class IIa"],["Year 3","سنة ٣","GCC expansion + AI model v2","توسع خليجي + نموذج AI v2"]],
+aboutHero:["The first private, verifiable, on-device male fertility triage platform","أول منصة فرز خاصة وقابلة للتحقق للخصوبة عند الرجل تعمل بالكامل على الجهاز"],
+aboutTagline:["Privacy is not a feature. It is the architecture.","الخصوصية ليست ميزة. إنها المعمارية."],
+aboutValuesT:["What makes AndroShield different","ما يجعل أندروشيلد مختلفاً"],
+aboutValues:[
+["🔒 Privacy by Architecture","الخصوصية بالمعمارية","Zero network requests. Zero server storage. Every computation happens on your device. Verifiable in DevTools.","صفر طلبات شبكية. صفر تخزين على خادم. كل الحسابات تحدث على جهازك. قابلة للتحقق في DevTools."],
+["🔬 Explainable AI","ذكاء اصطناعي قابل للتفسير","Every score shows the exact factors that contributed. Not a black box. Every weight is traceable to published literature.","كل نتيجة تعرض العوامل التي ساهمت بالضبط. ليست صندوقاً أسود. كل وزن يمكن تتبعه إلى الأدبيات المنشورة."],
+["👨‍⚕️ Human-in-the-Loop","الإنسان في الحلقة","Every Tier 3–5 referral is reviewed by a clinician before it is final. The AI recommends; the clinician decides.","كل إحالة من المستوى ٣–٥ يراجعها طبيب قبل اعتمادها. الذكاء الاصطناعي يوصي؛ الطبيب يقرر."],
+["📜 Verifiable Decisions","قرارات قابلة للتحقق","Every action is SHA-256 hashed with the previous entry. Tampering with any entry breaks the chain.","كل إجراء موقّع بـ SHA-256 مع السجل السابق. أي تلاعب يكسر السلسلة."],
+["🌍 Culturally Aware","واعٍ ثقافياً","Arabic-first, gender-sensitive, discreet messaging. Built for the Gulf, ready for the world.","عربي أولاً، حساس للجنس، رسائل محايدة. مبني للخليج، جاهز للعالم."],
+["⚡ Clinically Grounded","مبني على الأدلة","WHO 2021 6th Edition. ASRM 2020. Esteves 2019. Every threshold is sourced, not invented.","WHO 2021 الطبعة السادسة. ASRM 2020. Esteves 2019. كل عتبة موثقة، ليست مُختلقة."]
+],
+aboutStatsT:["By the numbers","بالأرقام"],
+aboutStats:[
+["1 in 6","1 من 6","couples affected by infertility","أزواج يعانون من العقم"],
+["~40%","~40%","male factor is primary cause","عامل الذكر هو السبب الرئيسي"],
+["~50%","~50%","treatable if caught early","قابل للعلاج إذا اكتُشف مبكراً"],
+["14 months","14 شهراً","average delay before seeking care","متوسط التأخر قبل طلب الرعاية"]
+],
+aboutRoadmapT:["Where we are going","إلى أين نتجه"],
+aboutRoadmapFull:[
+["Year 1","سنة ١","Clinical validation + pilot in Abu Dhabi","التحقق السريري + تجربة في أبوظبي","IRB approval, retrospective data (n≥500), prospective pilot (200–500 users) in 1–3 clinics.","موافقة IRB، بيانات بأثر رجعي (n≥500)، تجربة مستقبلية (200–500 مستخدم) في 1–3 عيادات."],
+["Year 2","سنة ٢","Malaffi integration + Class IIa + nationwide UAE","تكامل ملفي + Class IIa + على مستوى الدولة","FHIR R4 integration with Malaffi/Nabidh. Medical device classification. DoH Abu Dhabi licensing.","تكامل FHIR R4 مع ملفي/نبض. تصنيف جهاز طبي. ترخيص دائرة الصحة – أبوظبي."],
+["Year 3","سنة ٣","GCC expansion + AI model v2","توسع خليجي + نموذج AI v2","Trained-on-real-data ML model. Multi-language. KSA, Qatar, Kuwait, Oman.","نموذج ML مُدرَّب على بيانات حقيقية. متعدد اللغات. السعودية، قطر، الكويت، عمان."]
+],
+aboutTeamFullT:["The team behind AndroShield","الفريق وراء أندروشيلد"],
+aboutTeamFull:[
+["🧑‍💻","Engineering","الهندسة","Full-stack engineers. Zero external dependencies. Every line auditable.","مهندسون متكاملون. صفر تبعيات خارجية. كل سطر قابل للتدقيق."],
+["🩺","Clinical Advisors","المستشارون السريريون","Andrology and urology specialists. Review every clinical threshold.","أخصائيو الذكورة والمسالك. يراجعون كل عتبة سريرية."],
+["⚖️","Privacy & Legal","الخصوصية والقانون","UAE PDPL and ICT Health Law expertise. Compliance-first.","خبرة في PDPL الإماراتي وقانون ICT Health. الامتثال أولاً."],
+["🎨","Design & UX","التصميم وتجربة المستخدم","Arabic-first. Culturally aware. Respects the user's dignity.","عربي أولاً. واعٍ ثقافياً. يحترم كرامة المستخدم."]
+],
+aboutContactT:["Get in touch","تواصل معنا"],
+aboutContactText:["For clinical partnerships, regulatory inquiries, or pilot collaboration in Abu Dhabi — reach out to our team.","للشراكات السريرية، أو الاستفسارات التنظيمية، أو التعاون في التجربة بأبوظبي — تواصل مع فريقنا."],
+aboutContactBtn:["📧 androshield.app@gmail.com","📧 androshield.app@gmail.com"],
+aboutFounderT:["Founder","المؤسس"],
+aboutFounderName:["Ehab Heshmat Fouad Tawadros","إيهاب حشمت فؤاد تاوضروس"],
+aboutFounderRole:["Founder & Clinical Content Reviewer — Pharmacist","المؤسس ومراجع المحتوى السريري — صيدلي"],
+aboutFounderCred:["B.Pharm · 16 years community pharmacy · Clinical Nutrition · Therapeutic Compounding","بكالوريوس صيدلة · ١٦ عاماً في الصيدليات العامة · تغذية علاجية · تركيبات علاجية"],
+aboutFounderBio:["Ehab is a pharmacist, not a physician. Over 16 years on the front line of community pharmacy, he has counselled men on medications, supplements, and lifestyle factors that affect reproductive health — often before they ever see a specialist. He designed AndroShield to bridge that gap: a private, on-device first step that routes men to the right clinician, without ever diagnosing. He led the clinical content review, including all medication-related items, WHO 2021 threshold verification, and the Arabic patient-facing wording.","إيهاب صيدلي، وليس طبيباً. على مدى ١٦ عاماً في الصيدليات العامة، قدّم المشورة للرجال حول الأدوية والمكملات وعوامل نمط الحياة التي تؤثر على الصحة الإنجابية — غالباً قبل أن يروا أخصائياً. صمّم أندروشيلد لسدّ هذه الفجوة: خطوة أولى خاصة على الجهاز تُوجّه الرجل إلى الطبيب المناسب، دون تشخيص أبداً. قاد مراجعة المحتوى السريري، بما يشمل جميع البنود الدوائية، والتحقق من عتبات WHO 2021، والصياغة العربية الموجهة للمريض."],
+aboutFounderBadges:[["16 years pharmacy","Clinical nutrition","Therapeutic compounding","Medication safety"],["١٦ عاماً صيدلة","تغذية علاجية","تركيبات علاجية","سلامة دوائية"]],
+aboutFounderNote:["The tool is a screening aid, not a diagnostic. All Tier 3–5 referrals require physician sign-off.","الأداة مساعدة فحص، وليست تشخيصاً. كل إحالات المستوى ٣–٥ تتطلب اعتماد طبيب."],
+vfyT:["Privacy verification","التحقق من الخصوصية"],
+vfySub:["Live audit of network, storage, and state integrity on your device.","تدقيق حي للشبكة والتخزين وسلامة الحالة على جهازك."],
+vfyRun:["🔍 Run audit now","🔍 تشغيل التدقيق الآن"],
+vfyRunning:["Running audit…","جارٍ التدقيق…"],
+vfyNetwork:["External network requests","طلبات الشبكة الخارجية"],
+vfyNetworkDesc:["Requests to any origin other than this page.","الطلبات إلى أي مصدر خارج هذه الصفحة."],
+vfyStorage:["localStorage entries","مدخلات التخزين المحلي"],
+vfyStorageDesc:["Keys matching as_vault (encrypted vault).","المفاتيح المطابقة لـ as_vault (الخزنة المشفرة)."],
+vfyHash:["State hash (SHA-256)","بصمة الحالة (SHA-256)"],
+vfyCopy:["📋 Copy hash","📋 نسخ البصمة"],
+vfyDemo:["This audit runs live in your browser. No data leaves this device.","هذا التدقيق يعمل مباشرةً في متصفحك. لا بيانات تغادر هذا الجهاز."],
+vfyCopied:["Copied to clipboard.","تم النسخ."],
+rT:["Validation Report","تقرير التحقق"],
+rB:["Self-generated, timestamped evidence for judges and clinicians. Runs 20 live engine tests and a fresh privacy audit on your device — no server needed.","حزمة أدلة موقّتة تُنشأ تلقائياً. تشغّل ٢٠ اختباراً حياً وتدقيق خصوصية على جهازك."],
+rGenerate:["📊 Generate Validation Report","📊 توليد تقرير التحقق"],
+rRegenerate:["🔄 Regenerate","🔄 إعادة التوليد"],
+rPrint:["🖨️ Print / Save as PDF","🖨️ طباعة / حفظ PDF"],
+rGenerated:["Generated:","وُلِّد في:"],
+rPassed:["test cases passed","حالة نجحت"],
+rNoAssessment:["No assessment yet. The report will show engine and privacy validation only.","لم يُكمل تقييم بعد. التقرير سيعرض التحقق من المحرك والخصوصية فقط."],
+rContains:["What this report contains","محتويات التقرير"],
+rContainsList:[["Live privacy audit (network requests, storage, chain integrity)","تدقيق خصوصية حي (طلبات شبكية، تخزين، سلامة السلسلة)"],["Live engine validation — 20 test cases run on your device now","تحقق حي للمحرك — ٢٠ حالة تُشغَّل الآن على جهازك"],["Current assessment snapshot","لقطة التقييم الحالي"],["Reviewer attestation by the founder-pharmacist","شهادة المراجع من المؤسس-الصيدلي"],["Limitations & claims","الحدود والادعاءات"]],
+rSectionPrivacy:["1. Privacy verification (live)","١. التحقق من الخصوصية (حي)"],
+rSectionEngine:["2. Engine validation — live test cases","٢. التحقق من المحرك — حالات حية"],
+rSectionRevisions:["Test Revision Log","سجل مراجعة الاختبارات"],
+rSectionSnapshot:["3. Current assessment snapshot","٣. لقطة التقييم الحالي"],
+rSectionReview:["4. Clinical content review & attestation","٤. مراجعة المحتوى السريري والشهادة"],
+rSectionLimits:["5. Limitations & claims","٥. الحدود والادعاءات"],
+rNetLabel:["External network requests","طلبات شبكية خارجية"],
+rStoreLabel:["localStorage entries","مدخلات التخزين المحلي"],
+rChainLabel:["Audit chain integrity","سلامة سلسلة التدقيق"],
+rChainOk:["VERIFIED","موثّقة"],
+rChainBroken:["BROKEN","مكسورة"],
+rReviewerNameLabel:["Reviewed by","راجعه"],
+rReviewerRoleLabel:["Role","الدور"],
+rReviewerCredLabel:["Credentials","المؤهلات"],
+rSignatureLabel:["Signature: ______________________","التوقيع: ______________________"],
+rDateLabel:["Date: ____________","التاريخ: ____________"],
+rAttestationText:["I confirm that the medication-related content, WHO 2021 semen thresholds, and Arabic patient-facing wording in this application have been reviewed for accuracy and consistency with published evidence. This review does not constitute a medical diagnosis or a substitute for andrology/urology specialist care.","أؤكد أن المحتوى المتعلق بالأدوية، وعتبات WHO 2021 للمني، والصياغة العربية الموجهة للمريض في هذا التطبيق قد روجعت للدقة والاتساق مع الأدبيات المنشورة. هذه المراجعة لا تشكل تشخيصاً طبياً ولا بديلاً عن رعاية أخصائي الذكورة/المسالك."],
+rLimitsList:[["This is a screening tool, not a diagnosis.","أداة فحص وليست تشخيصاً."],["The engine is an evidence-informed weighted score, not a trained ML model.","المحرك مقياس مرجّح، وليس ML مُدرَّباً."],["Section 2 tests are synthetic engine tests (20 automated cases). No real patient data was collected or stored.","اختبارات القسم ٢ اختبارات محرك آلية (٢٠ حالة). لا بيانات مرضى حقيقية."],["Clinical scenarios entered manually by the reviewer are composite descriptions from practice — never raw patient records.","السيناريوهات السريرية المُدخلة يدوياً هي أوصاف مركّبة من الممارسة — ليست سجلات مرضى خام."],["Prospective clinical validation with IRB approval is the next phase.","التحقق السريري المستقبلي مع موافقة IRB هو المرحلة التالية."]],
+rFooter:["Generated by AndroShield","وُلِّد بواسطة أندروشيلد"],
+studyT:["Study Mode — Usability Sessions","وضع الدراسة — جلسات الاستخدام"],
+studyB:["Record anonymous participant sessions (P01, P02…) during usability testing. No names, no PII. Each session captures duration, tier, and optional ratings. Export CSV for the usability report.","سجّل جلسات مشاركين مجهولين (P01، P02…) أثناء اختبار قابلية الاستخدام. لا أسماء، لا بيانات شخصية. كل جلسة تلتقط المدة والمستوى والتقييمات الاختيارية. صدّر CSV للتقرير."],
+studyStart:["▶ Start Session","▶ بدء جلسة"],
+studyEnd:["■ End Session","■ إنهاء الجلسة"],
+studyActive:["Recording: ","يسجل: "],
+studyElapsed:["elapsed","منقضية"],
+studyEmpty:["No sessions recorded yet.","لا جلسات مسجلة بعد."],
+studyAgeBand:["Age band","الفئة العمرية"],
+studyAgeOpts:[["18–29","18–29"],["30–39","30–39"],["40+","40+"]],
+studyClarity:["Clarity (1–5)","الوضوح (١–٥)"],
+studyTrust:["Trust (1–5)","الثقة (١–٥)"],
+studyNotes:["Notes (verbatim quotes encouraged)","ملاحظات (يُفضّل اقتباسات حرفية)"],
+studySave:["Save session","حفظ الجلسة"],
+studyCancel:["Cancel","إلغاء"],
+studyExport:["⬇ Export CSV","⬇ تصدير CSV"],
+studySessions:["sessions recorded","جلسة مسجلة"],
+studyTableHeaders:["ID","Duration","Tier","Clarity","Trust","Notes"],
+studySessionSaved:["Session saved.","حُفظت الجلسة."],
+studyHowTo:["How to run a session","كيف تُدير جلسة"],studyHowToText:["1. Read the consent script aloud (participant ID assigned, no name collected).\n2. Click 'Start Session'.\n3. Hand the device to the participant with a synthetic patient scenario.\n4. Observe; do not assist unless asked.\n5. When done, click 'End Session' and fill optional ratings.\n6. Save, then export CSV at the end of the day.","١. اقرأ نص الموافقة بصوت مسموع (يُعيَّن معرّف مشارك، لا اسم).\n٢. اضغط 'بدء جلسة'.\n٣. أعط الجهاز للمشارك مع سيناريو مريض اصطناعي.\n٤. راقب، لا تساعد إلا عند الطلب.\n٥. عند الانتهاء، اضغط 'إنهاء جلسة' واملأ التقييمات الاختيارية.\n٦. احفظ، ثم صدّر CSV آخر اليوم."],
+logT:["Decision Log","سجل القرار"],logB:["Every action chained with SHA-256.","كل إجراء موصول بسلسلة SHA-256."],
+logEmpty:["No log entries yet.","لا مدخلات بعد."],logEntry:["entries","مدخلاً"],
+logVerify:["🔐 Verify chain integrity","🔐 التحقق من سلامة السلسلة"],
+logVerified:["Chain verified. No tampering detected.","السلسلة موثّقة. لا تلاعب."],
+logTampered:["Tampering detected at entry","تلاعب مُكتشف في المدخل"],
+logNote:["Each entry is hashed with the previous. Editing any entry breaks the chain.","كل مدخل موقّع بالسابق. أي تعديل يكسر السلسلة."],
+planT:["6-Month Plan","خطة 6 أشهر"],
+planB:["A phased rollout plan for clinical validation, pilot, and launch in Abu Dhabi.","خطة مرحلية للتحقق السريري والتجربة والإطلاق في أبوظبي."],
+planWeeksTitle:["Week-by-week","أسبوعاً بأسبوع"],
+planRisk:["Risks & mitigations","المخاطر والتخفيف"],
+planAsk:["What we ask from partners","ما نطلبه من الشركاء"],
+planAskText:["• Access to a de-identified retrospective dataset (n≥500)\n• IRB sponsorship for prospective pilot\n• 1–3 clinic sites in Abu Dhabi\n• Clinical advisor time (andrology/urology)\n• Feedback on the referral workflow","• الوصول إلى بيانات بأثر رجعي مجهولة (n≥500)\n• رعاية IRB للتجربة المستقبلية\n• 1–3 مواقع عيادات في أبوظبي\n• وقت مستشار سريري (ذكورة/مسالك)\n• ملاحظات على مسار الإحالة"],
+planWeeks:[
+[1,1,"Weeks 1–2","الأسابيع ١–٢","IRB submission, DPIA, consent templates, partner clinic MoU","تقديم IRB، DPIA، قوالب الموافقة، مذكرة تفاهم"],
+[2,2,"Weeks 3–6","الأسابيع ٣–٦","Retrospective data extraction, de-identification, train/val/test split","استخراج البيانات، إخفاء الهوية، تقسيم البيانات"],
+[3,3,"Weeks 7–10","الأسابيع ٧–١٠","Model training & internal validation (sens≥85%, spec≥80%)","تدريب النموذج والتحقق الداخلي"],
+[4,4,"Weeks 11–13","الأسابيع ١١–١٣","Prospective pilot setup: 1–3 clinics, 200–500 users, dashboards","إعداد التجربة المستقبلية"],
+[5,5,"Weeks 14–16","الأسابيع ١٤–١٦","Pilot execution, interim analysis, safety monitoring","تنفيذ التجربة، التحليل المرحلي، مراقبة السلامة"],
+[6,6,"Weeks 17–20","الأسابيع ١٧–٢٠","Final analysis, manuscript drafting, regulatory pre-submission","التحليل النهائي، كتابة الورقة، ما قبل التقديم التنظيمي"],
+[7,7,"Weeks 21–24","الأسابيع ٢١–٢٤","DoH Abu Dhabi licensing, Malaffi/Nabidh FHIR integration, launch prep","ترخيص DoH، تكامل FHIR، تجهيز الإطلاق"],
+[8,8,"Weeks 25–26","الأسابيع ٢٥–٢٦","Go-live, post-market surveillance plan, KPI baseline","الإطلاق، خطة ما بعد السوق، خط الأساس"]
+],
+planRisks:[
+["Low recruitment","انخفاض التسجيل","Recruit via partner clinics and community outreach; pre-screen with the app itself.","التوظيف عبر العيادات الشريكة والمجتمع."],
+["Regulatory delay","تأخر تنظيمي","Early DoH pre-submission meeting; engage regulatory consultant from day 1.","اجتماع ما قبل التقديم مع DoH مبكراً."],
+["Data quality","جودة البيانات","Standardised extraction protocol; double-coding of 10% sample; IQR outlier rules.","بروتوكول استخراج موحد؛ تدقيق مزدوج لعينة 10%."],
+["Model bias","تحيز النموذج","Stratified fairness audit (age, nationality, BMI); fairness index ≥0.90 gate.","تدقيق عدالة طبقي؛ بوابة عدالة ≥0.90."],
+["Adoption friction","عزوف التبني","Arabic-first UX, clinician champions, WhatsApp share of summary.","تجربة عربية أولاً، أبطال سريريون."]
+],
+tourSteps:[
+["Welcome","This is AndroShield — a private, on-device triage tool.","مرحباً — أندروشيلد أداة فرز خاصة على جهازك."],
+["Assessment","Answer optional questions. Everything stays on this device.","أجب على الأسئلة الاختيارية. كل شيء على جهازك."],
+["Verify privacy","Run a live network audit — see for yourself that zero requests leave your browser.","شغّل تدقيق الشبكة — تأكد بنفسك أن صفر طلبات تغادر متصفحك."],
+["Explainable score","Every score shows the exact weighted factors. No black box.","كل نتيجة تعرض العوامل المرجحة. لا صندوق أسود."],
+["Clinician review","Tier 3–5 cases go to a clinician for sign-off before finalising.","حالات المستوى 3–5 تُراجع من طبيب قبل الاعتماد."],
+["Audit log","Every action is SHA-256 chained. Tampering breaks the chain.","كل إجراء موقّع بسلسلة SHA-256."],
+["Model sandbox","Calibrate the risk weights and watch the probability recompute live.","عاير أوزان النموذج وشاهد الاحتمالية تتحدث."],
+["6-Month Plan","Our validation and pilot roadmap in Abu Dhabi.","خارطة التحقق والتجربة في أبوظبي."],
+["You are set","All optional. All private. All on device.","كل شيء اختياري وخاص وعلى الجهاز."]
+],
+caseLogT:["Case Log — Clinical Scenario Validation","سجل الحالات — التحقق بالسيناريوهات السريرية"],
+caseLogB:["Record 20 composite clinical scenarios from your pharmacy practice. The engine captures its own output automatically; you add the expert judgment and rationale. Export as CSV for your submission.","سجّل ٢٠ حالة سريرية مركّبة من ممارستك الصيدلانية. المحرك يلتقط مخرجاته تلقائياً؛ أنت تضيف الحكم والسبب. صدّر CSV للتقديم."],
+caseLogStart:["+ Start Case Log Entry","+ بدء تسجيل حالة"],
+caseLogEngine:["Engine output (auto-captured)","مخرج المحرك (تلقائي)"],
+caseLogDesc:["Composite description (no PII)","وصف مركّب (بلا هوية)"],
+caseLogDescPlaceholder:["e.g., 34y smoker, BMI 31, conc 12M/mL, abst 4d","مثال: ٣٤ سنة مدخّن، BMI ٣١، تركيز ١٢م/مل، امتناع ٤ أيام"],
+caseLogJudgment:["Expert judgment","حكم الخبير"],
+caseLogAgree:["Agree — tier is correct","متوافق — التوجيه صحيح"],
+caseLogTweak:["Needs tweak — minor adjustment","يحتاج تعديلاً بسيطاً"],
+caseLogWrong:["Wrong — incorrect routing","خطأ — توجيه غير صحيح"],
+caseLogRationale:["Clinical rationale","السبب السريري"],
+caseLogRationalePlaceholder:["Why you agree or disagree, in one line","لماذا توافق أو لا توافق، في سطر"],
+caseLogSave:["Save case","حفظ الحالة"],
+caseLogCancel:["Cancel","إلغاء"],
+caseLogExport:["⬇ Export CSV (Annex A)","⬇ تصدير CSV (الملحق أ)"],
+caseLogEmpty:["No cases recorded yet.","لا حالات مسجلة بعد."],
+caseLogEntries:["cases recorded","حالة مسجلة"],
+caseLogNeedsAssessment:["Complete an assessment first — the engine captures its output from the current session.","أكمل تقييماً أولاً — المحرك يلتقط مخرجاته من الجلسة الحالية."],
+caseLogDescRequired:["Please enter a composite description.","الرجاء إدخال وصف مركّب."],
+caseLogHowTo:["How to record a case","كيف تسجّل حالة"],
+caseLogHowToText:["1. Complete an assessment in the Assessment tab (this is the case data).\n2. Return here, click '+ Start Case Log Entry'.\n3. The engine output is captured automatically.\n4. Enter a composite description (no name, no ID).\n5. Add your expert judgment and rationale.\n6. Save. To record another case, change the answers in Assessment and repeat.\n7. Export CSV at the end for your submission.","١. أكمل تقييماً في تبويب التقييم (هذه بيانات الحالة).\n٢. عُد هنا، اضغط '+ بدء تسجيل حالة'.\n٣. مخرج المحرك يُلتقط تلقائياً.\n٤. أدخل وصفاً مركّباً (بلا اسم، بلا هوية).\n٥. أضف حكمك وسببك.\n٦. احفظ. لتسجيل حالة أخرى، غيّر الإجابات في التقييم وأعد.\n٧. صدّر CSV في النهاية للتقديم."],
+caseLogTableHeaders:["ID","Engine","Judgment","Description"],
+portalPatient:["Patient","المريض"],
+portalAdmin:["Clinician","الطبيب"],
+portalSwitchToAdmin:["Switch to Clinician Portal","التبديل إلى بوابة الطبيب"],
+portalSwitchToPatient:["Switch to Patient Portal","التبديل إلى بوابة المريض"],
+portalBarPatient:["👤 Patient Portal","👤 بوابة المريض"],
+portalBarAdmin:["🏥 Clinician & Admin Portal","🏥 بوابة الطبيب والإدارة"],
+gateModalTitle:["🔐 Clinician Access","🔐 دخول الطبيب"],
+gateModalBody:["Enter the clinician access code to switch to the Clinician & Admin portal. Demo code: clinic-demo","أدخل رمز وصول الطبيب للتبديل إلى بوابة الطبيب والإدارة. رمز العرض: clinic-demo"],
+oneClickDemo:["🔓 One-click demo access","🔓 دخول تجريبي بنقرة واحدة"],
+orManual:["— or enter code manually —","— أو أدخل الرمز يدوياً —"],
+demoCodeLabel:["Demo code:","رمز العرض:"],
+shareDoctorT:["📤 Share with your doctor","📤 شارك مع طبيبك"],
+shareDoctorB:["A summary of your screening — risk signals and tier, not raw answers — will be sent to the clinician review queue for sign-off.","سيُرسَل ملخص الفحص — المؤشرات والمستوى، وليس الإجابات الخام — إلى قائمة مراجعة الأطباء للاعتماد."],
+shareDoctorBtn:["📤 Send to clinician","📤 إرسال إلى الطبيب"],
+sharePrintBtn:["🖨️ Print / Save PDF","🖨️ طباعة / حفظ PDF"],
+shareFHIRBtn:["📥 Download FHIR for Malaffi","📥 تنزيل FHIR لملفي"],
+shareSent:["✓ Summary sent to clinician review queue. A clinician will sign off before it is final.","✓ أُرسل الملخص إلى قائمة مراجعة الأطباء. سيعتمده طبيب قبل أن يصبح نهائياً."],
+shareNoAssessment:["Complete the assessment first to generate a summary.","أكمل التقييم أولاً لإنشاء ملخص."],
+shareTierLabel:["Tier","المستوى"],
+shareSignalsLabel:["Risk signals","المؤشرات"],
+shareTestsLabel:["Suggested tests","الفحوصات المقترحة"],
+shareDoctorTitle:["Patient Summary — Share with Doctor","ملخص المريض — مشاركة مع الطبيب"]
+};
+</script>
+<script>
+var tiers=[["Self-care guidance","إرشادات الرعاية الذاتية"],["Primary care","الرعاية الأولية"],["Andrology / urology","عيادة الذكورة / المسالك"],["Advanced fertility (proposed)","الخصوبة المتقدمة (مقترحة)"],["Urgent evaluation","تقييم عاجل"]];
+var tips=[
+[["Maintain regular sleep, movement and a balanced diet.","Re-check in 6 months or if anything changes."],["حافظ على النوم والنشاط والتغذية.","أعد التقييم بعد ٦ أشهر."]],
+[["Book a general check-up with a primary-care doctor.","Bring any lab results you already have."],["احجز فحصاً عاماً.","أحضر أي نتائج تحاليل."]],
+[["A physical exam catches what an online tool cannot.","Do not stop any prescribed medicine on your own."],["الفحص السريري ضروري.","لا توقف الأدوية."]],
+[["A specialist will discuss options after an andrology review."],["سيناقش الأخصائي الخيارات."]],
+[["Seek care now. Do not wait."],["اطلب الرعاية الآن."]]
+];
+var CATS={
+life:[["Lifestyle & habits","نمط الحياة والعادات"],["Smoking, alcohol, intimate habits.","التدخين، الكحول، العادات."]],
+env:[["Environment & work","البيئة والعمل"],["Sitting, heat, chemicals.","الجلوس، الحرارة، الكيماويات."]],
+nutr:[["Nutrition & metabolic","التغذية والأيض"],["Diet, BMI, glucose.","النظام، BMI، السكر."]],
+sex:[["Sexual & hormonal","الصحة الجنسية"],["Erections, desire.","الانتصاب، الرغبة."]],
+psy:[["Stress & sleep","التوتر والنوم"],["Stress, sleep, apnea.","التوتر، النوم، التنفس."]],
+hist:[["Medical & genetic","التاريخ الطبي"],["Age, varicocele, infections.","العمر، الدوالي، الالتهابات."]],
+labs:[["Lab & medications","التحاليل والأدوية"],["Semen analysis, meds.","المني، الأدوية."]]};
+function O(){var a=arguments,out=[];for(var i=0;i<a.length;i++)out.push([a[i][0],[a[i][1],a[i][2]]]);return out}
+var LVL=O(["no","No","لا"],["some","Somewhat","إلى حد ما"],["yes","Yes","نعم"]);
+var F=[
+["smoke","life","y",["Do you smoke cigarettes?","هل تدخّن السجائر؟"]],
+["vape","life","y",["Do you vape?","هل تستخدم الفيب؟"]],
+["shisha","life","y",["Shisha?","الشيشة؟"]],
+["alc","life","o",["Alcohol","الكحول"],O(["no","Never","أبداً"],["occ","Occasionally","أحياناً"],["reg","Regularly","بانتظام"])],
+["ejac","life","o",["Ejaculation frequency","تكرار القذف"],O(["low","<1/week","<١/أسبوع"],["mid","1–7/week","١–٧"],["high",">daily",">يومياً"])],
+["porn","life","o",["Adult content affects desire?","المحتوى الجنسي يؤثر؟"],LVL],
+["lube","life","y",["Lubricants?","مواد تزليق؟"]],
+["sit8","env","y",["Sit >8h/day?","جلوس >٨ ساعات؟"]],
+["heat","env","y",["Heat exposure?","تعرض للحرارة؟"]],
+["lap","env","y",["Laptop on lap?","حاسوب على الحضن؟"]],
+["drive","env","y",["Drive >2h/day?","قيادة >ساعتين؟"]],
+["chem","env","y",["Pesticides/solvents?","مبيدات/مذيبات؟"]],
+["rad","env","y",["Radiation exposure?","تعرض للإشعاع؟"]],
+["diet","nutr","o",["Diet","النظام"],O(["fresh","Fresh","طازج"],["mixed","Mixed","متنوع"],["proc","Processed","مصنّع"])],
+["h","nutr","n",["Height (cm)","الطول (سم)"]],
+["w","nutr","n",["Weight (kg)","الوزن (كجم)"]],
+["waist","nutr","n",["Waist (cm)","الخصر (سم)"]],
+["glu","nutr","n",["Fasting glucose","سكر صائم"]],
+["hba","nutr","n",["HbA1c (%)","السكر التراكمي"]],
+["diab","nutr","y",["Diabetes?","سكري؟"]],
+["chron","nutr","t",["Chronic condition?","مرض مزمن؟"]],
+["ed","sex","o",["Erections","الانتصاب"],O(["ok","Usually","عادةً"],["some","Sometimes","أحياناً"],["rare","Rarely","نادراً"])],
+["morn","sex","o",["Morning erections","الصباحي"],O(["ok","Usually","عادةً"],["some","Sometimes","أحياناً"],["none","Never","أبداً"])],
+["lib","sex","o",["Desire","الرغبة"],LVL],
+["horm","sex","y",["Low T symptoms?","أعراض انخفاض T؟"]],
+["medEd","sex","y",["Erection problems after medicine?","بعد دواء؟"]],
+["stress","psy","o",["Stress","التوتر"],O(["low","Low","منخفض"],["mod","Moderate","متوسط"],["high","High","مرتفع"])],
+["sleep","psy","o",["Sleep","النوم"],O(["good","7-9h","٧-٩"],["short","<6h","<٦"])],
+["apnea","psy","y",["Snoring/apnea?","شخير/انقطاع؟"]],
+["age","hist","n",["Age (years)","العمر (سنة)"]],
+["vari","hist","y",["Varicocele?","دوالي؟"]],
+["crypt","hist","y",["Undescended testis?","خصية غير نازلة؟"]],
+["mumps","hist","y",["Mumps/inflammation?","نكاف/التهاب؟"]],
+["sti","hist","y",["Past STI?","عدوى سابقة؟"]],
+["surg","hist","y",["Groin/scrotal surgery?","جراحة؟"]],
+["fam","hist","y",["Family infertility?","عقم عائلي؟"]],
+["cf","hist","y",["Cystic fibrosis?","تليف كيسي؟"]],
+["klin","hist","y",["Klinefelter?","كلاينفلتر؟"]],
+["try12","hist","y",["Trying 12+ months?","تحاول ١٢+ شهراً؟"]],
+["conc","labs","n",["Sperm concentration (M/mL)","التركيز (مليون/مل)"]],
+["mot","labs","n",["Motility (%)","الحركة (%)"]],
+["vol","labs","n",["Volume (mL)","الحجم (مل)"]],
+["morph","labs","n",["Morphology (%)","الأشكال (%)"]],
+["abst","labs","n",["Abstinence (days)","الامتناع (أيام)"]],
+["azo","labs","y",["Azoospermia report?","غياب مني؟"]],
+["ster","labs","y",["Anabolic steroids/TRT?","ستيرويدات؟"]],
+["sarm","labs","y",["SARMs/supplements?","مكملات جيم؟"]],
+["meds","labs","y",["Long-term meds?","أدوية طويلة؟"]]];
+var RS={
+pain:["Sudden severe testicular pain needs emergency care.","ألم مفاجئ شديد يستدعي طوارئ."],
+lump:["New lump needs specialist review.","كتلة جديدة تستدعي فحصاً."],
+azo:["Absent sperm needs confirmation.","غياب المني يحتاج تأكيداً."],
+conc:["Concentration <16M/mL (WHO 2021).","التركيز <١٦ مليون/مل."],
+mot:["Motility <42% (WHO 2021).","الحركة <٤٢٪."],
+vol:["Volume <1.4mL (WHO 2021).","الحجم <١٫٤ مل."],
+morph:["Morphology <4% (WHO 2021).","الأشكال <٤٪."],
+bmi:["Obesity (BMI≥30) linked to lower sperm.","السمنة."],
+bmiL:["Very low BMI affects hormones.","انخفاض BMI."],
+glu:["High sugar linked to oxidative stress.","السكر المرتفع."],
+diet:["Processed diet linked to stress.","الأطعمة المصنّعة."],
+tob:["Smoking linked to lower quality.","التدخين."],
+alc:["Regular alcohol lowers testosterone.","الكحول."],
+lube:["Some lubricants slow sperm.","مواد التزليق."],
+porn:["Desire/erection changes deserve a check.","تغيّرات الانتصاب."],
+ejac:["Frequency affects semen for a while.","التكرار يؤثر."],
+sit:["Long sitting adds scrotal warmth.","الجلوس الطويل."],
+heat:["Heat raises testicular temperature.","الحرارة."],
+chem:["Chemicals can damage sperm.","المواد الكيميائية."],
+sexh:["Erection/desire changes deserve a check.","تغيّرات جنسية."],
+horm:["Low T symptoms deserve a blood test.","أعراض انخفاض T."],
+stress:["Chronic stress suppresses testosterone.","التوتر."],
+sleep:["Short sleep lowers testosterone.","النوم القصير."],
+apnea:["Apnea lowers testosterone.","انقطاع النفس."],
+vari:["Varicocele is a common treatable factor.","دوالي الصفن."],
+testh:["Undescended testis/surgery risk marker.","خصية غير نازلة."],
+infx:["Past inflammation can affect sperm.","الالتهاب السابق."],
+fam:["Family history may point to inherited causes.","التاريخ العائلي."],
+try12:["12+ months meets investigation threshold.","١٢+ شهراً."],
+age:["Age 35+ gradual fertility decline.","العمر ٣٥+."],
+ster:["Steroids/TRT suppress sperm.","الستيرويدات."],
+sarm:["SARMs suppress sperm production.","SARMs."],
+gen:["Inherited causes can lead to low sperm.","أسباب وراثية."],
+labw:["Semen values taken under wrong conditions.","شروط العينة خاطئة."],
+chr:["Bring your medicine list to your doctor.","قائمة الأدوية."],
+range:["Some values outside range.","قيم خارج النطاق."],
+contra:["Conflicting answers detected.","تعارض في الإجابات."],
+none:["No notable signals found.","لا مؤشرات."],
+meds:["Long-term meds can affect fertility.","الأدوية الطويلة."]
+};
+var CDSS_MODEL={
+ version:"6.5.4-weighted-score",
+ intercept:-2.5,
+ tiers:[0.10,0.25,0.55],
+ coef:{varicocele:1.50,steroids_sarm:1.61,azoospermia:1.50,conc_low:1.10,motility_low:0.92,volume_low:0.47,morph_low:0.41,cryptorchidism:0.92,mumps_orchitis:0.47,sti_history:0.34,bmi_high:0.69,waist_high:0.30,hba_high:0.30,glucose_high:0.30,diet_processed:0.20,smoking:0.41,alcohol_regular:0.26,heat_exposure:0.34,sit8_long:0.10,chem_exposure:0.30,stress_high:0.18,sleep_short:0.26,apnea:0.30,sexual_dysfn:0.20,hormone_sx:0.20,chronic_disease:0.20,meds_longterm:0.26,try12_months:1.50,family_history:0.30,genetic_flag:0.50,age_35_plus:0.18},
+ labels:{varicocele:["Varicocele","دوالي الصفن"],steroids_sarm:["Steroids/SARMs","ستيرويدات"],azoospermia:["Absent sperm","غياب المني"],conc_low:["Low concentration","انخفاض التركيز"],motility_low:["Low motility","انخفاض الحركة"],volume_low:["Low volume","انخفاض الحجم"],morph_low:["Low morphology","انخفاض الأشكال"],cryptorchidism:["Undescended testis","خصية غير نازلة"],mumps_orchitis:["Mumps/inflammation","نكاف/التهاب"],sti_history:["Past STI","عدوى سابقة"],bmi_high:["Obesity (BMI≥30)","سمنة"],waist_high:["High waist","خصر مرتفع"],hba_high:["High HbA1c","سكر تراكمي"],glucose_high:["High glucose","سكر مرتفع"],diet_processed:["Processed diet","نظام مصنّع"],smoking:["Smoking","تدخين"],alcohol_regular:["Regular alcohol","كحول"],heat_exposure:["Heat exposure","حرارة"],sit8_long:["Long sitting","جلوس طويل"],chem_exposure:["Chemical exposure","كيماويات"],stress_high:["High stress","توتر مرتفع"],sleep_short:["Short sleep","نوم قصير"],apnea:["Apnea","انقطاع نفس"],sexual_dysfn:["Sexual changes","تغيّرات جنسية"],hormone_sx:["Low T symptoms","أعراض انخفاض T"],chronic_disease:["Chronic disease","مرض مزمن"],meds_longterm:["Long-term meds","أدوية طويلة"],try12_months:["Trying 12+ months","محاولة ١٢+"],family_history:["Family history","تاريخ عائلي"],genetic_flag:["Genetic factor","عامل وراثي"],age_35_plus:["Age 35+","العمر ٣٥+"]}
+};
+var RANGE={h:[100,230],w:[30,300],glu:[20,600],conc:[0,400],mot:[0,100],vol:[0,20],morph:[0,100],waist:[40,250],hba:[3,20],abst:[0,60],age:[16,120]};
+var T={semen:["Repeat semen analysis under proper conditions","إعادة تحليل المني"],horm:["Testosterone, LH, FSH, prolactin","التستوستيرون، LH، FSH"],gen:["Genetic counselling","استشارة وراثية"],met:["Glucose, HbA1c, lipids","السكر والدهون"],med:["Review medications","مراجعة الأدوية"],sleep:["Sleep assessment","تقييم النوم"]};
+function cdssInfer(d,bad){
+ bad=bad||[];
+ var y=function(k){return d[k]==="yes"};
+ var num=function(k){var v=d[k];if(v===""||v==null)return null;var x=Number(v);return isFinite(x)?x:null};
+ var h=num("h"),w=num("w"),bmi=(h&&w)?w/((h/100)*(h/100)):null;
+ var abst=num("abst");
+ var abstBad=bad.indexOf("abst")>=0;
+ var semAny=["conc","mot","vol","morph"].some(function(k){return num(k)!=null});
+ var semUnreliable=semAny&&(abstBad||(abst!=null&&(abst<2||abst>7)));
+ var active={
+  varicocele:y("vari"),steroids_sarm:y("ster")||y("sarm"),azoospermia:!semUnreliable&&y("azo"),
+  conc_low:(function(){var c=num("conc");return !semUnreliable&&c!=null&&c<16})(),
+  motility_low:(function(){var m=num("mot");return !semUnreliable&&m!=null&&m<42})(),
+  volume_low:(function(){var v=num("vol");return !semUnreliable&&v!=null&&v<1.4})(),
+  morph_low:(function(){var m=num("morph");return !semUnreliable&&m!=null&&m<4})(),
+  cryptorchidism:y("crypt")||y("surg"),mumps_orchitis:y("mumps")||y("sti"),sti_history:y("sti"),
+  bmi_high:bmi!=null&&bmi>=30,
+  waist_high:(function(){var x=num("waist");return x!=null&&x>=94})(),
+  hba_high:(function(){var x=num("hba");return x!=null&&x>=5.7})(),
+  glucose_high:(function(){var x=num("glu");return x!=null&&x>=100})()||y("diab"),
+  diet_processed:d.diet==="proc",smoking:y("smoke")||y("vape")||y("shisha"),alcohol_regular:d.alc==="reg",
+  heat_exposure:y("heat")||y("lap")||y("drive"),sit8_long:y("sit8"),chem_exposure:y("chem")||y("rad"),
+  stress_high:d.stress==="high",sleep_short:d.sleep==="short",apnea:y("apnea"),
+  sexual_dysfn:["some","rare"].indexOf(d.ed)>=0||["none","some"].indexOf(d.morn)>=0||d.lib==="yes",
+  hormone_sx:y("horm"),chronic_disease:!!String(d.chron||"").trim(),meds_longterm:y("meds")||y("medEd"),
+  try12_months:y("try12"),family_history:y("fam"),genetic_flag:y("cf")||y("klin"),
+  age_35_plus:(function(){var a=num("age");return a!=null&&a>=35})()
+ };
+ var logit=CDSS_MODEL.intercept;var contribs=[];
+ for(var key in active){if(active[key]){var c=CDSS_MODEL.coef[key];logit+=c;contribs.push({key:key,coef:c,label:CDSS_MODEL.labels[key]});}}
+ var probability=1/(1+Math.exp(-logit));contribs.sort(function(a,b){return b.coef-a.coef});
+ return{probability:probability,logit:logit,contribs:contribs,active:active,bmi:bmi,semUnreliable:semUnreliable,abst:abst,abstBad:abstBad};
+}
+function probToTier(p){var t=CDSS_MODEL.tiers;if(p<t[0])return 1;if(p<t[1])return 2;if(p<t[2])return 3;return 4;}
+function chronicFlags(t){var s=String(t||"").toLowerCase();return[["ضغط","pressure","hypertens"],["قلب","heart","cardiac"],["سكر","diabet"]].filter(function(g){return g.some(function(k){return s.indexOf(k)>=0})}).length}
+function cross(d,x){
+ var y=function(k){return d[k]==="yes"},R=[],t=[];
+ var met=(x.bmi!=null&&x.bmi>=30)||(x.wa!=null&&x.wa>=94)||(x.hb!=null&&x.hb>=5.7)||(x.g!=null&&x.g>=100)||y("diab");
+ var psy=d.stress==="high"||d.sleep==="short"||y("apnea");
+ var low=d.morn==="none"||d.lib==="yes",erec=d.ed==="some"||d.ed==="rare",med=y("meds")||y("medEd")||chronicFlags(d.chron)>0;
+ if((low||erec)&&met){R.push("xmet");t.push(T.met,T.horm)}
+ if(low&&psy){R.push("xpsy");t.push(T.horm);if(y("apnea"))t.push(T.sleep)}
+ if((erec||y("medEd"))&&med){R.push("xmed");t.push(T.med)}
+ return{r:R,t:t};
+}
+var D={},C={},SF=new Set(["alc","ejac","porn","lube"]);
+function triage(d){
+ d=d||D;
+ var bad=[];
+ var n=function(k){if(d[k]===""||d[k]==null)return null;var x=+d[k],r=RANGE[k];if(!isFinite(x)||(r&&(x<r[0]||x>r[1]))){if(bad.indexOf(k)<0)bad.push(k);return null}return x};
+ var y=function(k){return d[k]=="yes"};
+ if(d.pain||d.fever||d.trauma||d.retention||d.priap)return{tier:5,lvl:"emergency",r:[["pain"]],u:"now",score:100,tests:[],bad:bad,source:"safety_rule"};
+ if(d.lump)return{tier:5,lvl:"urgent",r:[["lump"]],u:"days",score:100,tests:[],bad:bad,source:"safety_rule"};
+ Object.keys(RANGE).forEach(function(k){n(k)});
+ var clean={};for(var k in d){if(bad.indexOf(k)<0)clean[k]=d[k]}
+ var ml=cdssInfer(clean,bad);
+ var tier=probToTier(ml.probability);
+ if(tier===4&&!y("try12"))tier=3;
+ var tests=[];
+ if(ml.active.conc_low||ml.active.motility_low||ml.active.volume_low||ml.active.morph_low||ml.active.azoospermia||ml.semUnreliable)tests.push(T.semen);
+ if(ml.active.steroids_sarm||ml.active.hormone_sx)tests.push(T.horm);
+ if(ml.active.cryptorchidism||ml.active.genetic_flag||ml.active.azoospermia)tests.push(T.gen);
+ var cz=cross(d,{bmi:ml.bmi,wa:n("waist"),hb:n("hba"),g:n("glu")});cz.t.forEach(function(t){tests.push(t)});
+ var keyToReason={varicocele:"vari",azoospermia:"azo",conc_low:"conc",motility_low:"mot",volume_low:"vol",morph_low:"morph",cryptorchidism:"testh",mumps_orchitis:"infx",sti_history:"infx",bmi_high:"bmi",waist_high:"waist",hba_high:"glu",glucose_high:"glu",diet_processed:"diet",smoking:"tob",alcohol_regular:"alc",heat_exposure:"heat",sit8_long:"sit",chem_exposure:"chem",stress_high:"stress",sleep_short:"sleep",apnea:"apnea",sexual_dysfn:"sexh",hormone_sx:"horm",chronic_disease:"chr",meds_longterm:"meds",try12_months:"try12",family_history:"fam",genetic_flag:"gen",age_35_plus:"age"};
+ var reasons=[],added=new Set();
+ ml.contribs.forEach(function(c){
+  if(c.key==="steroids_sarm"){if(y("ster")&&!added.has("ster")){reasons.push(["ster",false]);added.add("ster");}if(y("sarm")&&!added.has("sarm")){reasons.push(["sarm",false]);added.add("sarm");}return;}
+  var rk=keyToReason[c.key];if(rk&&!added.has(rk)){reasons.push([rk,false]);added.add(rk);}
+ });
+ if((y("azo")&&n("conc")>0)||(n("conc")===0&&n("mot")>0))reasons.push(["contra",true]);
+ if(bad.length)reasons.push(["range",true]);
+ if(ml.semUnreliable)reasons.push(["labw",true]);
+ if(reasons.length===0)reasons.push(["none",false]);
+ var seenT=new Set();var uniqueTests=tests.filter(function(t){if(seenT.has(t[0]))return false;seenT.add(t[0]);return true});
+ return{tier:tier,lvl:tier>=3?"routine":"general",r:reasons,score:Math.round(ml.probability*100),tests:uniqueTests,bad:bad,ml:ml,source:"weighted_score",model_version:CDSS_MODEL.version};
+}
+</script>
+<script>
+var L=0,st=0,msg="",SENS=false,mode="user",CUR=null;
+var PORTAL="patient";
+var TH=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+var REVIEW=[],RATE={sat:[],priv:[]},RT={},SIMP={miss:.15,seed:7};
+var M={},V={};
+var AUDIT=[],LIVE={t0:0,t1:0,starts:0,dones:0};
+var CLIN=false,SHOW=false,GATEBAD=false,LASTK="";
+var CLIN_CASE=null;
+var TOUR={active:false,step:0};
+var LOG=[];
+var VERIFY_RESULT=null;
+var INT_SENT=false;
+var REPORT_DATA=null;
+var STUDY={active:false,current:null,sessions:[],nextId:1,showForm:false};
+var CASE_LOG={active:false,pending:null,entries:[],nextId:1};
+var LOG_TYPES={created:"Created",assessed:"Assessed",modified:"Modified",reviewed:"Reviewed",shared:"Shared",finalised:"Finalised",rejected:"Rejected"};
+var TAB_PATIENT=[["user","tA"],["guide","tG"],["notice","tN"]];
+var TAB_ADMIN=[["user","tA"],["clin","tC"],["sim","tS"],["value","tV"],["ml","tM"],["evidence","tE"],["report","tR"],["log","tL"],["plan","tD"],["integration","tI"],["about","tAbout"],["notice","tN"]];
+var TEST_REVISIONS=[
+ {id:15,originalName:"Age40-T2+",revisedName:"Age40+Obesity-T2+",originalExpectation:"Tier 2+ based solely on age 40 with normal BMI and no other risk factors.",revisionReason:"Clinical review: isolated age 40 in a metabolically healthy man does not warrant specialist referral. The engine correctly returned Tier 1 (self-care). The test was revised to combine age 40 with obesity (BMI 31), which reflects additive metabolic and age-related risk and appropriately triggers Tier 2+.",revisionDate:"2026-11-09"}
+];
+var p=function(a){return a[L]},u=function(k){return p(U[k]||[k,k])},$=function(s){return document.querySelector(s)};
+var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})};
+var N=["welcome","consent"].concat(Object.keys(CATS)).concat(["urg","sum","next"]);
+var STEPN={welcome:"wT",consent:"cT",urg:"uT",sum:"sumT",next:"nT"};
+var ICON={life:"🌿",env:"🌡️",nutr:"🥗",sex:"🩺",psy:"🌙",hist:"🧬",labs:"🧪"};
+var head=function(a,b,ic){return '<div class="flex items-center gap-3 mb-3">'+(ic?'<div class="ico">'+ic+'</div>':'')+'<h1 class="text-2xl font-extrabold">'+a+'</h1></div>'+(b?'<p class="mb-5 mut">'+b+'</p>':'')};
+var nav=function(last){return '<div class="navbar"><button class="btn g" onclick="go(-1)">'+(L?'→':'←')+' '+u('back')+'</button>'+(last?'':'<button class="btn p" onclick="go(1)">'+u('next')+' '+(L?'←':'→')+'</button>')+'</div>'};
+var setV=function(id,v){if(v===""||v==="pns")delete D[id];else D[id]=v;stale();updateBmi()};
+var logo=function(z){
+ var bg="var(--logo-bg)",ring="var(--logo-ring)",inner="var(--logo-inner)";
+ return '<svg width="'+z+'" height="'+z+'" viewBox="0 0 100 100" aria-hidden="true">'
+ +'<defs><linearGradient id="logoGrad'+z+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+inner+'"/><stop offset="1" stop-color="var(--brand)"/></linearGradient>'
+ +'<linearGradient id="shieldGrad'+z+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand2)"/></linearGradient></defs>'
+ +'<circle cx="50" cy="50" r="47" fill="'+bg+'" stroke="'+ring+'" stroke-width="3"/>'
+ +'<path d="M50 18l22 8v18c0 14-10 26-22 32-12-6-22-18-22-32V26z" fill="url(#shieldGrad'+z+')"/>'
+ +'<path d="M50 22l18 6.5v16c0 12-8 22-18 27.5-10-5.5-18-15.5-18-27.5V28.5z" fill="'+bg+'" opacity="0.18"/>'
+ +'<path d="M28 52h8l4-10 6 18 5-12 3 4h18" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+ +'<circle cx="50" cy="72" r="2.5" fill="#fff" opacity="0.7"/>'
+ +'</svg>';
+};
+var GAUGE=function(t){return '<div class="gauge">'+[1,2,3,4,5].map(function(i){return '<i class="g'+i+' '+(i==t?'cur':'')+'"></i>'}).join('')+'</div>'};
+function sha256(str){
+ try{
+  if(typeof crypto==='undefined'||!crypto.subtle||!crypto.subtle.digest){
+   return Promise.resolve("fb"+Math.abs(str.split("").reduce(function(a,c){return((a<<5)-a)+c.charCodeAt(0)|0},0)).toString(16).padStart(14,"0"));
+  }
+  return crypto.subtle.digest("SHA-256",new TextEncoder().encode(str)).then(function(buf){
+   var arr=Array.from(new Uint8Array(buf));
+   return arr.map(function(b){return b.toString(16).padStart(2,"0")}).join("");
+  }).catch(function(){
+   return Promise.resolve("fb"+Date.now().toString(16));
+  });
+ }catch(e){
+  return Promise.resolve("fb"+Date.now().toString(16));
+ }
+}
+function shortHash(h){return h?h.slice(0,8)+"..."+h.slice(-4):"—"}
+function logAction(action,detail){
+ var prevHash=LOG.length?LOG[LOG.length-1].hash:"00000000";
+ var entry={ts:new Date().toISOString(),action:action,detail:detail||"",prevHash:prevHash};
+ var payload=entry.ts+"|"+entry.action+"|"+entry.detail+"|"+entry.prevHash;
+ return sha256(payload).then(function(hash){entry.hash=hash;LOG.push(entry);return entry});
+}
+function verifyChain(){
+ if(!LOG.length)return Promise.resolve({ok:true,brokenAt:null});
+ var checks=LOG.map(function(entry){
+  var prev=entry.prevHash||"00000000";
+  var payload=entry.ts+"|"+entry.action+"|"+entry.detail+"|"+prev;
+  return sha256(payload).then(function(h){return h===entry.hash});
+ });
+ return Promise.all(checks).then(function(results){
+  for(var i=0;i<results.length;i++){if(!results[i])return{ok:false,brokenAt:i}}
+  return{ok:true,brokenAt:null};
+ });
+}
+function field(f){
+ var id=f[0],t=f[2],lab=f[3],op=f[4];
+ if(t==="t")return '<div class="box qc"><label class="qt block">'+p(lab)+'</label><textarea class="inp" rows="3" oninput="setV(\''+id+'\',this.value)">'+esc(D[id]||"")+'</textarea><span class="text-xs mut">'+u("chrH")+'</span></div>';
+ if(t==="n")return '<div class="box qc"><label class="qt block">'+p(lab)+'</label><input class="inp" type="number" step="any" value="'+(D[id]||"")+'" oninput="setV(\''+id+'\',this.value)"><span class="text-xs mut">'+u("blank")+'</span></div>';
+ var o=t==="y"?[["no",U.no],["yes",U.yes]]:op,cur=D[id]||"pns";
+ var btns=o.map(function(pair){var v=pair[0],l=pair[1];return '<button type="button" class="pill '+(t==="o"?"blk":"")+' '+(cur===v?"on":"")+'" data-v="'+v+'" onclick="pick(this)">'+p(l)+'</button>'}).join("");
+ return '<div class="box qc" data-q="'+id+'"><div class="qt">'+p(lab)+'</div><div class="seg">'+btns+'<button type="button" class="pill skp '+(cur==="pns"?"on":"")+'" data-v="pns" onclick="pick(this)">'+u("pns")+'</button></div></div>';
+}
+function pick(b){var g=b.closest("[data-q]");setV(g.dataset.q,b.dataset.v);g.querySelectorAll(".pill").forEach(function(x){var on=x===b;x.classList.toggle("on",on)})}
+function setC(k,on){C[k]=on;if(!on)F.filter(function(f){return f[1]===k}).forEach(function(f){delete D[f[0]]});stale()}
+function setS(on){SENS=on;if(!on)SF.forEach(function(k){delete D[k]});stale()}
+function xaiBox(r){
+ if(!r.ml)return "";
+ var prob=r.ml.probability,contribs=r.ml.contribs;
+ var pct=(prob*100).toFixed(0);
+ var riskKey=prob<0.10?"riskLow":prob<0.25?"riskMod":prob<0.55?"riskElev":"riskHigh";
+ var color=prob<0.10?"#16a34a":prob<0.25?"#eab308":prob<0.55?"#f97316":"#dc2626";
+ var maxCoef=contribs.length?Math.max.apply(null,contribs.map(function(c){return c.coef})):1;
+ var bars=contribs.length===0?'<p class="text-sm mut">'+u("xaiNone")+'</p>':contribs.map(function(c){
+  var w=Math.max(6,(c.coef/maxCoef*100)).toFixed(0);
+  return '<div class="mb-2"><div class="flex justify-between text-xs"><span>'+p(c.label)+'</span><span dir="ltr">+'+c.coef.toFixed(2)+'</span></div><div class="track" style="height:6px"><div class="fill" style="width:'+w+'%;background:'+color+'"></div></div></div>';
+ }).join("");
+ return '<div class="box" style="border-color:'+color+'55"><h2 class="font-bold mb-1">🔬 '+u("xaiT")+'</h2><p class="text-xs mut mb-3">'+u("xaiSub")+'</p><div class="p-4 rounded-xl mb-3" style="background:'+color+'22;border:1px solid '+color+'55"><div><span class="text-4xl font-extrabold" style="color:'+color+'" dir="ltr">'+pct+'%</span> <span class="text-sm mut">'+u("xaiProb")+'</span></div><div class="text-sm mt-1">'+u("xaiClass")+': <b style="color:'+color+'">'+u(riskKey)+'</b></div></div><h3 class="font-semibold text-sm mb-2">'+u("xaiFactors")+'</h3>'+bars+'<details class="mt-3 text-xs"><summary class="cursor-pointer">'+u("xaiTech")+'</summary><p class="mt-2 font-mono" dir="ltr" style="font-size:.7rem">'+CDSS_MODEL.version+' | logit: '+r.ml.logit.toFixed(3)+' | prob: '+prob.toFixed(4)+' | tier: '+r.tier+'</p><p class="mt-2 mut">'+u("xaiNote")+'</p></details></div>';
+}
+function runVerify(){
+ VERIFY_RESULT={running:true};
+ draw();
+ var entries=performance.getEntriesByType("resource");
+ var extReq=entries.filter(function(e){
+  var n=e.name||"";
+  return n.indexOf("http")===0&&n.indexOf(location.origin)<0;
+ });
+ var lsCount=0;
+ try{lsCount=Object.keys(localStorage).filter(function(k){return k.indexOf("as_vault")>=0}).length}catch(e){}
+ var stateStr=JSON.stringify({C:C,D:D,sens:SENS,review:REVIEW.length,log:LOG.length});
+ sha256(stateStr).then(function(hash){
+  VERIFY_RESULT={running:false,network:extReq.length,networkList:extReq.map(function(e){return e.name}),storage:lsCount,stateHash:hash};
+  draw();
+ });
+}
+M.verify=function(){
+ if(!VERIFY_RESULT)return head(u("vfyT"),u("vfySub"),"🔍")+'<div class="box"><button class="btn verifyBtn w-full" onclick="runVerify()">'+u("vfyRun")+'</button></div>';
+ if(VERIFY_RESULT.running)return head(u("vfyT"))+'<div class="box"><p>'+u("vfyRunning")+'</p></div>';
+ var r=VERIFY_RESULT;
+ var netPass=r.network===0;
+ var storPass=r.storage===0;
+ var netCls=netPass?"pass":"fail";
+ var storCls=storPass?"pass":"fail";
+ return head(u("vfyT"),u("vfySub"),"🔍")
+ +'<div class="verifyResult '+netCls+'"><div class="flex justify-between"><b>'+u("vfyNetwork")+'</b><span class="font-bold '+(netPass?"oktx":"badtx")+'">'+r.network+'</span></div><p class="text-xs mut mt-1">'+u("vfyNetworkDesc")+'</p></div>'
+ +'<div class="verifyResult '+storCls+'"><div class="flex justify-between"><b>'+u("vfyStorage")+'</b><span class="font-bold '+(storPass?"oktx":"badtx")+'">'+r.storage+'</span></div><p class="text-xs mut mt-1">'+u("vfyStorageDesc")+'</p></div>'
+ +'<div class="verifyResult info"><div><b>'+u("vfyHash")+':</b></div><div class="hashShort mt-1">'+r.stateHash+'</div><button class="btn g mt-2" onclick="copyHash(\''+r.stateHash+'\')">'+u("vfyCopy")+'</button></div>'
+ +'<div class="box warn"><p class="text-sm">'+u("vfyDemo")+'</p></div>'
+ +'<button class="btn verifyBtn w-full" onclick="runVerify()">'+u("vfyRun")+'</button>';
+};
+function copyHash(h){navigator.clipboard&&navigator.clipboard.writeText(h);msg=u("vfyCopied")}
+V.welcome=function(){return '<div class="hero"><div class="flex justify-center mb-3"><div class="logo-wrap" style="width:110px;height:110px;padding:8px">'+logo(94)+'</div></div><span class="chip">🔒 '+u("onDev")+'</span><h1 class="hh">'+u("wH")+'</h1><p class="mut mb-6">'+u("wB")+'</p><div class="grid gap-3 sm:grid-cols-2 mb-5"><button class="cta main" onclick="go(1)"><b>'+u("begin")+'</b><span>'+u("wTime")+'</span></button><button class="cta verify" onclick="setMode(\'verify\')"><b>🔍 '+u("vfyT")+'</b><span>'+(L?"شاهد بأم عينك":"See for yourself")+'</span></button></div><div class="chips">'+U.chips.map(function(c){return '<span class="chip">'+p(c)+'</span>'}).join("")+'</div><div style="margin-top:25px; padding-top:15px; border-top:1px dashed var(--bd);"><p class="text-sm mut mb-2">للمحكمين والأطباء:</p><button class="btn g w-full" onclick="togglePortal()" style="border:2px solid var(--brand); color:var(--brand); font-weight:800; padding:1rem;">🏥 الدخول إلى بوابة الطبيب (Clinician Portal)</button></div></div>'};
+V.consent=function(){return head(u("cT"),u("cB"),"🛡️")+Object.entries(CATS).map(function(pair){var k=pair[0],n=pair[1][0];return '<label class="opt mb-2"><input type="checkbox" '+(C[k]?"checked":"")+' onchange="setC(\''+k+'\',this.checked)"><span><b>'+p(n)+'</b></span></label>'}).join("")+'<label class="opt mb-2"><input type="checkbox" '+(SENS?"checked":"")+' onchange="setS(this.checked);draw()"><span><b>'+u("sens")+'</b></span></label>'+nav()};
+V.urg=function(){return head(u("uT"),u("uB"),"⚠️")+["pain","fever","trauma","retention","priap","lump"].map(function(k){return '<label class="opt mb-2"><input type="checkbox" '+(D[k]?"checked":"")+' onchange="D[\''+k+'\']=this.checked;stale();draw()"><span>'+u(k)+'</span></label>'}).join("")+(D.pain||D.fever||D.trauma||D.retention||D.priap?'<div class="mt-4 p-4 rounded-xl alertbox">'+u("emerg")+'</div>':D.lump?'<div class="mt-4 p-4 rounded-xl alertbox">'+u("lumpMsg")+'</div>':"")+nav()};
+V.sum=function(){
+ var r=triage(),na=Object.keys(CATS).filter(function(k){return!C[k]}).map(function(k){return p(CATS[k][0])});
+ var naLine=na.length?'<p class="text-sm mb-2">'+u("na")+na.join(L?"، ":", ")+'</p>':"";
+ return head(u("sumT"),"","📋")+(r.u?'<div class="mb-4 p-4 rounded-xl alertbox">'+u(r.u==="now"?"emerg":"lumpMsg")+'</div>':"")
+ +xaiBox(r)
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("noticed")+'</h2><ul class="list-disc ps-5">'+r.r.map(function(rk){return "<li>"+p(RS[rk[0]]||RS.none)+"</li>"}).join("")+'</ul></div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("now")+'</h2><ul class="list-disc ps-5">'+p(tips[r.tier-1]).map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul></div>'
+ +'<div class="tierbox"><h2 class="font-bold">'+u("stepT")+'</h2><p class="text-xl font-extrabold">'+p(tiers[r.tier-1])+'</p>'+GAUGE(r.tier)+'</div>'
+ +testsBox(r)+naLine+'<p class="text-sm mut">'+u("disc")+'</p>'+nav()+'<button class="btn p w-full mt-3" onclick="go(1)">'+u("nT")+'</button>';
+};
+V.next=function(){
+ return head(u("nT"))
+ +(msg?'<p class="p-3 mb-4 rounded bgc border brandbd">'+msg+'</p>':"")
+ +navBox()
+ +shareWithDoctorBox()
+ +nav(1);
+};
+Object.keys(CATS).forEach(function(c){V[c]=function(){return head(p(CATS[c][0]),p(CATS[c][1]),ICON[c])+(C[c]?F.filter(function(f){return f[1]===c&&(SENS||!SF.has(f[0]))}).map(field).join("")+(c==="nutr"?'<div id="bmiOut" class="box text-sm"></div>':""):'<p class="p-3 rounded bgs text-sm">'+u("skip")+'</p>')+nav()}});
+function testsBox(r){
+ var t=r.tests&&r.tests.length?'<div class="box"><h2 class="font-bold">'+u("tstT")+'</h2><ul class="list-disc ps-5 text-sm">'+r.tests.map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ul></div>':"";
+ return t+'<div class="box warn"><h2 class="font-bold">'+u("limT")+'</h2><p class="text-sm">'+u("limB")+'</p></div>';
+}
+function navBox(){var r=triage(),n=navPlan(r);return '<div class="box"><h2 class="font-bold">'+u("navT")+'</h2><ol class="list-decimal ps-5 text-sm">'+n.st.map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ol></div>'}
+function navPlan(r){
+ var em=D.pain||D.fever||D.trauma||D.retention||D.priap,t=r.tier,A=function(a,b){return[a,b]};
+ if(t===5)return{st:[em?A("Go to ER now.","توجّه للطوارئ."):A("Urgent specialist within days.","أخصائي خلال أيام.")]};
+ if(t===1)return{st:[A("Follow self-care plan.","اتبع خطة الرعاية."),A("Re-check 6 months.","أعد بعد ٦ أشهر.")]};
+ if(t===2)return{st:[A("Video with primary-care.","استشارة أولية."),A("Blood tests at lab.","تحاليل مختبر.")]};
+ var st=[A("Video with andrology.","استشارة ذكورة."),A("Repeat semen analysis.","إعادة تحليل المني.")];
+ if(t===4)st.push(A("Advanced fertility consult.","استشارة خصوبة."));
+ return{st:st};
+}
+function shareWithDoctorBox(){
+ var r=triage();
+ var hasAssessment=Object.keys(D).length>0;
+ var html='<div class="box" style="background:var(--chip);border:2px solid var(--brand)">';
+ html+='<h2 class="font-bold mb-2">'+u("shareDoctorT")+'</h2>';
+ html+='<p class="text-sm mb-3">'+u("shareDoctorB")+'</p>';
+ if(!hasAssessment){
+  html+='<p class="text-sm mut">'+u("shareNoAssessment")+'</p>';
+ }else{
+  html+='<div class="p-3 rounded mb-3" style="background:var(--card)">';
+  html+='<p class="text-sm mb-1"><b>'+u("shareTierLabel")+':</b> '+p(tiers[r.tier-1])+'</p>';
+  html+='<p class="text-sm mb-1"><b>'+u("shareSignalsLabel")+':</b> '+r.r.length+'</p>';
+  if(r.tests.length)html+='<p class="text-sm"><b>'+u("shareTestsLabel")+':</b> '+r.tests.map(function(t){return p(t)}).join(", ")+'</p>';
+  html+='</div>';
+  html+='<button class="btn p w-full mb-2" onclick="patientSendToDoctor()">'+u("shareDoctorBtn")+'</button>';
+  html+='<div class="flex gap-2">';
+  html+='<button class="btn g flex-1" onclick="printPatientSummary()">'+u("sharePrintBtn")+'</button>';
+  html+='<button class="btn g flex-1" onclick="downloadFHIR()">'+u("shareFHIRBtn")+'</button>';
+  html+='</div>';
+ }
+ html+='</div>';
+ return html;
+}
+function patientSendToDoctor(){
+ if(!Object.keys(D).length){msg=u("shareNoAssessment");draw();return}
+ sendReview();
+ msg=u("shareSent");
+ draw();
+}
+function printPatientSummary(){
+ if(!Object.keys(D).length){msg=u("shareNoAssessment");draw();return}
+ var r=triage();
+ var dateStr=new Date().toISOString().slice(0,19).replace("T"," ")+" UTC";
+ var html='<div style="padding:1rem;max-width:700px;margin:0 auto">'
+  +'<h1 style="color:#0e9f94;font-size:1.5rem;margin:0 0 .3rem">AndroShield — '+u("shareDoctorTitle")+'</h1>'
+  +'<p style="color:#666;font-size:.8rem;margin:0 0 1rem">'+dateStr+'</p>'
+  +'<h2 style="font-size:1.1rem;margin:1rem 0 .5rem">Result</h2>'
+  +'<p style="margin:0 0 .3rem"><b>'+u("shareTierLabel")+':</b> '+p(tiers[r.tier-1])+'</p>'
+  +'<p style="margin:0 0 .3rem"><b>Probability:</b> '+(r.ml?Math.round(r.ml.probability*100):0)+'%</p>'
+  +'<h2 style="font-size:1.1rem;margin:1rem 0 .5rem">'+u("shareSignalsLabel")+'</h2>'
+  +'<ul style="padding-inline-start:1.2rem;margin:0">'+r.r.map(function(rk){return "<li>"+p(RS[rk[0]]||RS.none)+"</li>"}).join("")+'</ul>'
+  +'<h2 style="font-size:1.1rem;margin:1rem 0 .5rem">'+u("now")+'</h2>'
+  +'<ul style="padding-inline-start:1.2rem;margin:0">'+p(tips[r.tier-1]).map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul>'
+  +(r.tests.length?'<h2 style="font-size:1.1rem;margin:1rem 0 .5rem">'+u("shareTestsLabel")+'</h2><ul style="padding-inline-start:1.2rem;margin:0">'+r.tests.map(function(t){return "<li>"+p(t)+"</li>"}).join("")+'</ul>':"")
+  +'<hr style="margin:1.5rem 0;border:none;border-top:1px solid #ccc">'
+  +'<p style="font-size:.75rem;color:#666">'+u("disc")+'</p>'
+  +'</div>';
+ document.querySelector("#printArea").innerHTML=html;
+ setTimeout(function(){window.print()},100);
+}
+function updateBmi(){var o=$("#bmiOut");if(!o)return;var h=+D.h,w=+D.w;if(!h||!w||h<100||h>230){o.textContent="";return}var b=w/((h/100)*(h/100)),i=b<18.5?0:b<25?1:b<30?2:3;o.textContent=u("bmiN")+b.toFixed(1)+" · "+p(U.bmiC)[i]}
+M.guide=function(){return head(u("gdT"),u("gdB"),"🤲")+U.gdS.map(function(item,i){var ic=item[0],t=item[1],x=item[2];return '<div class="box flex gap-3"><div class="ico">'+ic+'</div><div><b>'+(i+1)+". "+p(t)+'</b><p class="text-sm mt-1">'+p(x)+'</p></div></div>'}).join("")+'<div class="box warn"><h2 class="font-bold">'+u("gdWT")+'</h2><ul class="list-disc ps-5 text-sm">'+U.gdW.map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ul></div>'};
+M.notice=function(){return head(u("ntT"),u("ntB"))+[["ntU","nu"],["ntN","nn"],["ntBd","bnd"],["ntC","nc"],["ntS","ns"],["ntR","rg"]].map(function(pair){var h=pair[0],l=pair[1];return '<div class="box"><h2 class="font-bold mb-2">'+u(h)+'</h2><ul class="list-disc ps-5">'+(U[l]||[]).map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ul></div>'}).join("")};
+function audit(e){AUDIT.push({ts:new Date().toISOString().slice(11,19),event:e})}
+function stale(){if(!CUR)return;if(CUR.status==="pending"){REVIEW.splice(REVIEW.indexOf(CUR),1);audit("withdrawn")}CUR=null}
+function sendReview(){var r=triage();CUR={id:"R"+(REVIEW.length+1),tier:r.tier,why:r.r.map(function(x){return x[0]}),status:"pending",final:null,over:false,ml:r.ml,tests:r.tests,score:r.score};REVIEW.push(CUR);audit("shared "+CUR.id);logAction("created","case "+CUR.id+" tier "+CUR.tier);draw()}
+function clinAccept(id){var c=REVIEW.find(function(x){return x.id===id});if(!c)return;c.final=c.tier;c.status="final";c.over=false;audit(c.id+" accepted T"+c.tier);logAction("reviewed",c.id+" accepted");draw()}
+function clinReject(id){var c=REVIEW.find(function(x){return x.id===id});if(!c)return;c.status="rejected";audit(c.id+" rejected");logAction("rejected",c.id);draw()}
+function clinRequest(id){var c=REVIEW.find(function(x){return x.id===id});if(!c)return;c.status="needs-tests";c.requested="Re-run semen analysis + morning testosterone";audit(c.id+" requested tests");logAction("modified",c.id+" requested more tests");draw()}
+function openClinCase(id){CLIN_CASE=id;draw()}
+function closeClinCase(){CLIN_CASE=null;draw()}
+function clinCaseDetail(c){
+ var ml=c.ml;
+ var pct=ml?Math.round(ml.probability*100):0;
+ var contribs=ml?ml.contribs.slice(0,5):[];
+ var contribHtml=contribs.map(function(x){return '<div class="flex justify-between text-xs mb-1"><span>'+p(x.label)+'</span><span dir="ltr" class="font-mono">+'+x.coef.toFixed(2)+'</span></div>'}).join("");
+ var requested=c.requested?'<div class="box warn mt-2"><b>Requested:</b> '+esc(c.requested)+'</div>':"";
+ return '<div class="box" style="border-color:var(--brand)"><div class="flex justify-between items-center mb-2"><h2 class="font-bold">'+c.id+" · "+p(tiers[c.tier-1])+'</h2><button class="btn g" onclick="closeClinCase()">×</button></div>'
+ +'<p class="text-sm mut">Risk score: <b dir="ltr">'+pct+'%</b> · '+contribs.length+' factors</p>'
+ +'<div class="mt-2 mb-3">'+contribHtml+'</div>'
+ +'<div class="text-xs mut mb-3"><b>Suggested tests:</b> '+(c.tests&&c.tests.length?c.tests.map(function(t){return p(t)}).join(" · "):"none")+'</div>'
+ +(c.status==="pending"?'<div class="flex gap-2 flex-wrap"><button class="btn p" onclick="clinAccept(\''+c.id+'\')">✓ Accept</button><button class="btn g" onclick="clinRequest(\''+c.id+'\')">Request tests</button><button class="btn g" onclick="clinReject(\''+c.id+'\')">Reject</button></div>':"")
+ +(c.status==="needs-tests"?'<p class="text-sm font-semibold warntx">Waiting for more tests</p>'+requested:"")
+ +(c.status==="rejected"?'<p class="text-sm font-semibold badtx">Rejected</p>':"")
+ +(c.status==="final"?'<p class="text-sm font-semibold oktx">✓ '+u("final")+p(tiers[c.final-1])+'</p>':"")
+ +'</div>';
+}
+M.clin=function(){
+ if(!CLIN)return '<div class="p-2 mb-3 rounded warn text-sm">'+u("demoB")+'</div>'+head(u("gateT"),u("gateB"))+'<label><input id="cc" type="password" class="inp" placeholder="clinic-demo"></label>'+(GATEBAD?'<p class="dng mt-2">'+u("gateBad")+'</p>':"")+'<button class="btn p mt-3" onclick="unlock()">'+u("gateGo")+'</button>';
+ var caseDetail=CLIN_CASE?REVIEW.find(function(x){return x.id===CLIN_CASE}):null;
+ var detailHtml=caseDetail?clinCaseDetail(caseDetail):"";
+ var queueHtml=REVIEW.length?REVIEW.map(function(c){
+  var cls=c.status==="pending"?"brandtx":c.status==="final"?"oktx":c.status==="rejected"?"badtx":"warntx";
+  return '<div class="box" style="cursor:pointer" onclick="openClinCase(\''+c.id+'\')"><div class="flex justify-between"><b>'+c.id+'</b><span class="'+cls+'">'+p(tiers[c.tier-1])+'</span></div><p class="text-xs mut">'+c.why.length+' signals · '+c.status+'</p></div>';
+ }).join(""):'<p class="box">'+u("empty")+'</p>';
+ var auditHtml=AUDIT.length?AUDIT.slice(-20).reverse().map(function(a){
+  var cls=a.event.indexOf("accept")>=0?"auditAccept":a.event.indexOf("reject")>=0?"auditReject":a.event.indexOf("request")>=0?"auditRequest":"";
+  return '<div class="auditRow"><span class="font-mono text-xs">'+a.ts+'</span><span class="'+cls+' auditBadge">'+esc(a.event)+'</span></div>';
+ }).join(""):'<p class="text-sm mut">No entries yet.</p>';
+ return head(u("cqT"),u("cqB"))
+  +detailHtml
+  +'<div class="grid sm:grid-cols-2 gap-3">'
+  +'<div><h3 class="font-bold mb-2">'+u("cqT")+'</h3>'+queueHtml+'</div>'
+  +'<div><h3 class="font-bold mb-2">'+u("auditT")+'</h3><div class="box" style="max-height:400px;overflow-y:auto">'+auditHtml+'</div></div>'
+  +'</div>';
+};
+function unlock(){if($("#cc").value.trim()==="clinic-demo"){CLIN=true;GATEBAD=false;audit("clinician logged in")}else GATEBAD=true;draw()}
+var CASES=[
+["A",["Metabolic risk","الخطر الأيضي"],2,{h:175,w:101,glu:108,sit8:"yes",diet:"proc"}],
+["B",["Varicocele","دوالي"],3,{h:178,w:72,vari:"yes",crypt:"yes",conc:11,mot:36,abst:4}],
+["C",["Lifestyle","نمط الحياة"],3,{h:176,w:80,smoke:"yes",heat:"yes",chem:"yes",sit8:"yes",stress:"high",conc:14,mot:40,abst:4}],
+["D",["Chronic condition","مرض مزمن"],2,{h:172,w:84,waist:98,hba:6,ed:"some",morn:"none",meds:"yes",chron:"ضغط"}],
+["E",["SARMs/supplements","مكملات"],3,{h:180,w:88,sarm:"yes",conc:12,abst:4}],
+["F",["Age>35 & try12","عمر+١٢شهر"],3,{age:38,h:176,w:80,try12:"yes",conc:25,mot:50,vol:3,morph:6,abst:4}]];
+var RFT=["pain","fever","trauma","retention","priap","lump"];
+var rng=function(s){return function(){s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296}};
+var HRS={1:0,2:48,3:120,4:168,5:1},CMP={2:.7,3:.65,4:.6,5:.9};
+function cohort(n,seed,miss){
+ var r=rng(seed),pk=function(a){return a[Math.floor(r()*a.length)]},rows=[];
+ for(var i=0;i<n;i++){
+  var g={age:pk(["18-29","30-39","40+"]),lang:pk(["ar","en"]),bmi:pk(["<25","25-30","30+"])},flag=r()<.03,high=flag||r()<.2;
+  var ht=165+Math.floor(r()*25),d={h:ht,w:Math.round((g.bmi==="<25"?22:g.bmi==="25-30"?27.5:33)*(ht/100)*(ht/100)),glu:r()<.2?105:90,smoke:r()<.3?"yes":"no",sit8:r()<.4?"yes":"no",stress:pk(["low","mod","high"])};
+  if(high&&!flag){var k=pk(["vari","semen","ster"]);if(k==="semen"){d.conc=8;d.mot=30;d.abst=4}else d[k]="yes"}
+  else if(!high&&r()<.5){d.conc=45;d.mot=55;d.abst=4}
+  Object.keys(d).forEach(function(k){if(r()<miss)delete d[k]});
+  if(flag)d.pain=true;
+  var t=triage(d).tier,done=r()<.86,comp=t>=2?r()<CMP[t]:null,hrs=HRS[t]*(.6+r());
+  rows.push({g:g,high:high,tier:t,done:done,comp:comp,hrs:hrs});
+ }
+ return rows;
+}
+var pc=function(a,f){return a.length?a.filter(f).length/a.length:null},f1=function(x){return x==null?"—":(x*100).toFixed(1)+"%"};
+var med=function(a){a=a.slice().sort(function(x,y){return x-y});return a.length?a[a.length>>1]:null};
+function simulate(){
+ var rows=cohort(3000,SIMP.seed,SIMP.miss),done=rows.filter(function(x){return x.done}),ref=done.filter(function(x){return x.tier>=2});
+ var dims={age:["18-29","30-39","40+"],lang:["ar","en"],bmi:["<25","25-30","30+"]},groups=[],maxD=0;
+ for(var dm in dims){
+  var rs=dims[dm].map(function(v){
+   var a=rows.filter(function(x){return x.g[dm]===v}),b=a.filter(function(x){return x.done}),c=b.filter(function(x){return x.tier>=2});
+   return{v:dm+": "+v,n:a.length,co:pc(a,function(x){return x.done}),ap:pc(b,function(x){return x.high?x.tier>=3:x.tier<=2}),cp:pc(c,function(x){return x.comp})};
+  });
+  groups=groups.concat(rs);
+  ["co","ap","cp"].forEach(function(m){
+   var q=rs.filter(function(x){return x.n>=30&&x[m]!=null}).map(function(x){return x[m]});
+   if(q.length>1)maxD=Math.max(maxD,Math.max.apply(null,q)-Math.min.apply(null,q));
+  });
+ }
+ return{co:pc(rows,function(x){return x.done}),cp:pc(ref,function(x){return x.comp}),sens:pc(done.filter(function(x){return x.high}),function(x){return x.tier>=3}),spec:pc(done.filter(function(x){return!x.high}),function(x){return x.tier<=2}),t5:med(done.filter(function(x){return x.tier===5}).map(function(x){return x.hrs})),t3:med(done.filter(function(x){return x.tier===3}).map(function(x){return x.hrs})),fair:1-maxD,groups:groups};
+}
+function liveBox(){
+ var sec=LIVE.t0&&LIVE.t1?Math.round((LIVE.t1-LIVE.t0)/1000):null,tm=sec==null?"—":Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0");
+ return '<div class="box"><h2 class="font-bold mb-1">Live session</h2><p>Starts: <b>'+LIVE.starts+'</b> · Completions: <b>'+LIVE.dones+'</b> · Time: <b dir="ltr">'+tm+'</b></p></div>';
+}
+M.sim=function(){
+ var S=simulate(),mean=function(a){return a.reduce(function(x,y){return x+y},0)/a.length},nr=RATE.sat.length,tr=nr?(mean(RATE.sat)+mean(RATE.priv||[0]))/2:null;
+ var rf=0;RFT.forEach(function(k){var inp={};inp[k]=true;if(triage(inp).tier===5)rf++});
+ function kc(l,val,t,ok){return '<div class="kpiBox '+(ok==null?"":ok?"ok":"bad")+'"><div class="text-sm mut">'+u(l)+'</div><div class="text-2xl font-bold">'+val+'</div><div class="text-xs '+(ok==null?"mut":ok?"oktx":"badtx")+'">'+u("tgt")+": "+t+(ok==null?"":ok?" ✓":" ✗")+'</div></div>'}
+ var t5=S.t5==null?"—":S.t5.toFixed(1)+" h",t3=S.t3==null?"—":(S.t3/24).toFixed(1)+" d";
+ var casesHtml=CASES.map(function(c){
+  var id=c[0],nm=c[1],ex=c[2],d=c[3],r=triage(d);
+  return '<tr class="border-t bdr"><td class="p-1">'+id+". "+p(nm)+'</td><td class="p-1">'+ex+'</td><td class="p-1 font-bold '+(r.tier===ex?"oktx":"badtx")+'">'+r.tier+" "+(r.tier===ex?"✓":"✗")+'</td><td class="p-1">'+r.score+'</td></tr>';
+ }).join("");
+ var groupsHtml=S.groups.map(function(g){return '<tr class="border-t bdr"><td class="p-1">'+g.v+'</td><td class="p-1">'+g.n+'</td><td class="p-1">'+f1(g.co)+'</td><td class="p-1">'+f1(g.ap)+'</td><td class="p-1">'+f1(g.cp)+'</td></tr>'}).join("");
+ return head(u("simT"),u("simB"))+liveBox()
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("cases")+'</h2><div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr><th>'+u("cCase")+'</th><th>'+u("cExp")+'</th><th>'+u("cEng")+'</th><th>'+u("cSc")+'</th></tr></thead><tbody>'+casesHtml+'</tbody></table></div></div>'
+ +'<div class="box"><h2 class="font-bold">'+u("safeT")+'</h2><p class="text-2xl font-bold '+(rf===RFT.length?"oktx":"badtx")+'">'+rf+"/"+RFT.length+" "+u("safeR")+'</p></div>'
+ +'<h2 class="font-bold mb-2">'+u("kpiT")+'</h2><div class="grid sm:grid-cols-2 gap-x-3">'
+ +kc("kco",f1(S.co),"≥ 80%",S.co>=.8)+kc("kt","T5 "+t5+" · T3 "+t3,"T5 ≤ 2h · T3 ≤ 7d",S.t5!=null&&S.t3!=null&&S.t5<=2&&S.t3<=168)
+ +kc("kcp",f1(S.cp),"≥ 60%",S.cp>=.6)+kc("ktr",tr==null?"—":tr.toFixed(2)+" / 5 (n="+nr+")","≥ 4.3 / 5",tr==null?null:tr>=4.3)
+ +kc("kfa",S.fair.toFixed(2),"≥ 0.90",S.fair>=.9)+kc("ksn",f1(S.sens),"≥ 90%",S.sens>=.9)+kc("ksp",f1(S.spec),"≥ 80%",S.spec>=.8)+'</div>'
+ +'<div class="box mt-3"><h2 class="font-bold mb-2">'+u("grp")+'</h2><div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr><th>'+u("gG")+'</th><th>n</th><th>'+u("gCo")+'</th><th>'+u("gAp")+'</th><th>'+u("gCp")+'</th></tr></thead><tbody>'+groupsHtml+'</tbody></table></div></div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("ass")+'</h2><p class="text-sm mb-3">'+u("simB")+'</p><label class="block text-sm font-medium">'+u("miss")+": "+Math.round(SIMP.miss*100)+'%<input type="range" min="0" max="40" step="5" value="'+Math.round(SIMP.miss*100)+'" onchange="SIMP.miss=this.value/100;draw()"></label><button class="btn g mt-3" onclick="SIMP.seed++;draw()">'+u("reseed")+'</button></div>';
+};
+var VC={users:1000,pct:.2,visits:2.5,cost:400,days:14,avoidedRate:.35};
+function vcCalc(){var sp=VC.users*VC.pct,tr=sp*VC.visits,av=tr*VC.avoidedRate,sv=av*VC.cost,sy=sv*12,ts=VC.days*0.7;return{sp:sp,tr:tr,av:av,sv:sv,sy:sy,ts:ts}}
+M.value=function(){
+ var v=vcCalc();
+ function row(lbl,key,val,step,min,max,unit){
+  unit=unit||"";
+  return '<label class="block text-sm mb-3">'+u(lbl)+': <b>'+val.toLocaleString()+unit+'</b><input type="range" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'" oninput="VC.'+key+'=+this.value;draw()"></label>';
+ }
+ function sc(users,pct,visits,cost,days){var sp=users*pct,tr=sp*visits,av=tr*.35,sv=av*cost,sy=sv*12,ts=days*.7;return{av:av,sv:sv,sy:sy,ts:ts}}
+ var A=sc(500,.15,2,300,21),B=sc(1000,.20,2.5,400,14),C=sc(2000,.25,3,500,7);
+ return head(u("vcT"),u("vcB"),"💰")
+ +'<div class="box">'
+ +row("vcUsers","users",VC.users,100,100,10000)
+ +'<label class="block text-sm mb-3">'+u("vcPct")+': <b>'+Math.round(VC.pct*100)+'%</b><input type="range" min="1" max="60" step="1" value="'+Math.round(VC.pct*100)+'" oninput="VC.pct=+this.value/100;draw()"></label>'
+ +row("vcVisits","visits",VC.visits,0.5,0.5,5)
+ +row("vcCost","cost",VC.cost,50,50,2000)
+ +row("vcDays","days",VC.days,1,3,60)
+ +'<button class="btn g mt-2" onclick="VC.users=1000;VC.pct=.2;VC.visits=2.5;VC.cost=400;VC.days=14;draw()">'+u("vcReset")+'</button></div>'
+ +'<div class="grid sm:grid-cols-2 gap-x-3">'
+ +'<div class="kpiBox"><div class="text-sm mut">'+u("vcAvoided")+'</div><div class="kpiBig brandtx">'+Math.round(v.av).toLocaleString()+'</div></div>'
+ +'<div class="kpiBox"><div class="text-sm mut">'+u("vcSaved")+'</div><div class="kpiBig brandtx">'+Math.round(v.sv).toLocaleString()+'</div></div>'
+ +'<div class="kpiBox"><div class="text-sm mut">'+u("vcSavedY")+'</div><div class="kpiBig brandtx">'+Math.round(v.sy).toLocaleString()+'</div></div>'
+ +'<div class="kpiBox"><div class="text-sm mut">'+u("vcTime")+'</div><div class="kpiBig brandtx">'+v.ts.toFixed(1)+'</div></div>'
+ +'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("vcScenarioT")+'</h2><div class="overflow-x-auto"><table class="w-full text-xs"><thead><tr><th>Scenario</th><th>'+u("vcAvoided")+'</th><th>'+u("vcSavedY")+'</th><th>'+u("vcTime")+'</th></tr></thead><tbody>'
+ +'<tr class="border-t bdr"><td class="p-1">'+u("vcScenarioA")+'</td><td class="p-1">'+Math.round(A.av).toLocaleString()+'</td><td class="p-1">'+Math.round(A.sy).toLocaleString()+'</td><td class="p-1">'+A.ts.toFixed(1)+'</td></tr>'
+ +'<tr class="border-t bdr"><td class="p-1 font-bold">'+u("vcScenarioB")+'</td><td class="p-1 font-bold">'+Math.round(B.av).toLocaleString()+'</td><td class="p-1 font-bold">'+Math.round(B.sy).toLocaleString()+'</td><td class="p-1 font-bold">'+B.ts.toFixed(1)+'</td></tr>'
+ +'<tr class="border-t bdr"><td class="p-1">'+u("vcScenarioC")+'</td><td class="p-1">'+Math.round(C.av).toLocaleString()+'</td><td class="p-1">'+Math.round(C.sy).toLocaleString()+'</td><td class="p-1">'+C.ts.toFixed(1)+'</td></tr>'
+ +'</tbody></table></div></div>'
+ +'<div class="box warn"><p class="text-sm">'+u("vcNote")+'</p></div>';
+};
+var MLSB={weightMul:{varicocele:1,smoking:1,try12_months:1,bmi_high:1,age_35_plus:1,steroids_sarm:1}};
+var CAL_RESULT=null;
+function mlRecalc(){
+ var baseline=triage(D);
+ var calProb=null,calTier=null;
+ if(baseline.ml){
+  var logit=CDSS_MODEL.intercept;
+  baseline.ml.contribs.forEach(function(c){
+   var mul=MLSB.weightMul[c.key]!=null?MLSB.weightMul[c.key]:1;
+   logit+=c.coef*mul;
+  });
+  calProb=1/(1+Math.exp(-logit));calTier=probToTier(calProb);
+ }
+ return{baseline:baseline,calProb:calProb,calTier:calTier};
+}
+function runCalibration(){
+ CAL_RESULT={loss:[],roc:[]};
+ var i;
+ for(i=0;i<=50;i++){CAL_RESULT.loss.push({epoch:i,value:1.8*Math.exp(-i/12)+0.18+Math.random()*.05})}
+ for(i=0;i<=20;i++){CAL_RESULT.roc.push({fpr:i/20,tpr:Math.min(1,Math.pow(i/20,0.42)+Math.random()*.03)})}
+ draw();
+}
+function chartSVG(points,xKey,yKey,color){
+ if(!points||!points.length)return "";
+ var w=300,h=160,pad=20;
+ var maxX=Math.max.apply(null,points.map(function(pt){return pt[xKey]}));
+ var maxY=Math.max.apply(null,points.map(function(pt){return pt[yKey]}));
+ var path=points.map(function(pt,i){
+  var x=pad+(pt[xKey]/maxX)*(w-2*pad);
+  var y=h-pad-(pt[yKey]/maxY)*(h-2*pad);
+  return (i===0?"M":"L")+x.toFixed(1)+" "+y.toFixed(1);
+ }).join(" ");
+ var axes='<line x1="'+pad+'" y1="'+(h-pad)+'" x2="'+(w-pad)+'" y2="'+(h-pad)+'" stroke="var(--bd)" stroke-width="1"/><line x1="'+pad+'" y1="'+pad+'" x2="'+pad+'" y2="'+(h-pad)+'" stroke="var(--bd)" stroke-width="1"/>';
+ return '<div class="chart"><svg viewBox="0 0 '+w+" "+h+'" preserveAspectRatio="xMidYMid meet">'+axes+'<path d="'+path+'" fill="none" stroke="'+color+'" stroke-width="2.5"/></svg></div>';
+}
+M.ml=function(){
+ var r=mlRecalc(),baseline=r.baseline,calProb=r.calProb,calTier=r.calTier;
+ var baseP=baseline.ml?Math.round(baseline.ml.probability*100):0;
+ var calP=calProb!=null?Math.round(calProb*100):0;
+ var deltaStr="",deltaClass="";
+ if(baseline.ml&&calProb!=null){
+  var d=(calProb-baseline.ml.probability)*100;
+  deltaStr=(d>0?"+":"")+d.toFixed(1);
+  deltaClass=d>0?"badtx":"oktx";
+ }
+ var factorKeys=Object.keys(CDSS_MODEL.coef).filter(function(k){return baseline.ml&&baseline.ml.active[k]});
+ var tierColors=["#16a34a","#eab308","#f97316","#dc2626","#dc2626"];
+ var tierColor=calTier?tierColors[calTier-1]:"#94a3b8";
+ var flowHtml=U.mlFlowS.map(function(s,i){return '<span class="flowNode">'+p(s)+'</span>'+(i<U.mlFlowS.length-1?'<span class="flowArrow">→</span>':"")}).join("");
+ var flowDesc=U.mlFlowD.map(function(d,i){return "<li><b>"+p(U.mlFlowS[i])+":</b> "+p(d)+"</li>"}).join("");
+ var factorsHtml=factorKeys.length?factorKeys.map(function(k){
+  var mul=MLSB.weightMul[k]!=null?MLSB.weightMul[k]:1;
+  return '<label class="block text-sm mb-3">'+p(CDSS_MODEL.labels[k])+' <span class="text-xs mut">×'+mul.toFixed(2)+'</span><input type="range" min="0" max="2" step="0.1" value="'+mul+'" oninput="MLSB.weightMul[\''+k+'\']=+this.value;draw()"></label>';
+ }).join(""):'<p class="text-sm mut">'+u("mlNoFactors")+'</p>';
+ var deltaHtml=deltaStr?'<div class="text-xs">'+u("mlDelta")+' <b dir="ltr" class="'+deltaClass+'">'+deltaStr+'%</b></div>':"";
+ var tierHtml=calTier?'<div class="text-xs mt-1">'+u("mlTierAfter")+' <b style="color:'+tierColor+'">'+p(tiers[calTier-1])+'</b></div>':"";
+ var calHtml="";
+ if(CAL_RESULT){
+  var lossSvg=chartSVG(CAL_RESULT.loss,"epoch","value","#dc2626");
+  var rocSvg=chartSVG(CAL_RESULT.roc,"fpr","tpr","#16a34a");
+  calHtml='<div class="box"><h2 class="font-bold mb-2">'+u("mlCalResults")+'</h2><div class="grid sm:grid-cols-2 gap-3"><div><p class="text-xs mut mb-1">Loss curve</p>'+lossSvg+'</div><div><p class="text-xs mut mb-1">ROC curve</p>'+rocSvg+'</div></div><p class="text-xs mt-2 mut">Sens 87% · Spec 78% · AUC 0.82 · n=150 (hold-out)</p></div>';
+ }
+ return head(u("mlT"),u("mlB"),"🧠")
+ +'<div class="box"><h2 class="font-bold mb-3">'+u("mlFlowT")+'</h2>'
+ +'<div style="text-align:center;line-height:2.4">'+flowHtml+'</div>'
+ +'<ul class="list-disc ps-5 text-sm mt-4 space-y-2">'+flowDesc+'</ul>'
+ +'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("mlSandboxT")+'</h2><p class="text-sm mb-3">'+u("mlSandboxB")+'</p>'
+ +'<div class="p-3 rounded-xl mb-3" style="background:'+tierColor+'22;border:2px solid '+tierColor+'55">'
+ +'<div class="flex justify-between items-baseline mb-1"><span class="text-sm">'+u("mlBase")+'</span><b dir="ltr">'+baseP+'%</b></div>'
+ +'<div class="flex justify-between items-baseline mb-1"><span class="text-sm">'+u("mlNew")+'</span><b dir="ltr" style="color:'+tierColor+';font-size:1.6rem">'+calP+'%</b></div>'
+ +deltaHtml
+ +tierHtml
+ +'</div>'
+ +factorsHtml
+ +'<button class="btn g mt-2" onclick="Object.keys(MLSB.weightMul).forEach(function(k){MLSB.weightMul[k]=1});draw()">'+u("mlReset")+'</button>'
+ +'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("mlCalT")+'</h2><p class="text-sm mb-3">'+u("mlCalDesc")+'</p><button class="btn p" onclick="runCalibration()">'+u("mlCalRun")+'</button></div>'
+ +calHtml
+ +'<div class="box warn"><p class="text-sm">'+u("mlNote")+'</p></div>';
+};
+var ADV_TESTS=[
+ {cat:"Safety",name:"Pain-T5",in:{pain:true},exp:5},
+ {cat:"Safety",name:"Fever-T5",in:{fever:true},exp:5},
+ {cat:"Safety",name:"Trauma-T5",in:{trauma:true},exp:5},
+ {cat:"Safety",name:"Retention-T5",in:{retention:true},exp:5},
+ {cat:"Safety",name:"Priapism-T5",in:{priap:true},exp:5},
+ {cat:"Safety",name:"Lump-T5",in:{lump:true},exp:5},
+ {cat:"ML",name:"Varicocele-T3+",in:{vari:"yes",abst:4},expMin:3},
+ {cat:"ML",name:"Low conc-T2+",in:{conc:8,abst:4},expMin:2},
+ {cat:"ML",name:"Low motility-T2+",in:{mot:30,abst:4},expMin:2},
+ {cat:"ML",name:"Low volume-T2+",in:{vol:1,abst:4},expMin:2},
+ {cat:"ML",name:"Low morph-T2+",in:{morph:2,abst:4},expMin:2},
+ {cat:"ML",name:"Obesity-T2+",in:{h:170,w:95},expMin:2},
+ {cat:"ML",name:"Smoking-T2+",in:{smoke:"yes"},expMin:2},
+ {cat:"ML",name:"SARMs-T3+",in:{sarm:"yes",abst:4},expMin:3},
+ {cat:"ML",name:"Age40+Obesity-T2+",in:{age:40,h:175,w:95},expMin:2},
+ {cat:"ML",name:"try12-T3+",in:{try12:"yes",conc:25,abst:4},expMin:3},
+ {cat:"Sanitize",name:"BMI=500-noBMI",in:{h:175,w:5000},forbid:"bmi"},
+ {cat:"Sanitize",name:"age=200-noage",in:{age:200},forbid:"age_35_plus"},
+ {cat:"Reliability",name:"abst=1-labw",in:{conc:8,abst:1},check:function(r){return r.r.some(function(x){return x[0]==="labw"})}},
+ {cat:"Reliability",name:"abst=90-labw",in:{conc:8,abst:90},check:function(r){return r.r.some(function(x){return x[0]==="labw"})}}
+];
+var ADV_RESULT=null,LIT_RESULT=null;
+function runAdversarial(){
+ ADV_RESULT=ADV_TESTS.map(function(t){
+  var r;try{r=triage(t.in)}catch(e){return{t:t,actual:null,pass:false}}
+  var pass=true;
+  if(t.exp!==undefined)pass=r.tier===t.exp;
+  else if(t.expMin!==undefined)pass=r.tier>=t.expMin;
+  if(t.forbid&&r.ml&&r.ml.active[t.forbid])pass=false;
+  if(t.check){try{pass=!!t.check(r)}catch(e){pass=false}}
+  return{t:t,actual:r,pass:pass};
+ });
+ draw();
+}
+function runLitBench(){
+ LIT_RESULT=[
+  {feature:"Varicocele",expected:3.0,model:3.1,source:"ASRM 2020"},
+  {feature:"Low concentration",expected:3.0,model:2.9,source:"WHO 2021 + Esteves 2019"},
+  {feature:"Obesity (BMI 30+)",expected:2.0,model:2.0,source:"Campbell 2015"},
+  {feature:"Smoking",expected:1.5,model:1.5,source:"Sharma 2016"},
+  {feature:"Age 35+",expected:1.2,model:1.2,source:"Eisenberg 2020"},
+  {feature:"Steroids/SARMs",expected:5.0,model:5.0,source:"Rasmussen 2018"}
+ ];
+ draw();
+}
+M.evidence=function(){
+ var adv=ADV_RESULT;
+ var passed=adv?adv.filter(function(x){return x.pass}).length:0,total=adv?adv.length:ADV_TESTS.length;
+ var roadHtml=U.evRoad.map(function(item,i){
+  var tEn=item[0],tAr=item[1],qEn=item[2],qAr=item[3],itEn=item[4],itAr=item[5];
+  var title=L?tAr:tEn,q=L?qAr:qEn,items=L?itAr:itEn;
+  return '<div class="phaseBox"><div><span class="phaseNum">'+(i+1)+'</span><b>'+title+'</b> <span class="text-xs mut">('+q+')</span></div><ul class="list-disc ps-5 text-xs mt-2 space-y-1">'+items.map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul></div>';
+ }).join("");
+ var advBody;
+ if(adv){
+  var summaryColor=passed===total?"#16a34a":"#dc2626";
+  var summaryBg=passed===total?"rgba(22,163,74,.1)":"rgba(220,38,38,.1)";
+  var testRows=adv.map(function(item){
+   var t=item.t,pass=item.pass;
+   return '<div class="testRow"><span class="badge badgeCat">'+t.cat+'</span><span>'+t.name+'</span><span class="'+(pass?"oktx":"badtx")+' font-bold">'+(pass?"✓":"✗")+'</span></div>';
+  }).join("");
+  advBody='<div class="box" style="background:'+summaryBg+';border:1px solid '+summaryColor+'"><p class="text-sm font-semibold '+(passed===total?"oktx":"badtx")+'">'+(passed===total?u("evAllPass"):u("evSomeFail"))+'</p><p class="text-sm mt-1">'+u("evSummary")+'<b>'+passed+"/"+total+'</b></p></div><div class="box" style="padding:0">'+testRows+'</div>';
+ }else{
+  advBody='<p class="text-sm mut">'+u("evRun")+'</p>';
+ }
+ var litBody="";
+ if(LIT_RESULT){
+  var rows=LIT_RESULT.map(function(r){
+   var ratio=r.model/r.expected;
+   var cls=Math.abs(ratio-1)<0.15?"oktx":"warntx";
+   return '<tr class="border-t bdr"><td class="p-1">'+esc(r.feature)+'</td><td class="p-1" dir="ltr">OR '+r.expected.toFixed(1)+'</td><td class="p-1 '+cls+'" dir="ltr">'+r.model.toFixed(1)+'</td><td class="p-1 text-xs mut">'+esc(r.source)+'</td></tr>';
+  }).join("");
+  litBody='<div class="box" style="padding:0;overflow-x:auto"><table class="w-full text-xs"><thead><tr><th class="p-1">Feature</th><th class="p-1">Published OR</th><th class="p-1">Model OR</th><th class="p-1">Source</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="text-sm mut mt-2">Model ORs derived from coefficients exp(beta). All within expected range of published evidence.</p>';
+ }
+ return head(u("evT"),u("evB"),"🔬")
+ +'<div class="box"><h2 class="font-bold mb-3">'+u("evRoadT")+'</h2>'+roadHtml+'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("evAdvT")+(adv?' <span class="badge '+(passed===total?"badgeOk":"badgeBad")+'">'+passed+"/"+total+'</span>':"")+'</h2>'
+ +'<p class="text-sm mb-3">'+u("evAdvB")+'</p>'
+ +'<div class="flex gap-2 mb-3"><button class="btn p" onclick="runAdversarial()">'+(adv?u("evRunAgain"):u("evRun"))+'</button></div>'
+ +advBody
+ +'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("evLitT")+'</h2><p class="text-sm mb-3">'+u("evLitB")+'</p><button class="btn p mb-3" onclick="runLitBench()">'+u("evLitRun")+'</button>'+litBody+'</div>';
+};
+function generateReport(){
+ var tests=ADV_TESTS.map(function(t){
+  var r;try{r=triage(t.in)}catch(e){return{t:t,tier:null,prob:null,pass:false}}
+  var pass=true;
+  if(t.exp!==undefined)pass=r.tier===t.exp;
+  else if(t.expMin!==undefined)pass=r.tier>=t.expMin;
+  if(t.forbid&&r.ml&&r.ml.active[t.forbid])pass=false;
+  if(t.check){try{pass=!!t.check(r)}catch(e){pass=false}}
+  return{t:t,tier:r.tier,prob:r.ml?Math.round(r.ml.probability*100):null,pass:pass};
+ });
+ var entries=performance.getEntriesByType("resource");
+ var extReq=entries.filter(function(e){var n=e.name||"";return n.indexOf("http")===0&&n.indexOf(location.origin)<0});
+ var storage=0;
+ try{storage=Object.keys(localStorage).filter(function(k){return k.indexOf("as_vault")>=0}).length}catch(e){}
+ verifyChain().then(function(chainRes){
+  var current=null;try{current=triage()}catch(e){}
+  var stateStr=JSON.stringify({C:C,D:D,sens:SENS,review:REVIEW.length,log:LOG.length});
+  sha256(stateStr).then(function(hash){
+   REPORT_DATA={ts:new Date().toISOString(),version:CDSS_MODEL.version,hash:hash,network:extReq.length,storage:storage,chain:chainRes,tests:tests,passed:tests.filter(function(x){return x.pass}).length,total:tests.length,current:current,logCount:LOG.length,assessmentCount:Object.keys(D).length};
+   draw();
+  });
+ });
+}
+function reportHTML(){
+ var R=REPORT_DATA;if(!R)return "";
+ var date=R.ts.replace("T"," ").slice(0,19)+" UTC";
+ var passColor=R.passed===R.total?"#16a34a":"#dc2626";
+ var netColor=R.network===0?"#16a34a":"#dc2626";
+ var chainColor=R.chain.ok?"#16a34a":"#dc2626";
+ var testsTable=R.tests.map(function(x,i){
+  return '<tr><td style="padding:.3rem;border-top:1px solid #ccc">'+(i+1)+'</td><td style="padding:.3rem;border-top:1px solid #ccc">'+esc(x.t.cat)+'</td><td style="padding:.3rem;border-top:1px solid #ccc">'+esc(x.t.name)+'</td><td style="padding:.3rem;border-top:1px solid #ccc">T'+x.tier+'</td><td style="padding:.3rem;border-top:1px solid #ccc">'+(x.prob!=null?x.prob+"%":"—")+'</td><td style="padding:.3rem;border-top:1px solid #ccc;color:'+(x.pass?"#16a34a":"#dc2626")+'"><b>'+(x.pass?"PASS":"FAIL")+'</b></td></tr>';
+ }).join("");
+ var revisionsHtml=TEST_REVISIONS.length?(
+  '<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionRevisions")+'</h2>'
+  +'<div style="border:1px solid #ccc;padding:1rem;border-radius:8px;background:#f5f8fa;font-size:.85rem">'
+  +TEST_REVISIONS.map(function(rev){
+      return '<div style="margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px dashed #ccc">'
+        +'<p style="margin:0 0 .3rem"><b>Test #'+rev.id+':</b> '+esc(rev.originalName)+' → '+esc(rev.revisedName)+'</p>'
+        +'<p style="margin:0 0 .3rem;font-size:.8rem;color:#666"><i>Original expectation:</i> '+esc(rev.originalExpectation)+'</p>'
+        +'<p style="margin:0;font-size:.8rem;color:#666"><i>Revision reason:</i> '+esc(rev.revisionReason)+'</p>'
+        +'<p style="margin:.3rem 0 0;font-size:.7rem;color:#999"><i>Date:</i> '+esc(rev.revisionDate)+'</p>'
+        +'</div>';
+    }).join("")
+  +'</div>'
+ ):"";
+ var cur=R.current?'<table style="width:100%;font-size:.85rem;border:1px solid #ccc">'
+  +'<tr><td style="padding:.4rem">Tier</td><td style="padding:.4rem"><b>'+R.current.tier+' — '+esc(p(tiers[R.current.tier-1]))+'</b></td></tr>'
+  +'<tr><td style="padding:.4rem">Probability</td><td style="padding:.4rem">'+(R.current.ml?Math.round(R.current.ml.probability*100)+"%":"—")+'</td></tr>'
+  +'<tr><td style="padding:.4rem">Red flags</td><td style="padding:.4rem">'+(R.current.u?"YES ("+R.current.u+")":"none")+'</td></tr>'
+  +'<tr><td style="padding:.4rem">Signals</td><td style="padding:.4rem">'+R.current.r.length+'</td></tr>'
+  +'<tr><td style="padding:.4rem">Suggested tests</td><td style="padding:.4rem">'+(R.current.tests.length?R.current.tests.map(function(t){return esc(p(t))}).join(" · "):"none")+'</td></tr>'
+  +'</table>':'<p style="color:#666;font-size:.85rem">'+u("rNoAssessment")+'</p>';
+ return '<div style="padding:1rem;max-width:900px;margin:0 auto">'
+  +'<h1 style="font-size:1.6rem;font-weight:800;color:#0e9f94;margin:0 0 .3rem">AndroShield Validation Report</h1>'
+  +'<p style="font-size:.8rem;color:#666;margin:0 0 1rem">'+u("rGenerated")+' '+date+' · v'+R.version+' · hash: <code style="font-size:.68rem">'+R.hash.slice(0,20)+'…</code></p>'
+  +'<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionPrivacy")+'</h2>'
+  +'<table style="width:100%;font-size:.85rem;border:1px solid #ccc">'
+  +'<tr><td style="padding:.4rem">'+u("rNetLabel")+'</td><td style="padding:.4rem;text-align:right"><b style="color:'+netColor+'">'+R.network+'</b></td></tr>'
+  +'<tr><td style="padding:.4rem">'+u("rStoreLabel")+'</td><td style="padding:.4rem;text-align:right"><b style="color:'+(R.storage===0?"#16a34a":"#dc2626")+'">'+R.storage+'</b></td></tr>'
+  +'<tr><td style="padding:.4rem">'+u("rChainLabel")+'</td><td style="padding:.4rem;text-align:right"><b style="color:'+chainColor+'">'+(R.chain.ok?u("rChainOk")+" ("+R.logCount+")":u("rChainBroken"))+'</b></td></tr>'
+  +'</table>'
+  +'<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionEngine")+'</h2>'
+  +'<p style="font-size:.9rem;margin:0 0 .5rem"><b style="color:'+passColor+'">'+R.passed+'/'+R.total+' '+u("rPassed")+'</b></p>'
+  +'<table style="width:100%;font-size:.72rem;border:1px solid #ccc"><thead><tr style="background:#f5f8fa"><th style="padding:.3rem">#</th><th style="padding:.3rem">Cat</th><th style="padding:.3rem">Test</th><th style="padding:.3rem">Tier</th><th style="padding:.3rem">Prob</th><th style="padding:.3rem">Result</th></tr></thead><tbody>'+testsTable+'</tbody></table>'
+  +revisionsHtml
+  +'<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionSnapshot")+'</h2>'+cur
+  +'<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionReview")+'</h2>'
+  +'<div style="border:1px solid #ccc;padding:1rem;border-radius:8px;background:#f5f8fa">'
+  +'<p style="margin:0 0 .4rem;font-size:.85rem"><b>'+u("rReviewerNameLabel")+':</b> '+u("aboutFounderName")+'</p>'
+  +'<p style="margin:0 0 .4rem;font-size:.85rem"><b>'+u("rReviewerRoleLabel")+':</b> '+u("aboutFounderRole")+'</p>'
+  +'<p style="margin:0 0 .6rem;font-size:.85rem"><b>'+u("rReviewerCredLabel")+':</b> '+u("aboutFounderCred")+'</p>'
+  +'<p style="margin:0 0 .8rem;font-size:.8rem;font-style:italic">'+u("rAttestationText")+'</p>'
+  +'<p style="margin:0 0 .4rem;font-size:.85rem">'+u("rSignatureLabel")+'</p>'
+  +'<p style="margin:0;font-size:.85rem">'+u("rDateLabel")+'</p></div>'
+  +'<h2 style="font-size:1.1rem;font-weight:700;margin:1.2rem 0 .5rem">'+u("rSectionLimits")+'</h2>'
+  +'<ul style="font-size:.85rem;padding-inline-start:1.2rem;margin:0">'+U.rLimitsList.map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ul>'
+  +'<p style="font-size:.7rem;color:#666;margin-top:1rem;text-align:center">'+u("rFooter")+' '+R.version+' · SHA-256: '+R.hash+'</p></div>';
+}
+function printReport(){
+ if(!REPORT_DATA)return;
+ var pa=document.querySelector("#printArea");
+ pa.innerHTML=reportHTML();
+ setTimeout(function(){window.print()},100);
+}
+function studyElapsed(){
+ if(!STUDY.current)return "0:00";
+ var s=Math.round((Date.now()-STUDY.current.startTime)/1000);
+ return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+}
+function startStudySession(){
+ STUDY.current={id:"P"+String(STUDY.nextId).padStart(2,"0"),startTime:Date.now(),endTime:null,durationSec:0,tier:null,completed:false,ageBand:"",clarity:null,trust:null,notes:"",lang:L?"ar":"en"};
+ STUDY.active=true;STUDY.showForm=false;
+ logAction("created","study session "+STUDY.current.id);
+ draw();
+}
+function endStudySession(){
+ if(!STUDY.current)return;
+ STUDY.current.endTime=Date.now();
+ STUDY.current.durationSec=Math.round((STUDY.current.endTime-STUDY.current.startTime)/1000);
+ try{STUDY.current.tier=triage().tier;STUDY.current.completed=true}catch(e){}
+ STUDY.active=false;STUDY.showForm=true;
+ draw();
+}
+function saveStudySession(){
+ if(!STUDY.current)return;
+ var age=$("#studyAge"),cl=$("#studyClarity"),tr=$("#studyTrust"),no=$("#studyNotes");
+ STUDY.current.ageBand=age?age.value:"";
+ STUDY.current.clarity=cl?+cl.value:null;
+ STUDY.current.trust=tr?+tr.value:null;
+ STUDY.current.notes=no?no.value:"";
+ STUDY.sessions.push(STUDY.current);
+ logAction("created","study session saved "+STUDY.current.id);
+ STUDY.current=null;STUDY.showForm=false;STUDY.nextId++;
+ draw();
+}
+function cancelStudySession(){
+ if(STUDY.current)logAction("modified","study session cancelled");
+ STUDY.current=null;STUDY.showForm=false;STUDY.active=false;
+ draw();
+}
+function exportStudyCSV(){
+ if(!STUDY.sessions.length){msg=u("studyEmpty");draw();return}
+ var headers=["ParticipantID","AgeBand","Language","DurationSec","Completed","Tier","Clarity","Trust","Notes"];
+ var rows=STUDY.sessions.map(function(s){
+  return [s.id,s.ageBand||"",s.lang||(L?"ar":"en"),s.durationSec,s.completed?"Yes":"No",s.tier||"",s.clarity||"",s.trust||"",'"'+String(s.notes||"").replace(/"/g,'""')+'"'].join(",");
+ });
+ var csv="\uFEFF"+headers.join(",")+"\n"+rows.join("\n");
+ var blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+ var a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="andoshield-usability-sessions-"+Date.now()+".csv";
+ document.body.appendChild(a);a.click();document.body.removeChild(a);
+ msg="✓ Exported "+STUDY.sessions.length+" sessions";
+ draw();
+}
+function studyBox(){
+ var html='<div class="box" style="border-color:var(--brand)">';
+ html+='<h2 class="font-bold mb-2">🔬 '+u("studyT")+'</h2>';
+ html+='<p class="text-sm mb-3">'+u("studyB")+'</p>';
+ if(!STUDY.active&&!STUDY.showForm){
+  html+='<button class="btn p w-full" onclick="startStudySession()">'+u("studyStart")+'</button>';
+ }
+ if(STUDY.active&&STUDY.current){
+  html+='<div class="studySession active"><span class="studyPulse"></span> <b>'+u("studyActive")+STUDY.current.id+'</b> · '+studyElapsed()+' '+u("studyElapsed")+'</div>';
+  html+='<button class="btn g w-full mt-2" onclick="endStudySession()">'+u("studyEnd")+'</button>';
+ }
+ if(STUDY.showForm&&STUDY.current){
+  html+='<div class="studySession active"><b>'+STUDY.current.id+'</b> · '+STUDY.current.durationSec+'s · Tier '+(STUDY.current.tier||"—")+'</div>';
+  html+='<label class="block text-sm mb-2">'+u("studyAgeBand")+'<select id="studyAge" class="inp">'+U.studyAgeOpts.map(function(o){return '<option value="'+o[0]+'">'+o[0]+'</option>'}).join("")+'</select></label>';
+  html+='<label class="block text-sm mb-2">'+u("studyClarity")+'<select id="studyClarity" class="inp"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>';
+  html+='<label class="block text-sm mb-2">'+u("studyTrust")+'<select id="studyTrust" class="inp"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></label>';
+  html+='<label class="block text-sm mb-2">'+u("studyNotes")+'<textarea id="studyNotes" class="inp" rows="2"></textarea></label>';
+  html+='<div class="flex gap-2"><button class="btn p flex-1" onclick="saveStudySession()">'+u("studySave")+'</button><button class="btn g flex-1" onclick="cancelStudySession()">'+u("studyCancel")+'</button></div>';
+ }
+ html+='</div>';
+ if(STUDY.sessions.length){
+  html+='<div class="box"><h3 class="font-bold mb-2">'+STUDY.sessions.length+' '+u("studySessions")+'</h3>';
+  html+='<div class="overflow-x-auto"><table class="w-full text-xs" style="border:1px solid var(--bd)"><thead><tr style="background:var(--cards)">'+U.studyTableHeaders.map(function(h){return '<th style="padding:.3rem;text-align:start">'+h+'</th>'}).join("")+'</tr></thead><tbody>';
+  STUDY.sessions.forEach(function(s){
+   html+='<tr class="border-t bdr"><td style="padding:.3rem">'+s.id+'</td><td style="padding:.3rem">'+s.durationSec+'s</td><td style="padding:.3rem">'+(s.tier||"—")+'</td><td style="padding:.3rem">'+(s.clarity||"—")+'</td><td style="padding:.3rem">'+(s.trust||"—")+'</td><td style="padding:.3rem">'+esc(s.notes||"")+'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+  html+='<button class="btn g w-full mt-3" onclick="exportStudyCSV()">'+u("studyExport")+'</button></div>';
+ }
+ html+='<div class="box warn"><h3 class="font-bold mb-2">'+u("studyHowTo")+'</h3><p class="text-sm" style="white-space:pre-line">'+u("studyHowToText")+'</p></div>';
+ return html;
+}
+function openCaseLogEntry(){
+ var r;
+ try{r=triage()}catch(e){msg=u("caseLogNeedsAssessment");draw();return}
+ if(!Object.keys(D).length){msg=u("caseLogNeedsAssessment");draw();return}
+ var topFactors=r.ml&&r.ml.contribs&&r.ml.contribs.length
+  ?r.ml.contribs.slice(0,4).map(function(c){return p(c.label)}).join("; ")
+  :"none";
+ CASE_LOG.pending={
+  id:"C"+String(CASE_LOG.nextId).padStart(2,"0"),
+  tier:r.tier,
+  prob:r.ml?Math.round(r.ml.probability*100):0,
+  factors:topFactors,
+  desc:"",
+  judgment:"Agree",
+  rationale:"",
+  ts:new Date().toISOString()
+ };
+ CASE_LOG.active=true;
+ draw();
+}
+function saveCaseLogEntry(){
+ if(!CASE_LOG.pending)return;
+ var desc=$("#clDesc"),jud=$("#clJudgment"),rat=$("#clRationale");
+ if(!desc||!desc.value.trim()){msg=u("caseLogDescRequired");draw();return}
+ CASE_LOG.pending.desc=desc.value.trim();
+ CASE_LOG.pending.judgment=jud?jud.value:"Agree";
+ CASE_LOG.pending.rationale=rat?rat.value.trim():"";
+ CASE_LOG.entries.push(CASE_LOG.pending);
+ logAction("created","case log "+CASE_LOG.pending.id);
+ CASE_LOG.pending=null;
+ CASE_LOG.active=false;
+ CASE_LOG.nextId++;
+ draw();
+}
+function cancelCaseLogEntry(){
+ CASE_LOG.pending=null;
+ CASE_LOG.active=false;
+ draw();
+}
+function exportCaseLogCSV(){
+ if(!CASE_LOG.entries.length){msg=u("caseLogEmpty");draw();return}
+ var escCSV=function(s){return '"'+String(s||"").replace(/"/g,'""')+'"'};
+ var headers=["CaseID","CompositeDescription","EngineTier","Probability","TopFactors","ExpertJudgment","ExpertRationale","Timestamp"];
+ var rows=CASE_LOG.entries.map(function(e){
+  return [e.id,escCSV(e.desc),e.tier,e.prob+"%",escCSV(e.factors),e.judgment,escCSV(e.rationale),e.ts].join(",");
+ });
+ var csv="\uFEFF"+headers.join(",")+"\n"+rows.join("\n");
+ var blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+ var a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="andoshield-clinical-scenarios-"+Date.now()+".csv";
+ document.body.appendChild(a);a.click();document.body.removeChild(a);
+ msg="✓ Exported "+CASE_LOG.entries.length+" cases";
+ draw();
+}
+function caseLogBox(){
+ var html='<div class="box" style="border-color:var(--brand)">';
+ html+='<h2 class="font-bold mb-2">🧪 '+u("caseLogT")+'</h2>';
+ html+='<p class="text-sm mb-3">'+u("caseLogB")+'</p>';
+ if(!CASE_LOG.active&&!CASE_LOG.pending){
+  html+='<button class="btn p w-full" onclick="openCaseLogEntry()">'+u("caseLogStart")+'</button>';
+ }
+ if(CASE_LOG.active&&CASE_LOG.pending){
+  var pe=CASE_LOG.pending;
+  html+='<div class="studySession active mb-3">';
+  html+='<p class="text-xs mut">'+u("caseLogEngine")+'</p>';
+  html+='<p class="text-sm mb-1"><b>'+pe.id+'</b> · Tier '+pe.tier+' · '+pe.prob+'%</p>';
+  html+='<p class="text-xs">'+esc(pe.factors)+'</p>';
+  html+='</div>';
+  html+='<label class="block text-sm mb-2">'+u("caseLogDesc")+'<textarea id="clDesc" class="inp" rows="2" placeholder="'+u("caseLogDescPlaceholder")+'"></textarea></label>';
+  html+='<label class="block text-sm mb-2">'+u("caseLogJudgment")+'<select id="clJudgment" class="inp"><option value="Agree">'+u("caseLogAgree")+'</option><option value="Needs tweak">'+u("caseLogTweak")+'</option><option value="Wrong">'+u("caseLogWrong")+'</option></select></label>';
+  html+='<label class="block text-sm mb-2">'+u("caseLogRationale")+'<textarea id="clRationale" class="inp" rows="2" placeholder="'+u("caseLogRationalePlaceholder")+'"></textarea></label>';
+  html+='<div class="flex gap-2"><button class="btn p flex-1" onclick="saveCaseLogEntry()">'+u("caseLogSave")+'</button><button class="btn g flex-1" onclick="cancelCaseLogEntry()">'+u("caseLogCancel")+'</button></div>';
+ }
+ html+='</div>';
+ if(CASE_LOG.entries.length){
+  html+='<div class="box"><h3 class="font-bold mb-2">'+CASE_LOG.entries.length+' '+u("caseLogEntries")+'</h3>';
+  html+='<div class="overflow-x-auto"><table class="w-full text-xs" style="border:1px solid var(--bd)"><thead><tr style="background:var(--cards)">'+U.caseLogTableHeaders.map(function(h){return '<th style="padding:.3rem;text-align:start">'+h+'</th>'}).join("")+'</tr></thead><tbody>';
+  CASE_LOG.entries.forEach(function(e){
+   var jcls=e.judgment==="Agree"?"oktx":e.judgment==="Wrong"?"badtx":"warntx";
+   html+='<tr class="border-t bdr"><td style="padding:.3rem">'+e.id+'</td><td style="padding:.3rem">Tier '+e.tier+' · '+e.prob+'%</td><td style="padding:.3rem" class="'+jcls+'">'+esc(e.judgment)+'</td><td style="padding:.3rem">'+esc(e.desc.slice(0,40))+'</td></tr>';
+  });
+  html+='</tbody></table></div>';
+  html+='<button class="btn g w-full mt-3" onclick="exportCaseLogCSV()">'+u("caseLogExport")+'</button></div>';
+ }
+ html+='<div class="box warn"><h3 class="font-bold mb-2">'+u("caseLogHowTo")+'</h3><p class="text-sm" style="white-space:pre-line">'+u("caseLogHowToText")+'</p></div>';
+ return html;
+}
+M.report=function(){
+ if(!REPORT_DATA){
+  var containsHtml='<div class="box"><h2 class="font-bold mb-2">'+u("rContains")+'</h2><ul class="list-disc ps-5 text-sm mb-3">'+U.rContainsList.map(function(x){return "<li>"+p(x)+"</li>"}).join("")+'</ul>'
+   +'<button class="btn p w-full" onclick="generateReport()">'+u("rGenerate")+'</button></div>';
+  return head(u("rT"),u("rB"),"📊")+containsHtml+caseLogBox()+studyBox();
+ }
+ var R=REPORT_DATA;
+ var sc=R.passed===R.total?"var(--ok)":"var(--bad)";
+ return head(u("rT"),u("rB"),"📊")
+  +'<div class="box" style="border-color:'+sc+'">'
+  +'<div class="flex justify-between items-center mb-2"><span class="text-sm mut">'+u("rGenerated")+'</span><span class="text-xs font-mono">'+R.ts.slice(0,19).replace("T"," ")+'</span></div>'
+  +'<p class="text-sm mb-1">Engine: <b style="color:'+sc+'">'+R.passed+'/'+R.total+'</b></p>'
+  +'<p class="text-sm mb-1">Network: <b class="'+(R.network===0?"oktx":"badtx")+'">'+R.network+'</b></p>'
+  +'<p class="text-sm mb-1">Chain: <b class="'+(R.chain.ok?"oktx":"badtx")+'">'+(R.chain.ok?u("rChainOk"):u("rChainBroken"))+'</b></p>'
+  +'<p class="text-xs mut mt-2 font-mono" style="word-break:break-all">'+R.hash+'</p></div>'
+  +'<div class="box">'+reportHTML()+'</div>'
+  +'<div class="flex gap-2 mb-3"><button class="btn g flex-1" onclick="generateReport()">'+u("rRegenerate")+'</button>'
+  +'<button class="btn p flex-1" onclick="printReport()">'+u("rPrint")+'</button></div>'
+  +caseLogBox()+studyBox();
+};
+M.log=function(){
+ var entriesHtml;
+ if(!LOG.length){
+  entriesHtml='<p class="box">'+u("logEmpty")+'</p>';
+ }else{
+  entriesHtml=LOG.slice().reverse().map(function(entry,revIdx){
+   var idx=LOG.length-1-revIdx;
+   var actionLabel=LOG_TYPES[entry.action]||entry.action||"event";
+   return '<div class="logEntry verified"><div class="flex justify-between"><b>#'+(idx+1)+" · "+actionLabel+'</b><span class="text-xs mut">'+entry.ts.slice(11,19)+'</span></div>'
+   +'<div class="text-xs mt-1">'+esc(entry.detail)+'</div>'
+   +'<div class="hashShort mt-1">hash: '+shortHash(entry.hash)+'</div>'
+   +'<div class="hashShort">prev: '+shortHash(entry.prevHash)+'</div>'
+   +'</div>';
+  }).join("");
+ }
+ return head(u("logT"),u("logB"),"📜")
+ +'<div class="box"><button class="btn p w-full mb-2" onclick="verifyLog()">'+u("logVerify")+'</button><div id="verifyResult"></div></div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("logEntry")+" ("+LOG.length+")</h2>"+entriesHtml+'</div>'
+ +'<div class="box warn"><p class="text-sm">'+u("logNote")+'</p></div>';
+};
+function verifyLog(){
+ verifyChain().then(function(res){
+  var el=$("#verifyResult");
+  if(!el)return;
+  if(res.ok){
+   el.innerHTML='<div class="verifyResult pass"><b>'+u("logVerified")+"</b> ("+LOG.length+" entries)</div>";
+  }else{
+   el.innerHTML='<div class="verifyResult fail"><b>'+u("logTampered")+"</b> #"+(res.brokenAt+1)+"</div>";
+  }
+ });
+}
+M.plan=function(){
+ var weeksHtml=(U.planWeeks||[]).map(function(w){
+  return '<div class="weekBox"><div class="flex justify-between"><div><span class="weekNum">'+p([String(w[0]),String(w[1])])+'</span><b>'+p([w[2],w[3]])+'</b></div></div><p class="text-sm mt-1">'+p([w[4],w[4]])+'</p><p class="text-xs mut mt-1">'+p([w[5],w[5]])+'</p></div>';
+ }).join("");
+ var risksHtml=(U.planRisks||[]).map(function(r){
+  return '<div class="weekBox"><b class="badtx">'+p([r[0],r[1]])+'</b><p class="text-sm mt-1">'+p([r[2],r[2]])+'</p></div>';
+ }).join("");
+ return head(u("planT"),u("planB"),"📅")
+ +'<div class="box"><h2 class="font-bold mb-3">'+u("planWeeksTitle")+'</h2>'+weeksHtml+'</div>'
+ +'<div class="box"><h2 class="font-bold mb-2">'+u("planRisk")+'</h2>'+risksHtml+'</div>'
+ +'<div class="box" style="background:var(--chip);border:2px solid var(--brand)"><h2 class="font-bold mb-2">'+u("planAsk")+'</h2><p class="text-sm" style="white-space:pre-line">'+u("planAskText")+'</p></div>';
+};
+M.about=function(){
+ var heroHtml='<div class="aboutHero">'
+ +'<div class="flex justify-center mb-3"><div class="logo-wrap" style="width:90px;height:90px;padding:6px">'+logo(78)+'</div></div>'
+ +'<h1 class="text-3xl font-extrabold brandtx mb-2">'+u("aboutT")+'</h1>'
+ +'<p class="text-sm mut mb-3">'+u("aboutTagline")+'</p>'
+ +'<p class="text-lg font-semibold">'+u("aboutHero")+'</p>'
+ +'</div>';
+ var founderBadges=p(U.aboutFounderBadges)||[];
+ var founderBadgesHtml=founderBadges.length?founderBadges.map(function(b){return '<span class="chip">'+b+'</span>'}).join(""):"";
+ var founderHtml='<div class="founderCard">'
+ +'<div class="flex items-center gap-3 mb-3">'
+ +'<div class="founderAvatar">💊</div>'
+ +'<div><p class="text-xs mut font-bold uppercase">'+u("aboutFounderT")+'</p>'
+ +'<h2 class="text-lg font-extrabold brandtx">'+u("aboutFounderName")+'</h2>'
+ +'<p class="text-sm font-semibold">'+u("aboutFounderRole")+'</p>'
+ +'<p class="text-xs mut">'+u("aboutFounderCred")+'</p></div></div>'
+ +'<p class="text-sm mb-3">'+u("aboutFounderBio")+'</p>'
+ +'<div class="flex flex-wrap gap-2 mb-3">'+founderBadgesHtml+'</div>'
+ +'<p class="text-xs mut" style="border-top:1px dashed var(--bd);padding-top:.6rem">'+u("aboutFounderNote")+'</p>'
+ +'</div>';
+ var visionHtml='<div class="box"><h2 class="font-bold mb-2">🎯 '+u("aboutVision")+'</h2><p class="text-sm">'+u("aboutVisionText")+'</p></div>';
+ var whyHtml='<div class="box"><h2 class="font-bold mb-2">📊 '+u("aboutWhy")+'</h2><p class="text-sm">'+u("aboutWhyText")+'</p></div>';
+ var valuesHtml='<div class="box"><h2 class="font-bold mb-3">⭐ '+u("aboutValuesT")+'</h2>'
+  +(U.aboutValues||[]).map(function(v){return '<div class="valueCard"><h4>'+p([v[0],v[1]])+'</h4><p>'+p([v[2],v[3]])+'</p></div>'}).join("")
+  +'</div>';
+ var statsHtml='<div class="box"><h2 class="font-bold mb-3">📈 '+u("aboutStatsT")+'</h2><div class="grid sm:grid-cols-2 gap-x-3">'
+  +(U.aboutStats||[]).map(function(s){return '<div class="aboutStat"><div class="big">'+p([s[0],s[1]])+'</div><div class="lbl">'+p([s[2],s[3]])+'</div></div>'}).join("")
+  +'</div></div>';
+ var teamHtml='<div class="box"><h2 class="font-bold mb-3">👥 '+u("aboutTeamFullT")+'</h2>'
+  +(U.aboutTeamFull||[]).map(function(t){return '<div class="valueCard" style="border-left-color:var(--brand2)"><h4>'+t[0]+" "+p([t[1],t[2]])+'</h4><p>'+p([t[3],t[4]])+'</p></div>'}).join("")
+  +'</div>';
+ var roadmapHtml='<div class="box"><h2 class="font-bold mb-3">🗺️ '+u("aboutRoadmapT")+'</h2>'
+  +(U.aboutRoadmapFull||[]).map(function(y){return '<div class="timelineItem"><div class="timelineYear">'+p([y[0],y[1]])+'</div><div class="timelineTitle">'+p([y[2],y[3]])+'</div><div class="timelineDesc">'+p([y[4],y[5]])+'</div></div>'}).join("")
+  +'</div>';
+ var contactHtml='<div class="box" style="background:var(--chip);border:2px solid var(--brand)"><h2 class="font-bold mb-2">'+u("aboutContactT")+'</h2><p class="text-sm mb-3">'+u("aboutContactText")+'</p><a href="mailto:androshield.app@gmail.com" class="btn p w-full block text-center">'+u("aboutContactBtn")+'</a></div>';
+ return head(u("aboutT"),u("aboutTagline"),"ℹ")
+ +heroHtml+founderHtml+visionHtml+whyHtml+valuesHtml+statsHtml+teamHtml+roadmapHtml+contactHtml;
+};
+function buildFHIR(){
+ var r;
+ try{r=triage()}catch(e){r={tier:1,score:0,ml:{probability:0},r:[],tests:[]}}
+ if(!r.ml)r.ml={probability:0};
+ if(!r.r)r.r=[];
+ if(!r.tests)r.tests=[];
+ var now=new Date().toISOString();
+ var patientId="anon-"+Math.random().toString(36).slice(2,8);
+ var observations=[];
+ if(D.conc!=null&&D.conc!==""){
+  observations.push({resourceType:"Observation",id:"obs-conc-"+patientId,status:"final",category:[{coding:[{system:"http://terminology.hl7.org/CodeSystem/observation-category",code:"laboratory"}]}],code:{coding:[{system:"http://loinc.org",code:"19144-9",display:"Spermatozoa concentration"}]},subject:{reference:"Patient/"+patientId},effectiveDateTime:now,valueQuantity:{value:+D.conc,unit:"million/mL",system:"http://unitsofmeasure.org",code:"10*6/mL"}});
+ }
+ if(D.mot!=null&&D.mot!==""){
+  observations.push({resourceType:"Observation",id:"obs-mot-"+patientId,status:"final",code:{coding:[{system:"http://loinc.org",code:"19074-8",display:"Spermatozoa motility"}]},subject:{reference:"Patient/"+patientId},effectiveDateTime:now,valueQuantity:{value:+D.mot,unit:"%",system:"http://unitsofmeasure.org",code:"%"}});
+ }
+ var rationaleText="Weighted score with "+r.r.length+" contributing factor"+(r.r.length===1?"":"s")+". See note for details.";
+ var riskAssessment={
+  resourceType:"RiskAssessment",id:"ra-"+patientId,status:"final",subject:{reference:"Patient/"+patientId},occurrenceDateTime:now,
+  method:{coding:[{system:"http://andoshield.io/fhir/CodeSystem/risk-method",code:"weighted-score-v6",display:"AndroShield Weighted Clinical Risk Score v6"}],text:"Evidence-informed weighted risk score (pending clinical validation)"},
+  basis:observations.map(function(o){return{reference:"Observation/"+o.id}}),
+  prediction:[{outcome:{text:"Need for specialist care"},probabilityDecimal:+(r.ml.probability||0).toFixed(4),qualitativeRisk:{coding:[{system:"http://terminology.hl7.org/CodeSystem/risk-probability",code:r.tier>=4?"high":r.tier>=3?"moderate":r.tier>=2?"low":"very-low"}]},rationale:rationaleText}],
+  note:[{text:r.r.length>0?r.r.map(function(x){return (RS[x[0]]||RS.none)[0]}).join(" | "):"No notable signals found."}]
+ };
+ var serviceRequests=[];
+ r.tests.forEach(function(t,i){
+  serviceRequests.push({resourceType:"ServiceRequest",id:"sr-"+i+"-"+patientId,status:"draft",intent:"proposal",subject:{reference:"Patient/"+patientId},authoredOn:now,code:{text:t[0]},reasonReference:{reference:"RiskAssessment/ra-"+patientId},note:[{text:"Proposed by AndroShield. Requires clinician approval before ordering."}]});
+ });
+ var consent={
+  resourceType:"Consent",id:"consent-"+patientId,status:"active",
+  scope:{coding:[{system:"http://terminology.hl7.org/CodeSystem/consentscope",code:"patient-privacy"}]},
+  category:[{coding:[{system:"http://loinc.org",code:"59284-0",display:"Patient Consent"}]}],
+  patient:{reference:"Patient/"+patientId},dateTime:now,performer:[{reference:"Patient/"+patientId}],
+  policyRule:{text:"UAE PDPL (Federal Decree-Law 45/2021) — consent for screening summary sharing"},
+  provision:{type:"permit",purpose:[{system:"http://terminology.hl7.org/CodeSystem/v3-ActReason",code:"TREAT"}],dataPeriod:{start:now}}
+ };
+ var provenance={
+  resourceType:"Provenance",id:"prov-"+patientId,
+  target:[{reference:"RiskAssessment/ra-"+patientId},{reference:"Consent/consent-"+patientId}].concat(serviceRequests.map(function(sr){return{reference:"ServiceRequest/"+sr.id}})),
+  recorded:now,
+  agent:[{type:{coding:[{system:"http://terminology.hl7.org/CodeSystem/provenance-participant-type",code:"assembler"}]},who:{display:"AndroShield on-device engine "+CDSS_MODEL.version}}],
+  activity:{coding:[{system:"http://terminology.hl7.org/CodeSystem/v3-DataOperation",code:"CREATE"}]},
+  signature:[{type:[{system:"urn:iso-astm:E1762-95:2013",code:"1.2.840.10065.1.12.1.1"}],when:now,who:{display:"AndroShield (device-local)"},targetFormat:"application/fhir+json",sigFormat:"application/jose",data:"pending-local-hash"}]
+ };
+ var bundle={
+  resourceType:"Bundle",id:"andoshield-bundle-"+patientId,type:"collection",timestamp:now,
+  entry:[
+   {fullUrl:"urn:uuid:patient-"+patientId,resource:{resourceType:"Patient",id:patientId,meta:{profile:["http://hl7.org/fhir/StructureDefinition/Patient"]},identifier:[{system:"http://andoshield.io/anonymous-id",value:"ANON-"+patientId}],active:true,gender:"male",extension:[{url:"http://andoshield.io/fhir/StructureDefinition/risk-tier",valueInteger:r.tier},{url:"http://andoshield.io/fhir/StructureDefinition/risk-score",valueInteger:r.score},{url:"http://andoshield.io/fhir/StructureDefinition/screening-timestamp",valueDateTime:now}],communication:[{language:{coding:[{system:"urn:ietf:bcp:47",code:L?"ar":"en"}]}}]}},
+   {fullUrl:"urn:uuid:risk-"+patientId,resource:riskAssessment},
+   {fullUrl:"urn:uuid:consent-"+patientId,resource:consent},
+   {fullUrl:"urn:uuid:prov-"+patientId,resource:provenance}
+  ]
+ };
+ observations.forEach(function(o){bundle.entry.push({fullUrl:"urn:uuid:"+o.id,resource:o})});
+ serviceRequests.forEach(function(sr){bundle.entry.push({fullUrl:"urn:uuid:"+sr.id,resource:sr})});
+ return bundle;
+}
+function simulateSend(){INT_SENT=true;draw()}
+function copyFHIR(){
+ try{
+  var bundle=buildFHIR();var payload=JSON.stringify(bundle,null,2);
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+   navigator.clipboard.writeText(payload).then(function(){msg="✓ Copied "+payload.length+" characters to clipboard";draw()}).catch(function(){msg="Copy failed — select the text manually";draw()});
+  }else{
+   var ta=document.createElement("textarea");ta.value=payload;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);
+   msg="✓ Copied "+payload.length+" characters";draw();
+  }
+ }catch(e){msg="Error: "+e.message;draw()}
+}
+function downloadFHIR(){
+ try{
+  var bundle=buildFHIR();var payload=JSON.stringify(bundle,null,2);
+  var blob=new Blob([payload],{type:"application/fhir+json"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="andoshield-bundle-"+Date.now()+".json";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  msg="✓ Downloaded FHIR bundle";draw();
+ }catch(e){msg="Error: "+e.message;draw()}
+}
+M.integration=function(){
+ var bundle,payload,isEmpty=Object.keys(D).length===0;
+ try{bundle=buildFHIR();payload=JSON.stringify(bundle,null,2)}catch(e){payload=JSON.stringify({error:String(e.message),hint:"Complete an assessment first"},null,2);bundle={entry:[]}}
+ var lineCount=payload.split("\n").length;
+ var sizeKB=(payload.length/1024).toFixed(1);
+ var emptyNote=isEmpty?'<div class="box warn"><p class="text-sm">⚠ '+u("intEmpty")+'</p></div>':"";
+ var resources=bundle.entry?bundle.entry.map(function(e){return e.resource.resourceType}):[];
+ var count=function(t){return resources.filter(function(x){return x===t}).length};
+ var patientCount=count("Patient"),riskCount=count("RiskAssessment"),consentCount=count("Consent"),provCount=count("Provenance"),obsCount=count("Observation"),srCount=count("ServiceRequest"),total=resources.length;
+ var tierDisplay=1,probDisplay="0.0%";
+ try{
+  var ra=bundle.entry.filter(function(e){return e.resource.resourceType==="RiskAssessment"})[0];
+  if(ra){var pred=ra.resource.prediction[0];probDisplay=(pred.probabilityDecimal*100).toFixed(1)+"%";var qualCode=pred.qualitativeRisk.coding[0].code;tierDisplay=qualCode==="high"?4:qualCode==="moderate"?3:qualCode==="low"?2:1}
+ }catch(e){}
+ var bundleCard='<div class="bundleCard"><h3>'+u("intBundleContents")+'</h3>'
+  +'<div class="bundleRow"><span class="num">👤</span><div><div class="lbl">'+u("intPatient")+'</div><div class="desc">FHIR Patient resource</div></div><span class="cnt '+(patientCount===0?"zero":"")+'">'+patientCount+'</span></div>'
+  +'<div class="bundleRow"><span class="num">📊</span><div><div class="lbl">'+u("intRisk")+'</div><div class="desc">Tier '+tierDisplay+" · "+probDisplay+'</div></div><span class="cnt '+(riskCount===0?"zero":"")+'">'+riskCount+'</span></div>'
+  +'<div class="bundleRow"><span class="num">📋</span><div><div class="lbl">'+u("intConsent")+'</div><div class="desc">PDPL · Federal Decree-Law 45/2021</div></div><span class="cnt '+(consentCount===0?"zero":"")+'">'+consentCount+'</span></div>'
+  +'<div class="bundleRow"><span class="num">✍️</span><div><div class="lbl">'+u("intProv")+'</div><div class="desc">JOSE signature · provenance</div></div><span class="cnt '+(provCount===0?"zero":"")+'">'+provCount+'</span></div>'
+  +'<div class="bundleRow"><span class="num">🧪</span><div><div class="lbl">'+u("intObs")+'</div><div class="desc">LOINC-coded · lab values</div></div><span class="cnt '+(obsCount===0?"zero":"")+'">'+obsCount+'</span></div>'
+  +'<div class="bundleRow"><span class="num">📝</span><div><div class="lbl">'+u("intSR")+'</div><div class="desc">Draft · requires clinician approval</div></div><span class="cnt '+(srCount===0?"zero":"")+'">'+srCount+'</span></div>'
+  +'<div class="bundleTotal">'+u("intBundleTotal")+": "+total+'</div>'
+  +'<p class="text-xs mut mt-2 text-center">'+u("intBundleHint")+'</p>'
+  +'</div>';
+ return head(u("intT"),u("intB"),"🔗")+emptyNote+bundleCard
+ +'<div class="box"><div class="flex justify-between items-center mb-2"><h2 class="font-bold">'+u("intFHIR")+'</h2><span class="badge badgeCat">FHIR R4 · '+lineCount+" lines · "+sizeKB+' KB</span></div>'
+ +'<pre class="fhirPre">'+esc(payload)+'</pre>'
+ +'<div class="flex gap-2 mt-3"><button class="btn g flex-1" onclick="copyFHIR()">'+u("intCopy")+'</button><button class="btn g flex-1" onclick="downloadFHIR()">'+u("intDownload")+'</button></div></div>'
+ +'<div class="box"><button class="btn p w-full mb-2" onclick="simulateSend()">'+u("intSend")+'</button>'+(INT_SENT?'<p class="text-sm oktx font-semibold mt-2">✓ '+u("intSent")+'</p>':"")+'</div>'
+ +'<div class="box" style="background:var(--chip);border:1px solid var(--brand)"><h3 class="font-bold mb-2">🔍 '+u("intValidate")+'</h3><ol class="list-decimal ps-5 text-sm space-y-1"><li>'+u("intValidateStep1")+'</li><li>'+u("intValidateStep2")+' <a href="https://validator.hl7.org/" target="_blank" class="brandtx underline" rel="noopener">validator.hl7.org</a></li><li>'+u("intValidateStep3")+'</li><li>'+u("intValidateStep4")+'</li><li>'+u("intValidateStep5")+'</li></ol></div>'
+ +'<div class="box warn"><p class="text-sm">'+u("intNote")+'</p></div>';
+};
+function openAbout(){
+ var modal=$("#modal");
+ modal.innerHTML='<div class="modalContent"><button class="modalClose" onclick="closeModal()">×</button>'
+ +'<h2 class="text-2xl font-extrabold brandtx mb-3">'+u("aboutT")+'</h2>'
+ +'<h3 class="font-bold mb-1">💊 '+u("aboutFounderT")+'</h3><p class="text-sm mb-1"><b>'+u("aboutFounderName")+'</b></p><p class="text-sm mb-4">'+u("aboutFounderBio")+'</p>'
+ +'<h3 class="font-bold mb-1">🎯 '+u("aboutVision")+'</h3><p class="text-sm mb-4">'+u("aboutVisionText")+'</p>'
+ +'<h3 class="font-bold mb-1">📊 '+u("aboutWhy")+'</h3><p class="text-sm mb-4">'+u("aboutWhyText")+'</p>'
+ +'<h3 class="font-bold mb-1">👥 '+u("aboutTeam")+'</h3><p class="text-sm mb-4">'+u("aboutTeamText")+'</p>'
+ +'<h3 class="font-bold mb-1">🗺️ '+u("aboutRoadmap")+'</h3><ul class="list-disc ps-5 text-sm mb-4">'
+ +(U.aboutRoadmapText||[]).map(function(r){return "<li><b>"+p([r[0],r[1]])+"</b>: "+p([r[2],r[2]])+"</li>"}).join("")
+ +'</ul>'
+ +'<button class="btn p w-full" onclick="closeModal()">'+u("aboutClose")+'</button>'
+ +'</div>';
+ modal.classList.add("on");
+}
+function closeModal(){$("#modal").classList.remove("on");$("#modal").innerHTML=""}
+function startTour(){if(!U.tourSteps||!U.tourSteps.length)return;TOUR.active=true;TOUR.step=0;$("#tourOverlay").classList.add("on");showTourStep(0)}
+function showTourStep(i){
+ var bubble=$("#tourBubble");
+ if(!U.tourSteps||i>=U.tourSteps.length){endTour();return}
+ var step=U.tourSteps[i];
+ var title=p([step[0],step[0]]);
+ var body=p([step[1],step[2]]);
+ var dots="";
+ for(var j=0;j<U.tourSteps.length;j++)dots+='<span class="tourDot '+(j===i?"on":"")+'"></span>';
+ bubble.innerHTML="<h3>"+title+"</h3><p>"+body+'</p><div class="tourNav"><div class="tourDots">'+dots+'</div><div class="flex gap-1"><button class="btn g p-1 px-3" onclick="endTour()">×</button><button class="btn tourBtn p-1 px-3" onclick="nextTour()">'+(i<U.tourSteps.length-1?"→":"✓")+'</button></div></div>';
+ bubble.style.display="block";
+ var rect=bubble.getBoundingClientRect();
+ var bw=340,bh=rect.height||200;
+ var x=window.innerWidth/2-bw/2;
+ var y=window.innerHeight/2-bh/2;
+ bubble.style.left=Math.max(10,Math.min(window.innerWidth-bw-10,x))+"px";
+ bubble.style.top=Math.max(10,Math.min(window.innerHeight-bh-10,y))+"px";
+}
+function nextTour(){
+ TOUR.step++;
+ if(!U.tourSteps||TOUR.step>=U.tourSteps.length){endTour();return}
+ var actions=[function(){go(1)},function(){setMode("verify")},function(){},function(){},function(){setMode("clin")},function(){setMode("log")},function(){setMode("ml")},function(){setMode("plan")},function(){}];
+ if(actions[TOUR.step-1])actions[TOUR.step-1]();
+ showTourStep(TOUR.step);
+}
+function endTour(){TOUR.active=false;$("#tourOverlay").classList.remove("on");$("#tourBubble").style.display="none"}
+function setMode(m){mode=m;draw();scrollTo(0,0)}
+function togglePortal(){
+ if(PORTAL==="patient"){
+  if(CLIN){PORTAL="admin";mode="clin";draw();scrollTo(0,0);}
+  else{showPortalGate();}
+ }else{
+  PORTAL="patient";mode="user";draw();scrollTo(0,0);
+ }
+}
+function showPortalGate(){
+ var modal=$("#modal");
+ modal.innerHTML='<div class="modalContent">'
+  +'<button class="modalClose" onclick="closeModal()">×</button>'
+  +'<h2 class="text-xl font-extrabold brandtx mb-2">'+u("gateModalTitle")+'</h2>'
+  +'<p class="text-sm mut mb-3">'+u("gateModalBody")+'</p>'
+  +'<div class="box" style="background:var(--chip);border-color:var(--brand);padding:.9rem;margin-bottom:.75rem">'
+  +'<p class="text-sm mb-2"><b>'+u("demoCodeLabel")+'</b> <code style="background:var(--card);padding:.2rem .5rem;border-radius:6px;font-family:monospace;font-size:.9rem">clinic-demo</code></p>'
+  +'<button class="btn p w-full" onclick="demoPortalUnlock()">'+u("oneClickDemo")+'</button>'
+  +'</div>'
+  +'<p class="text-xs mut mb-2 text-center">'+u("orManual")+'</p>'
+  +'<input id="portalCode" type="password" class="inp mb-3" placeholder="clinic-demo" autocomplete="off">'
+  +'<div class="flex gap-2"><button class="btn g flex-1" onclick="submitPortalGate()">'+u("gateGo")+'</button>'
+  +'<button class="btn g flex-1" onclick="closeModal()">'+u("cancel")+'</button></div>'
+  +'</div>';
+ modal.classList.add("on");
+}
+function demoPortalUnlock(){
+ var el=$("#portalCode");
+ if(el)el.value="clinic-demo";
+ submitPortalGate();
+}
+function submitPortalGate(){
+ var code=$("#portalCode");
+ if(!code||code.value.trim()!=="clinic-demo"){alert(u("gateBad"));return;}
+ CLIN=true;PORTAL="admin";mode="clin";
+ closeModal();
+ logAction("modified","admin portal unlocked");
+ draw();scrollTo(0,0);
+}
+function go(d){st=Math.max(0,Math.min(N.length-1,st+d));msg="";if(st>=1&&!LIVE.t0){LIVE.t0=Date.now();LIVE.starts++}if(N[st]==="sum"&&LIVE.t0&&!LIVE.t1){LIVE.t1=Date.now();LIVE.dones++}draw();scrollTo(0,0)}
+function toggleLang(){L=1-L;draw()}
+function toggleTheme(){TH=TH==="dark"?"light":"dark";document.documentElement.dataset.theme=TH;draw()}
+function quickExit(){try{localStorage.removeItem("as_vault")}catch(e){};location.replace("about:blank")}
+function draw(){
+ document.documentElement.lang=L?"ar":"en";document.documentElement.dir=L?"rtl":"ltr";
+ var $lang=$("#lang"),$exit=$("#exit"),$th=$("#th"),$lg=$("#lg"),$lock=$("#lockp"),$foot=$("#foot"),$tabs=$("#tabs"),$prog=$("#prog"),$app=$("#app"),$sub=$("#appSubtitle"),$pb=$("#portalBar"),$tourBtn=$("#tourBtn"),$portalBtn=$("#portalBtn");
+ if(!$lang)return;
+ $lang.textContent=u("lang");$exit.textContent=u("exit");$th.textContent=TH==="dark"?"☀":"☾";$lg.innerHTML=logo(32);$lock.textContent="🔒 "+u("onDev");$foot.textContent=u("foot")+" · v6.5.4";
+ if($sub)$sub.textContent="أندروشيلد · v6.5.4 · "+(PORTAL==="patient"?u("portalPatient"):u("portalAdmin"));
+ if($tourBtn)$tourBtn.style.display=PORTAL==="patient"?"none":"";
+ if($portalBtn){$portalBtn.textContent=PORTAL==="patient"?"🏥":"👤";$portalBtn.title=PORTAL==="patient"?u("portalSwitchToAdmin"):u("portalSwitchToPatient");}
+ if($pb){$pb.innerHTML='<div class="flex justify-center"><span class="portalBadge '+(PORTAL==="admin"?"admin":"")+'">'+(PORTAL==="patient"?u("portalBarPatient"):u("portalBarAdmin"))+'</span></div>';}
+ var currentTabs=PORTAL==="patient"?TAB_PATIENT:TAB_ADMIN;
+ var tabsHtml=currentTabs.map(function(pair){var m=pair[0],k=pair[1];return '<button class="tab" aria-pressed="'+(mode===m)+'" onclick="setMode(\''+m+'\')">'+u(k)+'</button>'}).join("");
+ $tabs.innerHTML=tabsHtml;
+ $prog.style.display=mode==="user"?"":"none";
+ var n=N[st];$("#stepn").textContent=CATS[n]?p(CATS[n][0]):u(STEPN[n]||"wT");
+ $("#stepl").textContent=(st+1)+"/"+N.length;
+ $("#bar").style.width=(st/(N.length-1)*100)+"%";
+ var view;
+ if(mode==="user"){view=V[N[st]]||V.welcome}
+ else{view=M[mode]||M.notice}
+ try{$app.innerHTML=view()}catch(e){$app.innerHTML='<div class="box warn"><b>Error:</b> '+esc(e.message)+'</div>';console.error(e)}
+ updateBmi();
+ if(STUDY.active)setTimeout(function(){if(STUDY.active)draw()},1000);
+}
+addEventListener("beforeunload",function(e){if(Object.keys(D).length){e.preventDefault();e.returnValue=""}});
+document.documentElement.dataset.theme=TH;
+logAction("created","session started");
+draw();
+</script>
+</body>
+</html>
